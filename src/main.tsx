@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './app/root.tsx'
+import App from './app/App.tsx'
 import { BrowserRouter } from 'react-router-dom';
-import { store } from '../src/app/store.ts'
+import { store } from './app/store/store.ts'
 import { Provider } from 'react-redux'
 
 createRoot(document.getElementById('root')!).render(
@@ -14,4 +14,4 @@ createRoot(document.getElementById('root')!).render(
       </BrowserRouter>,
     </Provider>
   </StrictMode>
-)
+);
