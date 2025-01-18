@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FeedPage = () => {
+const FeedPage: React.FC = () => {
   return (
     <div>FeedPage</div>
   )

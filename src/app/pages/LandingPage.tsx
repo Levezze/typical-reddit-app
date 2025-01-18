@@ -1,10 +1,9 @@
-import React from 'react'
 import LoginButton from '../../features/auth/AuthButton'
 
-const LandingPage = () => {
+const LandingPage: React.FC = () => {
   return (
     <>
-      <div>LandingPage</div>
+      <h2>LandingPage</h2>
       <LoginButton />
     </>
   )

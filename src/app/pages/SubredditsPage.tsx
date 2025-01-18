@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SubredditsPage = () => {
+const SubredditsPage: React.FC = () => {
   return (
     <div>SubredditsPage</div>
   )

@@ -12,7 +12,7 @@ export const generateLoginURL = () => {
   const RANDOM_STRING = localStorage.getItem('oauth_state');
   const DURATION = "temporary";
   const SCOPE_STRING = "read";
-  const URI = "http://localhost:5173/";
+  const URI = "http://localhost:5173/callback";
 
   const URL = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=${TYPE}&state=${RANDOM_STRING}&redirect_uri=${URI}&duration=${DURATION}&scope=${SCOPE_STRING}`
   return URL;
