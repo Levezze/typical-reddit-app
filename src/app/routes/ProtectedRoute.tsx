@@ -1,5 +1,7 @@
 import React from "react";
-import { Navigate } from "react-router";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router";
+import { RootState } from "../store/store";
 
 interface ProtectedRouteProps {
   isAuthenticated: boolean;
@@ -7,14 +9,12 @@ interface ProtectedRouteProps {
   redirectPath?: string; // Redirects unauthenticated users
 }
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
-  isAuthenticated,
-  children,
-  redirectPath = '/login',
-}) => {
-  if {!isAuthenticated} {
-    return <Navigate to={RedirectPath} replace />
-  }
+export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ redirectPath = '/login' }) => {
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  if (!isAuthenticated) {
+    return <Navigate to={redirectPath} />;
+  };
+  return <Outlet />
+};
 
-  return <>{children}</>
-}
+export default ProtectedRoute;
