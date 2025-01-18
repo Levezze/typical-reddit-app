@@ -3,6 +3,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 interface Subreddit {
   name: string;
   subscribers: number;
+  description: string;
+  icon_img: string;
+  id: string;
 };
 
 export const subredditsApi = createApi({
@@ -14,7 +17,7 @@ export const subredditsApi = createApi({
     }),
     searchSubreddits: builder.query<Subreddit[], string>({
       query: (query) => 
-        `subreddits/search.json?q=${encodeURIComponent(query)}&limit=10&sort=relevance`
+        `subreddits/search.json?q=${encodeURIComponent(query)}&limit=10&sort=relevance.json`
     }),
   }),
 });

@@ -15,15 +15,21 @@ const SubredditsPage: React.FC = () => {
           {
             error ? <p>Error loading subreddits!</p> :
             isLoading ? <p>Loading...</p> :
-            data ? 
+            Array.isArray(data) ? 
             (
               <ul>
                 {data.map(subreddit => 
-                  <li key={subreddit.name}>
-                    {subreddit.name}: {subreddit.subscribers} subscribers.
+                  <li key={subreddit.id}>
+                    <img src={subreddit.icon_img} />
+                    <p>
+                      {subreddit.name}: {subreddit.subscribers} subscribers. 
+                    </p>
+                    <p>
+                      {'Description: ' + subreddit.description}
+                    </p>
                   </li>)}
               </ul>
-            ) : <p>Couldn't find subreddits...</p>
+            ) : <p>Unexpected data format!</p>
           }
         </h3>
       </div>
