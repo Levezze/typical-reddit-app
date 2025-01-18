@@ -18,6 +18,8 @@ const AuthCallback: React.FC = () => {
       dispatch(login());
 
       navigate('/subreddits')
+    } else {
+      navigate('/')
     }
   }, [dispatch, location.search, navigate])
 
