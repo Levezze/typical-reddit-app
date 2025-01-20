@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "dist", // Output directory for compiled JS
+    "strict": true
+  },
+  "include": ["src/services/**/*"], // Include only server-related code
+  "exclude": ["node_modules"]
+}

@@ -1,11 +1,16 @@
 import React from 'react'
 import { useGetPopularSubredditsQuery } from '../../services/subredditsAPI'
+import { responseData } from '../../utils/responseData';
+import { ResponseData } from '../../types/api';
+import { Subreddit } from '../../types/api';
 
 const SubredditsPage: React.FC = () => {
   const { data, error, isLoading } = useGetPopularSubredditsQuery();
 
   console.log('Data:', data)
   console.log('Error:', error)
+
+  const parsedData:Subreddit[] = responseData(data);
 
   return (
     <>
@@ -15,10 +20,10 @@ const SubredditsPage: React.FC = () => {
           {
             error ? <p>Error loading subreddits!</p> :
             isLoading ? <p>Loading...</p> :
-            Array.isArray(data) ? 
+            Array.isArray(parsedData) ? 
             (
               <ul>
-                {data.map(subreddit => 
+                {parsedData.map(subreddit => 
                   <li key={subreddit.id}>
                     <img src={subreddit.icon_img} />
                     <p>

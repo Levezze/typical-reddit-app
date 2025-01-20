@@ -1,18 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-interface Subreddit {
-  name: string;
-  subscribers: number;
-  description: string;
-  icon_img: string;
-  id: string;
-};
+import { ResponseData, Subreddit } from "../types/api";
 
 export const subredditsApi = createApi({
   reducerPath: 'subredditsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
   endpoints: (builder) => ({
-    getPopularSubreddits: builder.query<Subreddit[], void>({
+    getPopularSubreddits: builder.query<ResponseData, void>({
       query: () => 'subreddits/popular',
     }),
     searchSubreddits: builder.query<Subreddit[], string>({
