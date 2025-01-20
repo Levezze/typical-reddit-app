@@ -167,7 +167,7 @@ This project uses a lightweight **Express.js** server to handle Reddit API reque
 ### Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/typical-reddit-app.git
+   git clone https://github.com/levezze/reddit-app.git
    cd typical-reddit-app
    ```
 
@@ -186,19 +186,24 @@ This project uses a lightweight **Express.js** server to handle Reddit API reque
    VITE_REDDIT_API_URL=https://www.reddit.com/api/v1
    ```
 
-4. Start the backend server:
+4. Install backend dependencies:
+   ```bash
+   npm install express cors axios
+   ```
+
+5. Start the backend server:
    ```bash
    node src/services/server.js
    ```
 
-5. Start the development server:
+6. Start the development server:
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-6. Open your browser and navigate to `http://localhost:5173/`.
+7. Open your browser and navigate to `http://localhost:5173/`.
 
 ---
 
