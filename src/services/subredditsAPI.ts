@@ -8,7 +8,7 @@ export const subredditsApi = createApi({
     getPopularSubreddits: builder.query<ResponseData, void>({
       query: () => 'subreddits/popular',
     }),
-    searchSubreddits: builder.query<Subreddit[], string>({
+    searchSubreddits: builder.query<ResponseData, string>({
       query: (query) => 
         `subreddits/search.json?q=${encodeURIComponent(query)}&limit=10&sort=relevance.json`
     }),

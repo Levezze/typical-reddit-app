@@ -4,9 +4,9 @@ export interface ResponseData {
       data: {
         display_name: string;
         title: string;
-        subscribers?: number | null;
+        subscribers?: number | undefined;
         public_description?: string;
-        icon_img?: string;
+        icon_img?: string | undefined;
         id: string;
       }
     }>
@@ -18,6 +18,6 @@ export interface Subreddit {
   title: string;
   subscribers: number;
   description: string;
-  icon_img: string | null;
+  icon_img: string | undefined;
   id: string;
 };

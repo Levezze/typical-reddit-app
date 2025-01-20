@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface SubredditsState {
-  selected: string[];
-};
+import { SubredditsState } from "../../types/store";
 
 const initialState: SubredditsState = {
   selected: [],
