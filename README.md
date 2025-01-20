@@ -1,4 +1,4 @@
-
+![Git Social Preview](/resources/logo/github-logo-typical-reddit.png) 
 # Typical Reddit App
 
 **Typical Reddit App** is a front-end application built with **React**, **Redux Toolkit**, **React Router**, **Vite**, and **TypeScript**. This app allows users to log in with their Reddit account, search for subreddits, curate a personalized feed with up to 5 subreddits, and interact with posts by upvoting, downvoting, and commenting. 
