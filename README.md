@@ -64,7 +64,9 @@ Below are prototype designs used during the development process to visualize the
 📦src
  ┣ 📂app
  ┃ ┣ 📂components
- ┃ ┃ ┗ 📜Search.tsx
+ ┃ ┃ ┣ 📂AddButton
+ ┃ ┃ ┗ 📂SubredditUnit
+ ┃ ┃ ┃ ┗ 📜SubredditUnit.tsx
  ┃ ┣ 📂pages
  ┃ ┃ ┣ 📜AuthCallback.tsx
  ┃ ┃ ┣ 📜ContactPage.tsx
@@ -85,14 +87,16 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📂auth
  ┃ ┃ ┣ 📜AuthButton.tsx
  ┃ ┃ ┗ 📜authSlice.ts
+ ┃ ┣ 📂darkLightMode
+ ┃ ┃ ┗ 📜darkLightSlice.ts
  ┃ ┣ 📂feed
  ┃ ┃ ┣ 📜Feed.tsx
  ┃ ┃ ┗ 📜feedSlice.ts
  ┃ ┣ 📂search
- ┃ ┃ ┣ 📜search.tsx
+ ┃ ┃ ┣ 📜Search.tsx
  ┃ ┃ ┗ 📜searchSlice.ts
  ┃ ┗ 📂subreddits
- ┃ ┃ ┣ 📜subredditSelector.tsx
+ ┃ ┃ ┣ 📜SubredditSelector.tsx
  ┃ ┃ ┗ 📜subredditSlice.ts
  ┣ 📂services
  ┃ ┣ 📜server.js

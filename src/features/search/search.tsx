@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import debounce from "lodash.debounce";
 import { showPopular, searchValue, changeSearchValue } from "./searchSlice";
@@ -6,12 +6,18 @@ import { showPopular, searchValue, changeSearchValue } from "./searchSlice";
 export const Search: React.FC = () => {
   const dispatch = useDispatch();
 
-  const debouncedHandleSearch = useMemo(() =>
+  const debouncedHandleSearch = useCallback(
     debounce((searchQuery: string) => {
       dispatch(changeSearchValue(searchQuery));
     }, 1000),
-    [dispatch]  
+    []  
   );
+
+  useEffect(() => {
+    return () => {
+      debouncedHandleSearch.cancel(); // Cancel the debounce timer on unmount
+    };
+  }, [debouncedHandleSearch]);
   
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
