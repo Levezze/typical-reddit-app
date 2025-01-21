@@ -21,3 +21,9 @@ export interface Subreddit {
   icon_img: string | undefined;
   id: string;
 };
+
+export interface Search {
+  searchValue: string;
+  subredditsResults: Subreddit[];
+  showPopular: boolean;
+}

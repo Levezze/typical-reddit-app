@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { useGetPopularSubredditsQuery } from '../../services/subredditsAPI'
+import { useGetPopularSubredditsQuery, useSearchSubredditsQuery } from '../../services/subredditsAPI'
 import { responseData } from '../../utils/responseData';
-import { ResponseData } from '../../types/api';
-import { Subreddit } from '../../types/api';
+import { ResponseData, Subreddit } from '../../types/api';
+import { Search } from '../../features/search/Search';
+import { useSelector } from 'react-redux';
+import { showPopular, searchValue, subredditsResults } from '../../features/search/searchSlice';
 
 const SubredditsPage: React.FC = () => {
-  const [search, setSearch] = useState('');
-  const { data, error, isLoading } = useGetPopularSubredditsQuery();
+  const isShowPopular = useSelector(showPopular);
+  const updatedSearchVal = useSelector(searchValue);
+
+  const { data: popularData, error: popularError, isLoading: popularIsLoading } = useGetPopularSubredditsQuery();
+  const { data: searchData, error: searcHError, isLoading: searchIsLoading } = useSearchSubredditsQuery(updatedSearchVal);
+
+  const data = isShowPopular ? popularData : searchData;
+  const error = isShowPopular ? popularError : searcHError;
+  const isLoading = isShowPopular ? popularIsLoading : searchIsLoading;
 
   console.log('Data:', data)
   console.log('Error:', error)
 
-  const parsedData:Subreddit[] = responseData(data as ResponseData);
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = e.target.value;
-    setSearch(searchValue);
-  };
-
-  useEffect(() => {
-    console.log('Search term: ', search)
-  }, [search]);
+  const parsedData:Subreddit[] = data ? responseData(data as ResponseData): [];
 
   return (
     <>
-      <form>
-        <label htmlFor="searchInput" />
-        <input onChange={handleSearch} id='searchInput' type='text' placeholder='Search subreddits...' required />
-
-      </form>
+      <Search />
       <h1>SubredditsPage</h1>
       <div>
         {
@@ -54,4 +51,4 @@ const SubredditsPage: React.FC = () => {
   )
 }
 
-export default SubredditsPage
+export default SubredditsPage;
