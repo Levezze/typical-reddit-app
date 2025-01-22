@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { generateLoginURL } from '../../utils/loginURL';
 import { logout } from './authSlice';
+import Button from '../../app/components/Button/Button';
 
 const AuthButton: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,11 @@ const AuthButton: React.FC = () => {
   };
 
   return (
-    <button onClick={isAuthenticated ? handleLogout : handleLogin}>
-      {isAuthenticated ? "Logout" : "Login To Reddit"}
-    </button>
+    <Button
+      className='auth-button'
+      handleClick={isAuthenticated ? handleLogout : handleLogin}
+      buttonName={isAuthenticated ? "Logout" : "Login To Reddit"}
+    />
   );
 };
 

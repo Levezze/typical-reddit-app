@@ -1,3 +1,6 @@
+import { Subreddit } from "./api";
+
 export interface SubredditsState {
-  selected: string[];
+  selected: Subreddit[];
+  subredditsFull: boolean;
 };

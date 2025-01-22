@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store/store';
 import App from '../App';
 import LandingPage from '../pages/LandingPage';
 import ContactPage from '../pages/ContactPage';
@@ -10,11 +12,13 @@ import FeedPage from '../pages/FeedPage';
 import ProfilePage from '../pages/ProfilePage';
 
 const AppRoutes: React.FC = () => {
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+
   return (
     <Routes>
       <Route path='/' element={<App />}>
         {/* Public Routes */}
-        <Route index element={<LandingPage />} />
+        <Route index element={isAuthenticated ? <SubredditsPage /> : <LandingPage />} />
         <Route path='/callback' element={<AuthCallback />} />
         <Route path='/contact' element={<ContactPage />} />
 

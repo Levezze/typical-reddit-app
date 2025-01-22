@@ -1,7 +1,7 @@
 import { Subreddit } from '../../types/api'
 import { useSelector } from 'react-redux'
 import { subredditsResults } from '../search/searchSlice'
-import { SubredditUnit } from '../../app/components/SubredditUnit/SubredditUnit';
+import SubredditUnit from '../../app/components/SubredditUnit/SubredditUnit';
 
 
 const SubredditSelector = () => {

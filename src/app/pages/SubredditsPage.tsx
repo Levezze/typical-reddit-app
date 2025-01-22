@@ -6,6 +6,7 @@ import { Search } from '../../features/search/Search';
 import SubredditSelector from '../../features/subreddits/SubredditSelector';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { showPopular, searchValue, setSubredditsResults } from '../../features/search/searchSlice';
+import { RootState } from '../store/store';
 
 const SubredditsPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ const SubredditsPage: React.FC = () => {
 
   const parsedData:Subreddit[] = data ? responseData(data as ResponseData): [];
   dispatch(setSubredditsResults(parsedData));
+
+  const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);
+  console.log('Selected: ', subredditsArray);
 
   return (
     <>
