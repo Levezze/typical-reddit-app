@@ -1,9 +1,12 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store/store';
 import SubredditSelectedUnit from '../../app/components/SubredditSelectedUnit/SubredditSelectedUnit';
+import Button from '../../app/components/Button/Button';
+import { useNavigate } from 'react-router';
 
 const SubredditSelectedList = () => {
   const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);
+  const navigate = useNavigate();
 
   const subredditsDisplay = [
     ...subredditsArray.map((subreddit) => (
@@ -20,12 +23,17 @@ const SubredditSelectedList = () => {
       )),
   ];
 
+  const handleNavigateToFeed = () => navigate('/feed');
+
   return (
     <div className='subreddit-selector'>
       <h3>Selected</h3>
-      <ul>
-        {subredditsDisplay}
-      </ul>
+      <div className='selected-subs'>
+        <ul>
+          {subredditsDisplay}
+        </ul>
+      </div>
+      <Button buttonName='CONTINUE TO FEED' handleClick={handleNavigateToFeed}/>
     </div>
   );
 };

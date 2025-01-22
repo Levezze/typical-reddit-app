@@ -4,7 +4,9 @@ import authReducer from '../../features/auth/authSlice';
 import subredditsReducer from '../../features/subreddits/subredditSlice';
 import searchReducer from '../../features/search/searchSlice';
 import darkLightReducer from '../../features/darkLightMode/darkLightSlice'
+import feedReducer from '../../features/feed/feedSlice';
 import { subredditsApi } from '../../services/subredditsAPI';
+import { feedApi } from '../../services/feedAPI';
 
 
 export const store = configureStore({
@@ -13,10 +15,12 @@ export const store = configureStore({
     subreddits: subredditsReducer,
     search: searchReducer,
     darkLight: darkLightReducer,
+    feed: feedReducer,
     [subredditsApi.reducerPath]: subredditsApi.reducer,
+    [feedApi.reducerPath]: feedApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(subredditsApi.middleware),
+    getDefaultMiddleware().concat(subredditsApi.middleware, feedApi.middleware),
 })
 
 setupListeners(store.dispatch);

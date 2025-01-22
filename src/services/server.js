@@ -15,8 +15,7 @@ app.get('/subreddits/popular', async (req, res) => {
       throw new Error(`Reddit API error: ${response.statusText}`)
     }
 
-    const dataJSON = response.data; 
-    res.json(dataJSON);
+    res.json(response.data);
   } catch (error) {
     console.error('Failed to fetch popular subreddits:', error.message);
     res.status(500).json({ error: 'Failed to fetch popular subreddits' });
@@ -41,11 +40,33 @@ app.get('/subreddits/search.json', async (req, res) => {
       throw new Error(`Reddit API error: ${response.statusText}`)
     }
 
-    const dataJSON = response.data; 
-    res.json(dataJSON);
+    res.json(response.data);
   } catch (error) {
     console.error('Failed to fetch subreddits:', error.message);
     res.status(500).json({ error: 'Failed to fetch subreddits' });
+  }
+});
+
+app.get('/r/:subreddits/:sort', async (req, res) => {
+  const { subreddits, sort } = req.params;
+  const queryParams = req.query;
+  const queryString = new URLSearchParams(queryParams).toString();
+
+  const url = `https://www.reddit.com/r/${subreddits}/${sort}?${queryString}`;
+
+  console.log(`Fetching posts from ${url}`);
+
+  try {
+    const response = await axios.get(url);
+    
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`Reddit API error: ${response.statusText}`)
+    }
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('Failed to fetch posts:', error.message);
+    res.status(500).json({ error: 'Failed to fetch posts' });
   }
 });
 

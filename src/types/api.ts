@@ -26,4 +26,20 @@ export interface Search {
   searchValue: string;
   subredditsResults: Subreddit[];
   showPopular: boolean;
-}
+};
+
+export interface Post {
+  author: string;
+  title: string;
+  url: string;
+  subreddit: string;
+  ups: number;
+  thumbnail: string | undefined;
+  id: string;
+};
+
+export interface Feed {
+  limit: number;
+  sort: string;
+  feedResults: Post[]
+};
