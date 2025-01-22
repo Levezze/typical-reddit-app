@@ -3,10 +3,11 @@ import { useGetPopularSubredditsQuery, useSearchSubredditsQuery } from '../../se
 import { responseData } from '../../utils/responseData';
 import { ResponseData, Subreddit } from '../../types/api';
 import { Search } from '../../features/search/Search';
-import SubredditSelector from '../../features/subreddits/SubredditSelector';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { showPopular, searchValue, setSubredditsResults } from '../../features/search/searchSlice';
 import { RootState } from '../store/store';
+import SubredditSelector from '../../features/subreddits/SubredditSelector';
+import SubredditSelectedList from '../../features/subreddits/SubredditSelectedList';
 
 const SubredditsPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ const SubredditsPage: React.FC = () => {
           isLoading ? <p>Loading...</p> :
           <SubredditSelector />
         }
+      </div>
+      <div>
+        <SubredditSelectedList />
       </div>
     </>
   )

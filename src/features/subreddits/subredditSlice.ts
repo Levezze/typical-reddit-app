@@ -18,8 +18,8 @@ const subredditsSlice = createSlice({
       state.subredditsFull = state.selected.length === 5;
     },
     removeSubreddit(state, action: PayloadAction<Subreddit>) {
-      state.selected.filter(sub => sub.id !== action.payload.id);
-      state.subredditsFull = state.selected.length === 5;
+      state.selected = state.selected.filter(sub => sub.id !== action.payload.id); // Change this to splice for n(1) best case
+      state.subredditsFull = false;
     },
   },
 });

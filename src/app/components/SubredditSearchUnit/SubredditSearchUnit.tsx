@@ -9,7 +9,7 @@ type Props = {
   subreddit: Subreddit;
 }
 
-const SubredditUnit = ({ subreddit }: Props) => {
+const SubredditSearchUnit = ({ subreddit }: Props) => {
   const dispatch = useDispatch();
   const handleAddSub = useCallback(() => {
     dispatch(addSubreddit(subreddit));
@@ -38,4 +38,4 @@ const SubredditUnit = ({ subreddit }: Props) => {
   );
 };
 
-export default React.memo(SubredditUnit);
+export default React.memo(SubredditSearchUnit);

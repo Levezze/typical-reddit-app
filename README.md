@@ -64,9 +64,16 @@ Below are prototype designs used during the development process to visualize the
 📦src
  ┣ 📂app
  ┃ ┣ 📂components
- ┃ ┃ ┣ 📂AddButton
- ┃ ┃ ┗ 📂SubredditUnit
- ┃ ┃ ┃ ┗ 📜SubredditUnit.tsx
+ ┃ ┃ ┣ 📂Button
+ ┃ ┃ ┃ ┗ 📜Button.tsx
+ ┃ ┃ ┣ 📂FeedUnit
+ ┃ ┃ ┃ ┗ 📜FeedUnit.tsx
+ ┃ ┃ ┣ 📂Header
+ ┃ ┃ ┃ ┗ 📜Header.tsx
+ ┃ ┃ ┣ 📂SubredditSearchUnit
+ ┃ ┃ ┃ ┗ 📜SubredditSearchUnit.tsx
+ ┃ ┃ ┗ 📂SubredditSelectedUnit
+ ┃ ┃ ┃ ┗ 📜SubredditSelectedUnit.tsx
  ┃ ┣ 📂pages
  ┃ ┃ ┣ 📜AuthCallback.tsx
  ┃ ┃ ┣ 📜ContactPage.tsx
@@ -96,6 +103,7 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜Search.tsx
  ┃ ┃ ┗ 📜searchSlice.ts
  ┃ ┗ 📂subreddits
+ ┃ ┃ ┣ 📜SubredditSelectedList.tsx
  ┃ ┃ ┣ 📜SubredditSelector.tsx
  ┃ ┃ ┗ 📜subredditSlice.ts
  ┣ 📂services
