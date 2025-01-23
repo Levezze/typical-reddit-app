@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useGetPopularSubredditsQuery, useSearchSubredditsQuery } from '../../services/subredditsAPI'
 import { parseSearchData } from '../../utils/parseResponseData';
 import { ResponseData, Subreddit } from '../../types/api';
@@ -14,8 +14,12 @@ const SubredditsPage: React.FC = () => {
   const isShowPopular = useSelector(showPopular, shallowEqual);
   const updatedSearchVal = useSelector(searchValue, shallowEqual);
 
-  const { data: popularData, error: popularError, isLoading: popularIsLoading } = useGetPopularSubredditsQuery();
-  const { data: searchData, error: searcHError, isLoading: searchIsLoading } = useSearchSubredditsQuery(updatedSearchVal);
+  const { data: popularData, error: popularError, isLoading: popularIsLoading } = useGetPopularSubredditsQuery(undefined,
+    {skip: !isShowPopular}
+  );
+  const { data: searchData, error: searcHError, isLoading: searchIsLoading } = useSearchSubredditsQuery(updatedSearchVal,
+    {skip: isShowPopular || !updatedSearchVal}
+  );
 
   const data = isShowPopular ? popularData : searchData;
   const error = isShowPopular ? popularError : searcHError;
@@ -24,8 +28,12 @@ const SubredditsPage: React.FC = () => {
   console.log('Data:', data)
   console.log('Error:', error)
 
-  const parsedData:Subreddit[] = data ? parseSearchData(data as ResponseData): [];
-  dispatch(setSubredditsResults(parsedData));
+  const parsedData: Subreddit[] = useMemo(() => 
+    (data ? parseSearchData(data as ResponseData): []), [data]);
+
+  useEffect(()=> {
+    dispatch(setSubredditsResults(parsedData));
+  },[dispatch, parsedData]);
 
   const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);
   console.log('Selected: ', subredditsArray);
@@ -35,8 +43,10 @@ const SubredditsPage: React.FC = () => {
       <Search />
       <div>
         {
-          error ? <p>Error loading subreddits!</p> :
-          isLoading ? <p>Loading...</p> :
+          error ? (<p>Error loading subreddits!</p>) 
+          :
+          isLoading ? (<p>Loading...</p>) 
+          :
           <SubredditSelector />
         }
       </div>

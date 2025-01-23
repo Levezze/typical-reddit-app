@@ -34,7 +34,7 @@ export interface PostsResponseData {
       data: {
         author: string;
         title: string;
-        url: string;
+        permalink: string;
         subreddit: string;
         ups: number;
         thumbnail?: string | undefined;
@@ -47,7 +47,7 @@ export interface PostsResponseData {
 export interface Post {
   author: string;
   title: string;
-  url: string;
+  permalink: string;
   subreddit: string;
   ups: number;
   thumbnail: string | undefined;

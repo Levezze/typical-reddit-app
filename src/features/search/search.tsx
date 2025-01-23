@@ -24,7 +24,7 @@ export const Search: React.FC = () => {
     const value = (e.target as HTMLInputElement).value;
     setLocalSearchValue(value);
     debouncedHandleSearch(value);
-  }
+  };
 
   const updatedSearchValue = useSelector(searchValue);
   const updatedShowPopular = useSelector(showPopular)

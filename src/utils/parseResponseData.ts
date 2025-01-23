@@ -23,12 +23,11 @@ export const parseFeedData = (response: PostsResponseData): Post[] => {
     return {
       author: post.author,
       title: post.title,
-      url: post.url,
+      permalink: post.permalink,
       subreddit: post.subreddit,
       ups: post.ups,
       thumbnail: imgUrl,
       id: post.id,
-      media: post.media,
     };
   });
   return posts;

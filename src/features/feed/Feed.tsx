@@ -7,9 +7,8 @@ import { parseFeedData } from '../../utils/parseResponseData';
 import { PostsResponseData, Post } from '../../types/api';
 import PostContainer from '../../app/components/Post/PostContainer';
 
-type Props = {}
 
-const Feed: React.FC = (props: Props) => {
+const Feed: React.FC = () => {
   const subredditsArray: Subreddit[] = useSelector((state: RootState) => state.subreddits.selected);
   let subredditsNames: string[] = [];
   if (subredditsArray.length) {
