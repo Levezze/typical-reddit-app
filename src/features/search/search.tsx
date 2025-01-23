@@ -21,7 +21,7 @@ export const Search: React.FC = () => {
   }, [debouncedHandleSearch]);
   
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = (e.target as HTMLInputElement).value;
     setLocalSearchValue(value);
     debouncedHandleSearch(value);
   }
