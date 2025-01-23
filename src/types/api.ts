@@ -28,6 +28,22 @@ export interface Search {
   showPopular: boolean;
 };
 
+export interface PostsResponseData {
+  data: {
+    children: Array<{
+      data: {
+        author: string;
+        title: string;
+        url: string;
+        subreddit: string;
+        ups: number;
+        thumbnail?: string | undefined;
+        id: string;
+      }
+    }>
+  }
+};
+
 export interface Post {
   author: string;
   title: string;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGetPopularSubredditsQuery, useSearchSubredditsQuery } from '../../services/subredditsAPI'
-import { responseData } from '../../utils/responseData';
+import { parseSearchData } from '../../utils/parseResponseData';
 import { ResponseData, Subreddit } from '../../types/api';
 import { Search } from '../../features/search/Search';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -24,7 +24,7 @@ const SubredditsPage: React.FC = () => {
   console.log('Data:', data)
   console.log('Error:', error)
 
-  const parsedData:Subreddit[] = data ? responseData(data as ResponseData): [];
+  const parsedData:Subreddit[] = data ? parseSearchData(data as ResponseData): [];
   dispatch(setSubredditsResults(parsedData));
 
   const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);

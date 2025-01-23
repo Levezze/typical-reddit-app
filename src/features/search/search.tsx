@@ -1,15 +1,16 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import debounce from "lodash.debounce";
 import { showPopular, searchValue, changeSearchValue } from "./searchSlice";
   
 export const Search: React.FC = () => {
+  const [localSearchValue, setLocalSearchValue] = useState('');
   const dispatch = useDispatch();
 
   const debouncedHandleSearch = useCallback(
     debounce((searchQuery: string) => {
       dispatch(changeSearchValue(searchQuery));
-    }, 1000),
+    }, 500),
     []  
   );
 
@@ -19,8 +20,9 @@ export const Search: React.FC = () => {
     };
   }, [debouncedHandleSearch]);
   
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    setLocalSearchValue(value);
     debouncedHandleSearch(value);
   }
 
@@ -37,7 +39,15 @@ export const Search: React.FC = () => {
           onChange={handleSearch} 
           id='searchInput' 
           type='text' 
-          placeholder='Search subreddits...' 
+          placeholder={
+            localSearchValue ? localSearchValue
+            : 
+            updatedSearchValue ? updatedSearchValue
+            : 
+            'Search subreddits...'
+          }
+          value={localSearchValue}
+          onClick={handleSearch}
           required 
         />
       </form>

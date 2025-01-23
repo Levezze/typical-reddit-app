@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header: React.FC = () => {
   return (
     <div className='Header'>
       <div className='Header-logo'>Logo</div>
-      <ul>
-        <li><Link to="/">Link</Link></li>
-        <li><Link to="/">Link</Link></li>
-        <li><Link to="/">Link</Link></li>
-      </ul>
+      <nav>
+        <ul>
+          <li><Link to="/feed">Feed</Link></li>
+          <li><Link to="/subreddits">Subreddits</Link></li>
+          <li><Link to="/">Profile</Link></li>
+        </ul>
+      </nav>
       <button>{'Contact'.toUpperCase()}</button>
     </div>
   )
