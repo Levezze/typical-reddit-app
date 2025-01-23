@@ -1,10 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { ContactButton } from '../../../features/contact/ContactButton';
+import '../../../styles/header.scss';
 
 const Header: React.FC = () => {
   return (
     <div className='Header'>
-      <div className='Header-logo'>Logo</div>
+      <div className='Header-logo'>
+        <img src='../../../resources/logo/editedLogo.png' />
+        <h3>Typical Reddit</h3>
+      </div>
       <nav>
         <ul>
           <li><Link to="/feed">Feed</Link></li>
@@ -12,7 +17,7 @@ const Header: React.FC = () => {
           <li><Link to="/">Profile</Link></li>
         </ul>
       </nav>
-      <button>{'Contact'.toUpperCase()}</button>
+      <ContactButton text={'contact'} />
     </div>
   )
 }
