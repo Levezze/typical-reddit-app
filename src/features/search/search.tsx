@@ -32,7 +32,8 @@ export const Search: React.FC = () => {
   console.log('Show Popular Subs: ', updatedShowPopular);
 
   return (
-    <>
+    <div className="search-container">
+      <h4>CHOOSE UP TO 5 SUBS</h4>
       <form>
         <label htmlFor="searchInput" />
         <input 
@@ -51,6 +52,6 @@ export const Search: React.FC = () => {
           required 
         />
       </form>
-    </>
+    </div>
   )
 }

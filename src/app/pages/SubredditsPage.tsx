@@ -8,6 +8,7 @@ import { showPopular, searchValue, setSubredditsResults } from '../../features/s
 import { RootState } from '../store/store';
 import SubredditSelector from '../../features/subreddits/SubredditSelector';
 import SubredditSelectedList from '../../features/subreddits/SubredditSelectedList';
+import '../../styles/SubredditsPage.scss'
 
 const SubredditsPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,9 @@ const SubredditsPage: React.FC = () => {
   console.log('Selected: ', subredditsArray);
 
   return (
-    <>
-      <Search />
-      <div>
+    <div className='subreddits-container'>
+      <div className='subreddits-select-container'>
+        <Search />
         {
           error ? (<p>Error loading subreddits!</p>) 
           :
@@ -50,10 +51,11 @@ const SubredditsPage: React.FC = () => {
           <SubredditSelector />
         }
       </div>
-      <div>
-        <SubredditSelectedList />
+        <div className='subreddits-selected-container'>
+          <h3>Selected</h3>
+          <SubredditSelectedList />
+        </div>
       </div>
-    </>
   )
 }
 

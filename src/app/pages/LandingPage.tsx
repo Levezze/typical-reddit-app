@@ -1,4 +1,5 @@
 import LoginButton from '../../features/auth/AuthButton'
+import '../../styles/LandingPage.scss';
 
 const LandingPage: React.FC = () => {
   return (

@@ -26,8 +26,7 @@ const SubredditSelectedList = () => {
   const handleNavigateToFeed = () => navigate('/feed');
 
   return (
-    <div className='subreddit-selector'>
-      <h3>Selected</h3>
+    <div className='subreddit-selected'>
       <div className='selected-subs'>
         <ul>
           {subredditsDisplay}

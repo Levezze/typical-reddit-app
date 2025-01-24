@@ -1,11 +1,16 @@
-@use 'base';
+@use 'base' as *;
 
 .Header {
+  color: $primary-color;
   height: 80px;
+  width: 100%;
   align-content: center;
   display: flex;
   justify-content: space-between;
-  // padding: 0 140px;
+  padding: 0 20px;
+  min-width: calc(1100px - 40px);
+  max-width: 1300px;
+  box-sizing: border-box;
 
 
   .Header-logo {
@@ -13,6 +18,7 @@
     flex-direction: row;
     align-items: center;
     width: 200px;
+    cursor: pointer;
 
     img {
       width: 45px;
@@ -29,19 +35,26 @@
 
   ul {
     display: flex;
-    gap: calc(20px);
+    gap: 105px;
     padding: 0;
+  }
+
+  li .menu-item {
+    color: $primary-color;
+    text-decoration: none;
+
   }
 
   .contact-button {
     width: 140px;
     height: 50px;
-    color: base.$primary-color;
-    background-color: base.$bg-color;
-    border: 1px base.$border-color;
+    color: $primary-color;
+    background-color: $bg-color;
+    border: 1px $border-color;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 800;
     align-self: center;
+    cursor: pointer;
   }
 }

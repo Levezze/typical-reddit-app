@@ -1,20 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ContactButton } from '../../../features/contact/ContactButton';
-import '../../../styles/header.scss';
+import '../../../styles/Header.scss';
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='Header'>
-      <div className='Header-logo'>
-        <img src='../../../resources/logo/editedLogo.png' />
+      <div className='Header-logo' onClick={()=>navigate('/')}>
+        <img 
+          src='../../../resources/logo/editedLogo.png' 
+        />
         <h3>Typical Reddit</h3>
       </div>
       <nav>
         <ul>
-          <li><Link to="/feed">Feed</Link></li>
-          <li><Link to="/subreddits">Subreddits</Link></li>
-          <li><Link to="/">Profile</Link></li>
+          <li><Link className='menu-item' to="/feed">Feed</Link></li>
+          <li><Link className='menu-item' to="/subreddits">Subreddits</Link></li>
+          <li><Link className='menu-item' to="/">Profile</Link></li>
         </ul>
       </nav>
       <ContactButton text={'contact'} />

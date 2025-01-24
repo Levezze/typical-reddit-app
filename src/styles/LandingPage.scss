@@ -1,0 +1,47 @@
+@use 'base' as *;
+
+.landing-page-container {
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1100px;
+  
+  h2 {
+    font-size: 72px;
+    font-weight: 400;
+    margin: 0;
+    color: $primary-color;
+  }
+
+  h1 {
+    font-size: 113px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 0.9;
+    color: $primary-color;
+  }
+
+  h3 {
+    font-size: 72px;
+    font-weight: 700;
+    margin: 0;
+    margin-top: 10px;
+    color: $primary-color;
+  }
+
+  p {
+    color: $text-color;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  .logo-img img {
+    width: 350px;
+    height: auto;
+  }
+
+  .auth-button {
+    @include button;
+  }
+}

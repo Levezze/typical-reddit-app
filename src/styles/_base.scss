@@ -1,6 +1,32 @@
 $font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
 $primary-color: #fff;
 $secondary-color: #EF6D58;
+$text-color: #B4B5BC;
 $bg-color: #1C1D2A;
 $secondary-bg-color: #303146;
 $border-color: solid #ADADB2;
+
+@mixin button(
+  $width: 390px, 
+  $color: #EF6D58, 
+  $text-color: #fff, 
+  $font-family: 'Epilogue', 
+  $font-size: 20px, 
+  $font-weight: 800
+  ) {
+  background-color: $color;
+  color: $text-color;
+  height: 50px;
+  width: $width;
+  border-radius: 6px;
+  border: none;
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
