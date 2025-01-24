@@ -26,6 +26,9 @@ export const Search: React.FC = () => {
     debouncedHandleSearch(value);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  }
   const updatedSearchValue = useSelector(searchValue);
   const updatedShowPopular = useSelector(showPopular)
   console.log('Updated Search Value: ', updatedSearchValue);
@@ -34,7 +37,7 @@ export const Search: React.FC = () => {
   return (
     <div className="search-container">
       <h4>CHOOSE UP TO 5 SUBS</h4>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="searchInput" />
         <input 
           onChange={handleSearch} 
@@ -45,7 +48,7 @@ export const Search: React.FC = () => {
             : 
             updatedSearchValue ? updatedSearchValue
             : 
-            'Search subreddits...'
+            'Search subreddits'
           }
           value={localSearchValue}
           onClick={handleSearch}

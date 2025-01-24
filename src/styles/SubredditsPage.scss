@@ -4,6 +4,7 @@
   display: flex;
   width: 1100px;
   margin-top: 100px;
+  gap: 20px;
   
   .subreddits-select-container {
     display: flex;
@@ -12,12 +13,34 @@
   }
 
   .search-container {
-    height: 100px;
+    // height: 100px;
+    margin-bottom: 20px;
+
+      input {
+        width: 100%;
+        background-color: $bg-color;
+        border: none;
+        border-bottom: 2px solid $secondary-color;
+        align-self: self-end;
+        font-size: 72px;
+        font-weight: $font-bold;
+        color: $primary-color;
+        // padding-bottom: 20px;
+      }
+
+      textarea:focus, input:focus {
+        outline: none;
+      }
   }
 
   .subreddit-selector {
-    max-height: calc(100vh - 80px - 100px - 100px);
     overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .subreddit-selector::-webkit-scrollbar {
+    display: none;
   }
 
   // h1 {
@@ -45,9 +68,9 @@
 
   h4 {
     font-size: 16px;
-    font-weight: 400;
+    font-weight: $font-regular;
     margin: 0;
-    margin-top: 10px;
+    // margin-top: 10px;
     color: $secondary-color;
   }
 

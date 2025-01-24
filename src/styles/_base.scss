@@ -5,6 +5,9 @@ $text-color: #B4B5BC;
 $bg-color: #1C1D2A;
 $secondary-bg-color: #303146;
 $border-color: solid #ADADB2;
+$font-regular: 400;
+$font-bold: 700;
+$font-black: 900;
 
 @mixin button(
   $width: 390px, 
