@@ -1,4 +1,4 @@
-![Git Social Preview](/resources/logo/github-logo-typical-reddit.png) 
+![Git Social Preview](public/mock-img/github-logo-typical-reddit.png) 
 # Typical Reddit App
 
 **Typical Reddit App** is a front-end application built with **React**, **Redux Toolkit**, **React Router**, **Vite**, and **TypeScript**. This app allows users to log in with their Reddit account, search for subreddits, curate a personalized feed with up to 5 subreddits, and interact with posts by upvoting, downvoting, and commenting. 
@@ -22,6 +22,19 @@ Additionally, users can toggle between light and dark modes and manage their acc
   - **CORS** middleware is configured for smooth communication between the server and client.
 - **Routing**: Seamless navigation between pages using **React Router**.
 - **Contact Developer**: A dedicated section to contact the developer, **Lev Zhitnik**.
+
+---
+
+## SCSS for Modularity and Scalability
+
+The app leverages **SCSS** to maintain modularity and scalability in styling. By using features like variables, mixins, nesting, and partials, the codebase ensures:
+
+- **Reusability**: Shared styles like button designs and typography are abstracted into mixins and variables.
+- **Theme Management**: Light and dark modes are handled by modifying color variables, making it easy to scale themes in the future.
+- **Readability**: Modular SCSS files separate styles by components and pages, aligning with the app's folder structure.
+- **Ease of Maintenance**: Changes to global styles can be made in the `_base.scss` file, propagating throughout the app without affecting individual components.
+  
+To review the SCSS structure, check out the `src/styles` folder:
 
 ---
 
@@ -50,11 +63,11 @@ Additionally, users can toggle between light and dark modes and manage their acc
 Below are prototype designs used during the development process to visualize the app's layout and flow:
 
 #### Landing Page
-![Prototype Image 1](/resources/mock-img/1-Landing.png)  
+![Prototype Image 1](public/mock-img/1-Landing.png)  
 #### Select Subreddits
-![Prototype Image 2](/resources/mock-img/2-Subs.png)  
+![Prototype Image 2](public/mock-img/2-Subs.png)  
 #### Feed View
-![Prototype Image 2](/resources/mock-img/3-Feed.png)  
+![Prototype Image 2](public/mock-img/3-Feed.png)  
 
 ---
 
@@ -64,12 +77,16 @@ Below are prototype designs used during the development process to visualize the
 📦src
  ┣ 📂app
  ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂BottomGradient
+ ┃ ┃ ┃ ┗ 📜BottomGradient.tsx
  ┃ ┃ ┣ 📂Button
  ┃ ┃ ┃ ┗ 📜Button.tsx
  ┃ ┃ ┣ 📂FeedUnit
  ┃ ┃ ┃ ┗ 📜FeedUnit.tsx
  ┃ ┃ ┣ 📂Header
  ┃ ┃ ┃ ┗ 📜Header.tsx
+ ┃ ┃ ┣ 📂Post
+ ┃ ┃ ┃ ┗ 📜PostContainer.tsx
  ┃ ┃ ┣ 📂SubredditSearchUnit
  ┃ ┃ ┃ ┗ 📜SubredditSearchUnit.tsx
  ┃ ┃ ┗ 📂SubredditSelectedUnit
@@ -85,7 +102,6 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜AppRoutes.tsx
  ┃ ┃ ┗ 📜ProtectedRoute.tsx
  ┃ ┣ 📂store
- ┃ ┃ ┣ 📜hooks.tsx
  ┃ ┃ ┗ 📜store.ts
  ┃ ┗ 📜App.tsx
  ┣ 📂assets
@@ -94,6 +110,8 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📂auth
  ┃ ┃ ┣ 📜AuthButton.tsx
  ┃ ┃ ┗ 📜authSlice.ts
+ ┃ ┣ 📂contact
+ ┃ ┃ ┗ 📜ContactButton.tsx
  ┃ ┣ 📂darkLightMode
  ┃ ┃ ┗ 📜darkLightSlice.ts
  ┃ ┣ 📂feed
@@ -106,18 +124,35 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜SubredditSelectedList.tsx
  ┃ ┃ ┣ 📜SubredditSelector.tsx
  ┃ ┃ ┗ 📜subredditSlice.ts
+ ┣ 📂img
+ ┃ ┣ 📂logo
+ ┃ ┃ ┣ 📜editedLogo.png
+ ┃ ┃ ┣ 📜github-logo-typical-reddit.png
+ ┃ ┃ ┗ 📜landingLogo.png
+ ┃ ┗ 📂mock-img
+ ┃ ┃ ┣ 📜1-Landing.png
+ ┃ ┃ ┣ 📜2-Subs.png
+ ┃ ┃ ┗ 📜3-Feed.png
  ┣ 📂services
+ ┃ ┣ 📜feedAPI.ts
  ┃ ┣ 📜server.js
  ┃ ┗ 📜subredditsAPI.ts
+ ┣ 📂styles
+ ┃ ┣ 📜App.scss
+ ┃ ┣ 📜Header.scss
+ ┃ ┣ 📜index.scss
+ ┃ ┣ 📜LandingPage.scss
+ ┃ ┣ 📜reset.css
+ ┃ ┣ 📜SubredditsPage.scss
+ ┃ ┗ 📜_base.scss
  ┣ 📂types
  ┃ ┣ 📜api.ts
  ┃ ┣ 📜pages.ts
  ┃ ┗ 📜store.ts
  ┣ 📂utils
+ ┃ ┣ 📜helpers.ts
  ┃ ┣ 📜loginURL.ts
- ┃ ┗ 📜responseData.ts
- ┣ 📜App.css
- ┣ 📜index.css
+ ┃ ┗ 📜parseResponseData.ts
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
 ```
