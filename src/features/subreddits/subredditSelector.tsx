@@ -9,7 +9,7 @@ const SubredditSelector = () => {
   const subredditCatalog: Subreddit[] = useSelector(subredditsResults);
 
   return (
-      <div className='subreddit-selector'>
+      <>
         {Array.isArray(subredditCatalog) ? 
           (
             <ul>
@@ -20,7 +20,7 @@ const SubredditSelector = () => {
           ) : <p>Unexpected data format!</p>
         }
         <BottomGradient />
-      </div>
+      </>
   );
 }
 
