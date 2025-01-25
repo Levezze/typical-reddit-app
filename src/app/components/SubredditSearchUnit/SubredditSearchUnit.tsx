@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
 import { addSubreddit } from '../../../features/subreddits/subredditSlice';
 import { RootState } from '../../store/store';
+import { decodeHTML } from '../../../utils/helpers';
 
 type Props = {
   subreddit: Subreddit;
@@ -24,16 +25,22 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
 
   return (
     <li>
-      <img className='sub-img' src={subreddit.icon_img} />
-      <h2>{subreddit.name}</h2>
-      <h3>Subscribers: {subreddit.subscribers}</h3>
-      <p>Description: {subreddit.description}</p>
-      <Button 
-        className='add-sub-button' 
-        handleClick={(handleAddSub)} 
-        buttonName='ADD TO SELECTED'
-        disabled={subredditsFull || isInSelected}
-      />
+      <div className='sub-unit-container'>
+        <div className='title-section'>
+          <img className='sub-img' src={subreddit.icon_img} />
+          <div className='title-text'>
+            <h2>{subreddit.name}</h2>
+            <h3>Subscribers: {subreddit.subscribers}</h3>
+          </div>
+        </div>
+        <p>Description: {decodeHTML(subreddit.description)}</p>
+        <Button 
+          className='add-sub-button' 
+          handleClick={(handleAddSub)} 
+          buttonName='ADD TO FEED'
+          disabled={subredditsFull || isInSelected}
+        />
+      </div>
     </li>
   );
 };

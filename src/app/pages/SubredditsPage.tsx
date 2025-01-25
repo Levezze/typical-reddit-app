@@ -52,7 +52,9 @@ const SubredditsPage: React.FC = () => {
         }
       </div>
         <div className='subreddits-selected-container'>
-          <h3>Selected</h3>
+          <div className='selected-title'>
+            <h1>My Feed</h1>
+          </div>
           <SubredditSelectedList />
         </div>
       </div>
