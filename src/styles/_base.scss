@@ -8,28 +8,241 @@ $border-color: solid #ADADB2;
 $font-regular: 400;
 $font-bold: 700;
 $font-black: 900;
+$transition-effect: all .2s ease-in;
+
+@mixin nav-style (
+  $color: #fff,
+  $hover-color: #B4B5BC,
+  $transition: .3s,
+) {
+  color: $color;
+  transition: $transition;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover-color;
+  }
+}
 
 @mixin button(
+  $name: 'button',
   $width: 390px, 
+  $height: 50px,
   $color: #EF6D58, 
   $text-color: #fff, 
   $font-family: 'Epilogue', 
   $font-size: 20px, 
-  $font-weight: 800
+  $font-weight: 800,
+  $transition: 2s,
+  $border: none,
   ) {
+  position: relative;
+
   background-color: $color;
   color: $text-color;
-  height: 50px;
+  height: $height;
   width: $width;
   border-radius: 6px;
-  border: none;
+  border: $border;
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
+  outline: none;
   cursor: pointer;
   text-align: center;
-  transition: background 250ms ease-in-out, 
-              transform 150ms ease;
+  overflow: hidden;
+  -webkit-transition: $transition-effect;
+  -moz-transition: $transition-effect;
+  -ms-transition: $transition-effect;
+  -o-transition: $transition-effect;
+  transition: $transition-effect;
   -webkit-appearance: none;
   -moz-appearance: none;
+
+  &:active {
+    transform: translateY(3px);
+  }
+
+  &:hover {
+    @include button-hover;
+  }
+
+  &:disabled {
+    @include button-disabled;
+  }
+
 }
+
+@mixin button-hover(
+  $color: #ee8979, 
+  $text-color: #fff, 
+  $border-color: #fff,
+  ) {
+  background-color: $color;
+  color: $text-color;
+  border: 1px solid $border-color; 
+  letter-spacing: .5px;
+}
+
+@mixin button-disabled(
+  $color: #303146, 
+  $text-color: #B4B5BC, 
+  $border-color: #707070,
+) {
+  border: 1px solid $border-color;
+  background-color: $color;
+  color: $text-color;
+  cursor: auto;
+}
+
+// @mixin button-aura-effect(
+//   $bg-color: transparent,
+//   $color: #fff,
+// ) {
+//   background-color: transparent;
+//   color: #1b1b20;
+//   border: none;
+//   overflow: hidden;
+//   box-shadow: none;
+  
+//   &:hover {
+//     color: #e6e6e6;
+//   }
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     border: 3px solid #1b1b20;
+//     transition: opacity 0.3s, border 0.3s;
+//   }
+//   &:hover::before {
+//     opacity: 0;
+//   }
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 400px;
+//     height: 200px;
+//     background-color: #494958;
+//     border-color: transparent;
+//     border-radius: 50%;
+//     transform: translate(-10px, -70px) scale(0.1);
+//     opacity: 0;
+//     z-index: -1;
+//     transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+//   }
+//   &:hover::after {
+//     opacity: 1;
+//     transform-origin: 100px 100px;
+//     transform: scale(1) translate(-10px, -70px);
+//   }
+// }
+
+// @mixin button-border-effect(
+//   $bg-color: transparent,
+//   $color: #fff,
+//   $boxWidth: 390px,
+//   $boxHeight: 50px,
+//   $borderThickness: 2px,
+//   $transition: 2s,
+//   $backgroundColor: #EF6D58,
+//   $borderColor: #fff,
+// ) {
+//   box-shadow: 
+//     $boxWidth+$borderThickness $boxHeight+($borderThickness*2) 0 $borderThickness $backgroundColor,
+//     (($boxWidth+$borderThickness)*-1) (($boxHeight+($borderThickness*2))*-1) 0 $borderThickness $backgroundColor,
+//     0 0 0 $borderThickness $borderColor;
+//   transition: $transition $transition*.9;
+//   &:before,
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     height: $borderThickness;
+//     width: 0%; 
+//     background: $backgroundColor;
+//     transition: $transition;
+//   }
+//   &:before {
+//     top: -$borderThickness;
+//     right: -$borderThickness;
+//   }
+//   &:after {
+//     bottom: -$borderThickness;
+//     left: -$borderThickness;
+//   }
+//   &:hover {
+//     box-shadow:
+//       $boxWidth+$borderThickness $borderThickness 0 $borderThickness $backgroundColor,
+//       (($boxWidth+$borderThickness)*-1) (-$borderThickness) 0 $borderThickness $backgroundColor,
+//       0 0 0 $borderThickness $borderColor;
+//     transition: $transition;
+//     &:after,
+//     &:before {
+//       width: $boxWidth+$borderThickness;
+//       transition: $transition $transition*.9;
+//     }
+//   }
+// }
+// //box 
+// $boxHeight: 350px;
+// $boxWidth: 350px;
+
+// //border
+// $borderThickness: 7px;
+// $borderColor: tomato;
+
+// //animation speed
+// $transition: .2s;
+
+// //set to color behind box
+// $backgroundColor: #fff;
+  
+// .box {
+//   margin: 50px auto;
+//   height: $boxHeight;
+//   width: $boxWidth;
+//   position: relative;  
+//   background: url(http://placehold.it/500x500);
+//   background-size: cover;
+  
+//   //Magic happens below...
+//   box-shadow: 
+//     $boxWidth+$borderThickness $boxHeight+($borderThickness*2) 0 $borderThickness $backgroundColor,
+//     (($boxWidth+$borderThickness)*-1) (($boxHeight+($borderThickness*2))*-1) 0 $borderThickness $backgroundColor,
+//     0 0 0 $borderThickness $borderColor;
+//   transition: $transition $transition*.9;
+//   &:before,
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     height: $borderThickness;
+//     width: 0%; 
+//     background: $backgroundColor;
+//     transition: $transition;
+//   }
+//   &:before {
+//     top: -$borderThickness;
+//     right: -$borderThickness;
+//   }
+//   &:after {
+//     bottom: -$borderThickness;
+//     left: -$borderThickness;
+//   }
+//   &:hover {
+//     box-shadow:
+//       $boxWidth+$borderThickness $borderThickness 0 $borderThickness $backgroundColor,
+//       (($boxWidth+$borderThickness)*-1) (-$borderThickness) 0 $borderThickness $backgroundColor,
+//       0 0 0 $borderThickness $borderColor;
+//     transition: $transition;
+//     &:after,
+//     &:before {
+//       width: $boxWidth+$borderThickness;
+//       transition: $transition $transition*.9;
+//     }
+//   }
+// }

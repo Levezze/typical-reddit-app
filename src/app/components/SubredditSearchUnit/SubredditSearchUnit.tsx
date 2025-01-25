@@ -25,8 +25,8 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
   return (
     <li>
       <img className='sub-img' src={subreddit.icon_img} />
-      <h3>{subreddit.name}</h3>
-      <p>Subscribers: {subreddit.subscribers}</p>
+      <h2>{subreddit.name}</h2>
+      <h3>Subscribers: {subreddit.subscribers}</h3>
       <p>Description: {subreddit.description}</p>
       <Button 
         className='add-sub-button' 

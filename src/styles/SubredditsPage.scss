@@ -42,29 +42,34 @@
   .subreddit-selector::-webkit-scrollbar {
     display: none;
   }
-
-  // h1 {
-  //   font-size: 113px;
-  //   font-weight: 800;
-  //   margin: 0;
-  //   line-height: 0.9;
-  //   color: $primary-color;
-  // }
   
-  // h2 {
-  //   font-size: 72px;
-  //   font-weight: 400;
-  //   margin: 0;
-  //   color: $primary-color;
-  // }
+  ul {
+    padding: 0;
+    column-count: 2; /* Define the number of columns */
+    column-gap: 20px; /* Set the gap between columns */
+    list-style: none;
+  }
 
-  // h3 {
-  //   font-size: 72px;
-  //   font-weight: 700;
-  //   margin: 0;
-  //   margin-top: 10px;
-  //   color: $primary-color;
-  // }
+  li {
+    display: inline-block; /* Necessary for column layout */
+    width: 100%; /* Ensures items take full column width */
+    margin-bottom: 20px; /* Spacing between items */
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: $font-bold;
+    margin: 0;
+    color: $secondary-color;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: $font-regular;
+    margin: 0;
+    margin-top: 10px;
+    color: $primary-color;
+  }
 
   h4 {
     font-size: 16px;
@@ -76,8 +81,8 @@
 
   p {
     color: $text-color;
-    line-height: 1.8;
-    max-width: 600px;
+    line-height: 1.25;
+    // max-width: 600px;
   }
 
   .logo-img img {
@@ -85,7 +90,8 @@
     height: auto;
   }
 
-  .auth-button {
+  .add-sub-button {
     @include button;
+    width: 100%;
   }
 }
