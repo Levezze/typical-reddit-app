@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { ContactButton } from '../../../features/contact/ContactButton';
 import '../../../styles/Header.scss';
+import landingImg from '../../../img/logo/editedLogo.png'
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Header: React.FC = () => {
     <div className='Header'>
       <div className='Header-logo' onClick={()=>navigate('/')}>
         <img 
-          src='../../../resources/logo/editedLogo.png' 
+          src={landingImg} 
         />
         <h3>Typical Reddit</h3>
       </div>

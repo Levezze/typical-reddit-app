@@ -43,9 +43,16 @@
   
 
     .subreddit-selector {
+      padding-bottom: 50px;
       overflow: auto;
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
+      justify-content: center;
+      align-items: center;
+
+      .bottom-gradient {
+        @include bottom-gradient;
+      }
     }
 
     .subreddit-selector::-webkit-scrollbar {
@@ -78,6 +85,10 @@
             width: 60px;
             border-radius: 50%;
             margin-right: 10px;
+          }
+
+          .title-text {
+            max-width: calc(390px - 30px - 60px - 10px - 30px);
           }
         }
       }
@@ -126,17 +137,44 @@
           li {
             border: 2px $border-color;
             border-radius: 0 10px 10px 0;
+            transition: $transition-effect;
+            &:hover {
+              background-color: $secondary-color;
+              color: $primary-color;
+            }
+
+            .subreddit-empty-container {
+              height: 60px;
+              width: 300px;
+              border-radius: 0 10px 10px 0;
+            }
 
             .subreddit-container {
               border-left: 10px solid $secondary-color;
+              height: 60px;
+              width: 300px;
+              display: flex;
+              align-items: center;
+              padding-left: 10px;
+              cursor: pointer;
+              border-radius: 0 10px 10px 0;
+
+              img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                margin-right: 10px;
+              }
+
+              p {
+                width: calc(300px - 10px - 10px - 45px - 10px - 10px);
+                text-overflow: ellipsis;
+                overflow: hidden; 
+                white-space: nowrap;
+              }
             }
           }
         }
-      }
-
-      .subreddit-container {
-        height: 60px;
-        width: 300px;
       }
     }
   }
@@ -146,6 +184,10 @@
     font-weight: $font-bold;
     margin: 0;
     color: $secondary-color;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    width: 100%;
   }
 
   h3 {
@@ -168,7 +210,7 @@
   }
 
   .add-sub-button,
-  button {
+  .continue-btn {
     @include button;
     width: 100%;
   }

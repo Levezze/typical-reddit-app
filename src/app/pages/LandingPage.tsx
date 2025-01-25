@@ -1,5 +1,6 @@
 import LoginButton from '../../features/auth/AuthButton'
 import '../../styles/LandingPage.scss';
+import landingImg from '../../img/logo/landingLogo.png'
 
 const LandingPage: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const LandingPage: React.FC = () => {
         <LoginButton />
       </div>
       <div className='logo-img'>
-        <img src='../../../resources/logo/landingLogo.png' />
+        <img src={landingImg} />
       </div>
 
     </div>

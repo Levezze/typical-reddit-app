@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addSubreddit } from '../../../features/subreddits/subredditSlice';
 import { RootState } from '../../store/store';
 import { decodeHTML } from '../../../utils/helpers';
+import { subSubImg } from '../../../utils/helpers';
 
 type Props = {
   subreddit: Subreddit;
@@ -17,7 +18,7 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
   },[dispatch, subreddit]);
 
   const subredditsFull = useSelector((state: RootState) => state.subreddits.subredditsFull);
-
+  const subImg = subSubImg(subreddit.icon_img);
   const subredditsList: Subreddit[] = useSelector((state: RootState) => state.subreddits.selected);
   const isInSelected = useMemo(
     () => subredditsList.some((each)=> each.id === subreddit.id
@@ -27,7 +28,7 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
     <li>
       <div className='sub-unit-container'>
         <div className='title-section'>
-          <img className='sub-img' src={subreddit.icon_img} />
+          <img className='sub-img' src={subImg} />
           <div className='title-text'>
             <h2>{subreddit.name}</h2>
             <h3>Subscribers: {subreddit.subscribers}</h3>

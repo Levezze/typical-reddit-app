@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { Subreddit } from '../../../types/api'
 import { useDispatch } from 'react-redux';
 import { removeSubreddit } from '../../../features/subreddits/subredditSlice';
+import { subSubImg } from '../../../utils/helpers';
 
 type Props = {
   subreddit: Subreddit;
@@ -12,12 +13,13 @@ const SubredditSelectedUnit = ({ subreddit }: Props) => {
   const handleRemoveSub = useCallback(() => {
     dispatch(removeSubreddit(subreddit));
   },[dispatch, subreddit]);
+  const subImg = subSubImg(subreddit.icon_img);
 
   return (
-      <button className='subreddit-container SubredditSelectedUnit' onClick={handleRemoveSub}>
-        <img className='sub-img' src={subreddit.icon_img} />
-        <p>{subreddit.name}</p>
-      </button>
+    <div className='subreddit-container' onClick={handleRemoveSub}>
+      <img className='sub-img' src={subImg} />
+      <p>{`r/${subreddit.name}`}</p>
+    </div>
   );
 };
 

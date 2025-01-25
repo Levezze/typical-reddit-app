@@ -1,10 +1,6 @@
-import React from 'react'
-
-type Props = {}
-
-const BottomGradient = (props: Props) => {
+const BottomGradient = () => {
   return (
-    <div>BottomGradient</div>
+    <div className="bottom-gradient"></div>
   )
 }
 

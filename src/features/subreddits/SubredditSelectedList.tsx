@@ -18,7 +18,7 @@ const SubredditSelectedList = () => {
       .fill(null)
       .map((_, index) => (
         <li key={`empty-${index}`}>
-          <div className="subreddit-container"></div>
+          <div className="subreddit-empty-container"></div>
         </li>
       )),
   ];
@@ -32,7 +32,12 @@ const SubredditSelectedList = () => {
           {subredditsDisplay}
         </ul>
       </div>
-      <Button buttonName='CONTINUE TO FEED' handleClick={handleNavigateToFeed}/>
+      <Button 
+        className='continue-btn'
+        buttonName='CONTINUE TO FEED' 
+        handleClick={handleNavigateToFeed}
+        disabled={subredditsArray.length <= 0}
+      />
     </div>
   );
 };
