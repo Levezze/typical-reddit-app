@@ -1,7 +1,7 @@
 import React from 'react'
 import { svg } from '../../../types/svg'
 
-export const RefreshIcon:React.FC<svg> = ({ width = '16px', height = '16px' }) => {
+const RefreshIcon:React.FC<svg> = ({ width = '16px', height = '16px' }) => {
   return (
     <svg 
     className='refresh-icon'
@@ -25,3 +25,5 @@ export const RefreshIcon:React.FC<svg> = ({ width = '16px', height = '16px' }) =
     </svg>
   )
 };
+
+export default RefreshIcon;

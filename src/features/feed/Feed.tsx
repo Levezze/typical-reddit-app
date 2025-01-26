@@ -17,16 +17,18 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
   console.log('Feed Error:', error)
 
   return (
-    <div>
-      {
-        isLoading ? <p>Loading...</p>
-        :
-        error ? <p>Select Subreddits to view your personalized feed.</p>
-        :
-        data ? parsedData.map(post => <PostContainer key={post.id} post={post} />)
-        :
-        <p>sets</p>
-      }
+    <div className='feed-container'>
+      <div className='feed-items'>
+        {
+          isLoading ? <p>Loading...</p>
+          :
+          error ? <p>Select Subreddits to view your personalized feed.</p>
+          :
+          data ? parsedData.map(post => <PostContainer key={post.id} post={post} />)
+          :
+          <p>sets</p>
+        }
+      </div>
     </div>
   )
 }
