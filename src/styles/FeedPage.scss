@@ -11,10 +11,9 @@
   justify-content: space-between;
   width: $ui-width;
   margin-top: 120px;
-  gap: 20px;
   border-bottom: 2px solid $secondary-color;
   margin-bottom: 20px;
-  // padding-bottom: 10px;
+  height: 90px;
 
   h1 {
     font-size: 72px;
@@ -64,19 +63,14 @@
   width: $ui-width;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 80px - 100px);
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  height: calc(100vh - 80px - 120px - 90px - 20px);
+  padding-bottom: 50px;
 
-  .feed-container {
-    padding-bottom: 50px;
-    overflow: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    justify-content: center;
-    align-items: center;
-
-    .bottom-gradient {
-      @include bottom-gradient;
-    }
+  .bottom-gradient {
+    @include bottom-gradient;
   }
 
   .feed-container::-webkit-scrollbar {

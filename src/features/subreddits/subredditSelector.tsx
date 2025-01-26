@@ -12,14 +12,17 @@ const SubredditSelector = () => {
       <>
         {Array.isArray(subredditCatalog) ? 
           (
-            <ul>
-              {subredditCatalog.map(subreddit => 
-                <SubredditSearchUnit key={subreddit.id} subreddit={subreddit} /> 
-              )}
-            </ul>
+            <div className='subreddit-selector'>
+              <ul>
+                {subredditCatalog.map(subreddit => 
+                  <SubredditSearchUnit key={subreddit.id} subreddit={subreddit} /> 
+                )}
+              </ul>
+              <BottomGradient />
+            </div>
           ) : <p>Unexpected data format!</p>
         }
-        <BottomGradient />
+        
       </>
   );
 }

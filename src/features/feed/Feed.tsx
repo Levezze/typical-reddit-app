@@ -4,6 +4,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
 import { parseFeedData } from '../../utils/parseResponseData';
 import PostContainer from '../../app/components/Post/PostContainer';
+import BottomGradient from '../../app/components/BottomGradient/BottomGradient';
 
 interface FeedProps {
   data: PostsResponseData | undefined;
@@ -29,6 +30,7 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
           <p>sets</p>
         }
       </div>
+      <BottomGradient />
     </div>
   )
 }
