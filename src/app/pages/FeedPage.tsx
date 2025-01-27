@@ -4,10 +4,11 @@ import { Subreddit } from '../../types/api';
 import { RootState } from '../store/store';
 import { useSelector } from 'react-redux';
 import { useGetPostsFromSubredditsQuery } from '../../services/feedAPI';
-import SortSelect from '../../features/feed/sort/Sort';
+// import SortSelect from '../../features/feed/sort/Sort';
 import { sortValue } from '../../features/feed/feedSlice';
 import Refresh from '../../features/feed/Refresh';
 import '../../styles/FeedPage.scss';
+import DropdownMenuDemo from '../../features/feed/sort/DropdownMenuDemo';
 
 
 
@@ -29,7 +30,7 @@ const FeedPage: React.FC = () => {
       <div className='feed-top'>
         <h1>Your Feed</h1>
         <div className='feed-control'>
-          <SortSelect />
+          <DropdownMenuDemo />
           <Refresh refetch={refetch} />
         </div>
       </div>

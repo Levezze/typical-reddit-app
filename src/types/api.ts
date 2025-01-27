@@ -57,5 +57,6 @@ export interface Post {
 export interface Feed {
   limit: number;
   sort: string;
-  feedResults: Post[]
+  feedResults: Post[];
+  feedColumns: number;
 };

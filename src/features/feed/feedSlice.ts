@@ -7,6 +7,7 @@ const initialState: Feed = {
   limit: 10,
   sort: 'hot',
   feedResults: [],
+  feedColumns: 1,
 };
 
 const feedSlice = createSlice({
@@ -15,6 +16,10 @@ const feedSlice = createSlice({
   reducers: {
     changeFeedSort(state, action: PayloadAction<string>) {
       state.sort = action.payload;
+    },
+    changeFeedColumns(state, action: PayloadAction<boolean>) {
+      if (!action.payload) {state.feedColumns = 1}
+      else {state.feedColumns = 2};
     },
   },
 })

@@ -63,11 +63,14 @@ To review the SCSS structure, check out the `src/styles` folder:
 Below are prototype designs used during the development process to visualize the app's layout and flow:
 
 #### Landing Page
-![Prototype Image 1](public/mock-img/1-Landing.png)  
+![Prototype Image 1](public/mock-img/1-LandingPage.png)  
 #### Select Subreddits
-![Prototype Image 2](public/mock-img/2-Subs.png)  
+![Prototype Image 2](public/mock-img/2-Subreddits.png)  
 #### Feed View
 ![Prototype Image 2](public/mock-img/3-Feed.png)  
+#### Light Mode
+![Prototype Image 2](public/mock-img/2-Subreddits–Light.png)  
+
 
 ---
 

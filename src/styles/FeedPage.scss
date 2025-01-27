@@ -1,4 +1,4 @@
-@use 'base' as *;
+@use 'base.module' as *;
 
 .refresh-icon {
   color: $secondary-color;
@@ -32,13 +32,14 @@
 
   .feed-control {
     display: flex;
-    min-width: 230px;
+    // min-width: 200px;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 20px;
 
     .feed-refresh {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       height: 40px;
       align-items: center;
       cursor: pointer; 
@@ -79,7 +80,7 @@
   
   .feed-items {
     padding: 0;
-    column-count: 2; /* Define the number of columns */
+    column-count: $feed-column-number; /* Define the number of columns */
     column-gap: 20px; /* Set the gap between columns */
     list-style: none;
     margin: 0;

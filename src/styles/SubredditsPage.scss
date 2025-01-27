@@ -1,8 +1,8 @@
-@use 'base' as *;
+@use 'base.module' as *;
 
 .subreddits-container {
   display: grid;
-  grid-template-columns: calc($ui-width - 300px) 300px;
+  grid-template-columns: calc($ui-width - 300px - 20px) 300px;
   width: $ui-width;
   margin-top: 100px;
   gap: 20px;
@@ -97,6 +97,7 @@
   // Selected Column
 
   .subreddits-selected-container {
+    width: calc(100%);
     display: flex;
     flex-direction: column;
     height: calc(100vh - 80px - 100px);
@@ -144,14 +145,14 @@
 
             .subreddit-empty-container {
               height: 60px;
-              width: 300px;
+              // width: 100%;
               border-radius: 0 10px 10px 0;
             }
 
             .subreddit-container {
               border-left: 10px solid $secondary-color;
               height: 60px;
-              width: 300px;
+              // width: 100%;
               display: flex;
               align-items: center;
               padding-left: 10px;
