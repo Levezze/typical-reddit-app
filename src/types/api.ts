@@ -59,4 +59,5 @@ export interface Feed {
   sort: string;
   feedResults: Post[];
   feedColumns: number;
+  showMedia: boolean;
 };

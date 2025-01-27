@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: calc($ui-width - 300px - 20px) 300px;
   width: $ui-width;
-  margin-top: 100px;
+  margin-top: $top-spacing;
   gap: 20px;
   
   .subreddits-select-container {

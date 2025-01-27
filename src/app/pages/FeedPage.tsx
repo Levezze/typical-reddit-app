@@ -4,7 +4,6 @@ import { Subreddit } from '../../types/api';
 import { RootState } from '../store/store';
 import { useSelector } from 'react-redux';
 import { useGetPostsFromSubredditsQuery } from '../../services/feedAPI';
-// import SortSelect from '../../features/feed/sort/Sort';
 import { sortValue } from '../../features/feed/feedSlice';
 import Refresh from '../../features/feed/Refresh';
 import '../../styles/FeedPage.scss';

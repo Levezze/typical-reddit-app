@@ -11,6 +11,7 @@ import "../../../styles/OptionsMenu.scss"
 import { changeFeedSort, sortValue } from '../feedSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
+
   
 
 import RefreshIcon from "../../../app/components/icons/RefreshIcon";
@@ -20,9 +21,10 @@ const DropdownMenuDemo: React.FC = () => {
 	const [urlsChecked, setUrlsChecked] = useState(false);
 	const [person, setPerson] = useState("pedro");
 
+
+
 	const dispatch = useDispatch();
-  const handleSelectSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = (e.target as HTMLSelectElement).value;
+  const handleSelectSort = (value: string) => {
     dispatch(changeFeedSort(value))
   };
 
@@ -44,62 +46,83 @@ const DropdownMenuDemo: React.FC = () => {
 		</select>
 	</form>
 	)
-
+	example;
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				{/* <button className="IconButton" aria-label="Customise options"> */}
-					{/* <HamburgerMenuIcon /> */}
-					<div className='feed-refresh' aria-label="Customise options">
-						<h3>OPTIONS</h3>
+				<div className='feed-refresh' aria-label="Customise options">
+					<h3>OPTIONS</h3>
+					<div className="feed-icon">
 						<HamburgerMenuIcon />
 					</div>
-				{/* </button> */}
+				</div>
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Portal>
 				<DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
-					<DropdownMenu.Item className="DropdownMenuItem">
-						New Tab <div className="RightSlot">⌘+T</div>
-					</DropdownMenu.Item>
-					<DropdownMenu.Item className="DropdownMenuItem">
-						New Window <div className="RightSlot">⌘+N</div>
-					</DropdownMenu.Item>
-					<DropdownMenu.Item className="DropdownMenuItem" disabled>
-						New Private Window <div className="RightSlot">⇧+⌘+N</div>
-					</DropdownMenu.Item>
-					<DropdownMenu.Sub>
-						<DropdownMenu.SubTrigger className="DropdownMenuSubTrigger">
-							More Tools
-							<div className="RightSlot">
-								<ChevronRightIcon />
-							</div>
-						</DropdownMenu.SubTrigger>
-						<DropdownMenu.Portal>
-							<DropdownMenu.SubContent
-								className="DropdownMenuSubContent"
-								sideOffset={2}
-								alignOffset={-5}
-							>
-								<DropdownMenu.Item className="DropdownMenuItem">
-									Save Page As… <div className="RightSlot">⌘+S</div>
-								</DropdownMenu.Item>
-								<DropdownMenu.Item className="DropdownMenuItem">
-									Create Shortcut…
-								</DropdownMenu.Item>
-								<DropdownMenu.Item className="DropdownMenuItem">
-									Name Window…
-								</DropdownMenu.Item>
-								<DropdownMenu.Separator className="DropdownMenu.Separator" />
-								<DropdownMenu.Item className="DropdownMenuItem">
-									Developer Tools
-								</DropdownMenu.Item>
-							</DropdownMenu.SubContent>
-						</DropdownMenu.Portal>
-					</DropdownMenu.Sub>
+
+					{/* Sort */}
+					
+					<DropdownMenu.Label className="DropdownMenuLabel">
+						Sort
+					</DropdownMenu.Label>
+					<DropdownMenu.RadioGroup 
+						value={useSelector(sortValue)} 
+						onValueChange={handleSelectSort}>
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="hot"
+						>
+							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+								<DotFilledIcon />
+							</DropdownMenu.ItemIndicator>
+							Hot
+						</DropdownMenu.RadioItem>
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="new"
+						>
+							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+								<DotFilledIcon />
+							</DropdownMenu.ItemIndicator>
+							New
+						</DropdownMenu.RadioItem>
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="top"
+						>
+							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+								<DotFilledIcon />
+							</DropdownMenu.ItemIndicator>
+							Top
+						</DropdownMenu.RadioItem>
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="rising"
+						>
+							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+								<DotFilledIcon />
+							</DropdownMenu.ItemIndicator>
+							Rising
+						</DropdownMenu.RadioItem>
+						<DropdownMenu.RadioItem
+							className="DropdownMenuRadioItem"
+							value="controversial"
+						>
+							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+								<DotFilledIcon />
+							</DropdownMenu.ItemIndicator>
+							Controversial
+						</DropdownMenu.RadioItem>
+					</DropdownMenu.RadioGroup>
 
 					<DropdownMenu.Separator className="DropdownMenuSeparator" />
 
+					{/* Display  */}
+
+					<DropdownMenu.Label className="DropdownMenuLabel">
+						Display
+					</DropdownMenu.Label>
 					<DropdownMenu.CheckboxItem
 						className="DropdownMenuCheckboxItem"
 						checked={bookmarksChecked}
@@ -107,8 +130,10 @@ const DropdownMenuDemo: React.FC = () => {
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />
+							
 						</DropdownMenu.ItemIndicator>
-						Show Bookmarks <div className="RightSlot">⌘+B</div>
+						Single Column 
+						<div className="RightSlot">⌘+B</div>
 					</DropdownMenu.CheckboxItem>
 					<DropdownMenu.CheckboxItem
 						className="DropdownMenuCheckboxItem"
@@ -120,32 +145,6 @@ const DropdownMenuDemo: React.FC = () => {
 						</DropdownMenu.ItemIndicator>
 						Show Full URLs
 					</DropdownMenu.CheckboxItem>
-
-					<DropdownMenu.Separator className="DropdownMenuSeparator" />
-
-					<DropdownMenu.Label className="DropdownMenuLabel">
-						People
-					</DropdownMenu.Label>
-					<DropdownMenu.RadioGroup value={person} onValueChange={setPerson}>
-						<DropdownMenu.RadioItem
-							className="DropdownMenuRadioItem"
-							value="pedro"
-						>
-							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-								<DotFilledIcon />
-							</DropdownMenu.ItemIndicator>
-							Pedro Duarte
-						</DropdownMenu.RadioItem>
-						<DropdownMenu.RadioItem
-							className="DropdownMenuRadioItem"
-							value="colm"
-						>
-							<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-								<DotFilledIcon />
-							</DropdownMenu.ItemIndicator>
-							Colm Tuite
-						</DropdownMenu.RadioItem>
-					</DropdownMenu.RadioGroup>
 
 					<DropdownMenu.Arrow className="DropdownMenuArrow" />
 				</DropdownMenu.Content>

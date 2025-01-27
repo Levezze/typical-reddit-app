@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/react-icons";
 import "./styles.css";
 
-const OptionsMenu: React.FC = () => {
+const DropdownSample: React.FC = () => {
 	const [bookmarksChecked, setBookmarksChecked] = useState(true);
 	const [urlsChecked, setUrlsChecked] = useState(false);
 	const [person, setPerson] = useState("pedro");
@@ -118,4 +118,4 @@ const OptionsMenu: React.FC = () => {
 	);
 };
 
-export default OptionsMenu;
+export default DropdownSample;

@@ -9,7 +9,9 @@ const Refresh:React.FC<RefreshProps> = ({ refetch }) => {
   return (
     <div className='feed-refresh' onClick={()=> refetch()}>
       <h3>REFRESH</h3>
-      <RefreshIcon />
+      <div className='feed-icon'>
+        <RefreshIcon />
+      </div>
     </div>
   )
 }

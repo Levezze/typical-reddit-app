@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   width: $ui-width;
-  margin-top: 120px;
+  margin-top: calc($top-spacing + 20px);
   border-bottom: 2px solid $secondary-color;
   margin-bottom: 20px;
   height: 90px;
@@ -19,7 +19,7 @@
     font-size: 72px;
     font-weight: $font-bold;
     margin: 0;
-    color: $text-color;
+    color: $primary-color;
   }
 
   h3 {
@@ -35,7 +35,7 @@
     // min-width: 200px;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 20px;
+    gap: 30px;
 
     .feed-refresh {
       display: flex;
@@ -47,6 +47,21 @@
       h3 {
         color: $text-color;
         @include transition;
+        align-self: center;
+      }
+
+      .feed-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: $secondary-color;
+        box-shadow: 0 2px 10px var(--black-a7);
+        padding-bottom: $icon-bottom-padding;
+
+      }
+      
+      .refresh-icon {
+        width: 13px;
       }
 
       &:hover {

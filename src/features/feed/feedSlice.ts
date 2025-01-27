@@ -8,6 +8,7 @@ const initialState: Feed = {
   sort: 'hot',
   feedResults: [],
   feedColumns: 1,
+  showMedia: true,
 };
 
 const feedSlice = createSlice({
@@ -20,6 +21,9 @@ const feedSlice = createSlice({
     changeFeedColumns(state, action: PayloadAction<boolean>) {
       if (!action.payload) {state.feedColumns = 1}
       else {state.feedColumns = 2};
+    },
+    changeDisplayMedia(state, action: PayloadAction<boolean>) {
+      state.showMedia = action.payload;
     },
   },
 })
