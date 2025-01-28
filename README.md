@@ -13,6 +13,10 @@ Additionally, users can toggle between light and dark modes and manage their acc
 - **Search and Curate Subreddits**: Search for subreddits and select up to 5 to create a personalized feed.
 - **Customized Feed**: View and interact with posts from your selected subreddits.
 - **Post Interactions**: Upvote, downvote, and comment on posts in your feed.
+- **Feed Customization**:
+  1. Switch between a **single column** or **two-column** layout for posts.
+  2. Toggle **media visibility** in posts (images/videos on or off).
+- **Radix-UI Integration**: Includes a customizable and accessible **dropdown menu** for sorting and display options, powered by Radix-UI.
 - **Profile Management**:
   - Toggle between **light** and **dark** modes.
   - Log out from your Reddit account.
@@ -88,6 +92,8 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┗ 📜FeedUnit.tsx
  ┃ ┃ ┣ 📂Header
  ┃ ┃ ┃ ┗ 📜Header.tsx
+ ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┗ 📜RefreshIcon.tsx
  ┃ ┃ ┣ 📂Post
  ┃ ┃ ┃ ┗ 📜PostContainer.tsx
  ┃ ┃ ┣ 📂SubredditSearchUnit
@@ -118,8 +124,12 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📂darkLightMode
  ┃ ┃ ┗ 📜darkLightSlice.ts
  ┃ ┣ 📂feed
+ ┃ ┃ ┣ 📂sort
+ ┃ ┃ ┃ ┗ 📜OptionsMenu.tsx
  ┃ ┃ ┣ 📜Feed.tsx
- ┃ ┃ ┗ 📜feedSlice.ts
+ ┃ ┃ ┣ 📜feedSlice.ts
+ ┃ ┃ ┣ 📜Refresh.tsx
+ ┃ ┃ ┗ 📜TimeAgo.tsx
  ┃ ┣ 📂search
  ┃ ┃ ┣ 📜Search.tsx
  ┃ ┃ ┗ 📜searchSlice.ts
@@ -132,26 +142,32 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜editedLogo.png
  ┃ ┃ ┣ 📜github-logo-typical-reddit.png
  ┃ ┃ ┗ 📜landingLogo.png
- ┃ ┗ 📂mock-img
- ┃ ┃ ┣ 📜1-Landing.png
- ┃ ┃ ┣ 📜2-Subs.png
- ┃ ┃ ┗ 📜3-Feed.png
+ ┃ ┗ 📂svg
+ ┃ ┃ ┣ 📜comments.svg
+ ┃ ┃ ┣ 📜downvote.svg
+ ┃ ┃ ┣ 📜refresh.svg
+ ┃ ┃ ┣ 📜sort.svg
+ ┃ ┃ ┗ 📜upvote.svg
  ┣ 📂services
  ┃ ┣ 📜feedAPI.ts
  ┃ ┣ 📜server.js
  ┃ ┗ 📜subredditsAPI.ts
  ┣ 📂styles
  ┃ ┣ 📜App.scss
+ ┃ ┣ 📜FeedPage.scss
  ┃ ┣ 📜Header.scss
  ┃ ┣ 📜index.scss
  ┃ ┣ 📜LandingPage.scss
+ ┃ ┣ 📜OptionsMenu.scss
  ┃ ┣ 📜reset.css
+ ┃ ┣ 📜Sort.module.scss
  ┃ ┣ 📜SubredditsPage.scss
- ┃ ┗ 📜_base.scss
+ ┃ ┗ 📜_base.module.scss
  ┣ 📂types
  ┃ ┣ 📜api.ts
  ┃ ┣ 📜pages.ts
- ┃ ┗ 📜store.ts
+ ┃ ┣ 📜store.ts
+ ┃ ┗ 📜svg.ts
  ┣ 📂utils
  ┃ ┣ 📜helpers.ts
  ┃ ┣ 📜loginURL.ts
