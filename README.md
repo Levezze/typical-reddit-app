@@ -16,7 +16,7 @@ Additionally, users can toggle between light and dark modes and manage their acc
 - **Feed Customization**:
   1. Switch between a **single column** or **two-column** layout for posts.
   2. Toggle **media visibility** in posts (images/videos on or off).
-- **Radix-UI Integration**: Includes a customizable and accessible **dropdown menu** for sorting and display options, powered by Radix-UI.
+- **Radix-UI Integration**: Includes a customizable and accessible **dropdown menu** for sorting and display options, as well as icons, powered by Radix-UI.
 - **Profile Management**:
   - Toggle between **light** and **dark** modes.
   - Log out from your Reddit account.

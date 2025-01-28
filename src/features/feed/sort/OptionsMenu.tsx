@@ -4,6 +4,9 @@ import {
 	HamburgerMenuIcon,
 	DotFilledIcon,
 	CheckIcon,
+	StretchHorizontallyIcon,
+	SpaceBetweenHorizontallyIcon,
+	ImageIcon,
 } from "@radix-ui/react-icons";
 import "../../../styles/OptionsMenu.scss"
 import { 
@@ -120,7 +123,7 @@ const OptionsMenu: React.FC = () => {
 							<CheckIcon />
 						</DropdownMenu.ItemIndicator>
 						Single Column 
-						{/* <div className="RightSlot">⌘+B</div> */}
+						<div className="RightSlot">{isSingleColumn ? <StretchHorizontallyIcon/> : <SpaceBetweenHorizontallyIcon/>}</div>
 					</DropdownMenu.CheckboxItem>
 
 					{/* Display Media */}
@@ -134,7 +137,7 @@ const OptionsMenu: React.FC = () => {
 							<CheckIcon />
 						</DropdownMenu.ItemIndicator>
 						Display Media 
-						{/* <div className="RightSlot">⌘+B</div> */}
+						<div className="RightSlot">{<ImageIcon/>}</div>
 					</DropdownMenu.CheckboxItem>
 					<DropdownMenu.Arrow className="DropdownMenuArrow" />
 				</DropdownMenu.Content>
