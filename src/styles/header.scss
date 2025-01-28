@@ -57,5 +57,10 @@
     font-weight: 800;
     align-self: center;
     cursor: pointer;
+    @include transition;
+
+    &:hover {
+      background-color: $secondary-bg-color;
+    }
   }
 }

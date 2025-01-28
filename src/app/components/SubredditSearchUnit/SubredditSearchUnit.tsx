@@ -38,7 +38,7 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
         <Button 
           className='add-sub-button' 
           handleClick={(handleAddSub)} 
-          buttonName='ADD TO FEED'
+          buttonName={isInSelected ? 'ADDED TO FEED' : 'ADD TO FEED'}
           disabled={subredditsFull || isInSelected}
         />
       </div>
