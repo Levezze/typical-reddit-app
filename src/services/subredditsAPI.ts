@@ -10,7 +10,7 @@ export const subredditsApi = createApi({
     }),
     searchSubreddits: builder.query<ResponseData, string>({
       query: (query) => 
-        `subreddits/search.json?q=${encodeURIComponent(query)}&limit=10&sort=relevance.json`
+        `subreddits/search.json?q=${encodeURIComponent(query)}&raw_json=1&limit=10&sort=relevance.json`
     }),
   }),
 });

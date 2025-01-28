@@ -130,9 +130,13 @@
         text-decoration: none;
       }
 
-      .sub-time {
+      .sub-name {
         margin: 0 0 10px;
         color: $primary-color;
+
+        i {
+          font-size: 14px;
+        }
       }
 
       .author {
@@ -146,12 +150,13 @@
       padding: 10px 0;
       border-top: 2px solid $secondary-color;
       border-bottom: 2px solid $secondary-color;
-
-      img {
-        width: 60px;
-        border-radius: 50%;
-        margin-right: 10px;
+      margin: 0 auto;
+      
+      img,
+      video {
+        max-width: 100%;
+        border-radius: 6px;
       }
-    } 
+    }    
   }
 }

@@ -27,7 +27,11 @@ export const parseFeedData = (response: PostsResponseData): Post[] => {
       subreddit: post.subreddit,
       ups: post.ups,
       thumbnail: imgUrl,
+      is_video: post.is_video,
+      media: post.media ?? null,
+      preview: post.preview ?? null,
       id: post.id,
+      created_utc: post.created_utc,
     };
   });
   return posts;

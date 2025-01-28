@@ -9,7 +9,7 @@ export const feedApi = createApi({
       query: ({subreddits, sort, params}) => {
         const queryString = new URLSearchParams(params || {}).toString();
         const subredditList = subreddits.join("+");
-        return `/r/${subredditList}/${sort}.json?${queryString}`;
+        return `/r/${subredditList}/${sort}.json?${queryString}&raw_json=1`;
       }
     }),
   }),

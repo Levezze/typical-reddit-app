@@ -9,7 +9,7 @@ app.get('/subreddits/popular', async (req, res) => {
   console.log('Received request to /subreddits/popular');  // Check if the endpoint is being hit
 
   try {
-    const response = await axios.get("https://www.reddit.com/subreddits/popular.json?limit=10");
+    const response = await axios.get("https://www.reddit.com/subreddits/popular.json?&raw_json=1$limit=10");
     
     if (response.status < 200 || response.status >= 300) {
       throw new Error(`Reddit API error: ${response.statusText}`)
@@ -34,7 +34,7 @@ app.get('/subreddits/search.json', async (req, res) => {
   };
 
   try {
-    const response = await axios.get(`https://www.reddit.com/subreddits/search.json?q=${encodeURIComponent(query)}&limit=${limit}&sort=${sort}`);
+    const response = await axios.get(`https://www.reddit.com/subreddits/search.json?q=${encodeURIComponent(query)}&raw_json=1&limit=${limit}&sort=${sort}`);
     
     if (response.status < 200 || response.status >= 300) {
       throw new Error(`Reddit API error: ${response.statusText}`)
@@ -52,7 +52,7 @@ app.get('/r/:subreddits/:sort', async (req, res) => {
   const queryParams = req.query;
   const queryString = new URLSearchParams(queryParams).toString();
 
-  const url = `https://www.reddit.com/r/${subreddits}/${sort}?${queryString}`;
+  const url = `https://www.reddit.com/r/${subreddits}/${sort}?${queryString}&raw_json=1`;
 
   console.log(`Fetching posts from ${url}`);
 

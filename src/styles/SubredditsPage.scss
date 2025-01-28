@@ -80,7 +80,7 @@
         .title-section {
           display: flex;
           
-          img {
+          .sub-img {
             width: 60px;
             border-radius: 50%;
             margin-right: 10px;
@@ -159,7 +159,7 @@
               cursor: pointer;
               border-radius: 0 10px 10px 0;
 
-              img {
+              .sub-img {
                 width: 45px;
                 height: 45px;
                 border-radius: 50%;

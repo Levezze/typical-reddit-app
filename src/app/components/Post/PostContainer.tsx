@@ -1,4 +1,5 @@
 import React from 'react'
+import TimeAgo from '../../../features/feed/TimeAgo';
 import { Post } from '../../../types/api'
 
 interface PostContainerProps {
@@ -6,16 +7,55 @@ interface PostContainerProps {
 };
 
 const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
-  const { title, subreddit, thumbnail, permalink, author, ups } = post;
+  const { 
+    title, 
+    subreddit, 
+    thumbnail, 
+    is_video, 
+    media, 
+    preview, 
+    permalink, 
+    author, 
+    ups,
+    created_utc
+  } = post;
+
+  const videoDisplay = is_video ?
+  media?.reddit_video?.fallback_url.split("?")[0] :
+  undefined;
+  const imageDisplay = preview?.images?.[0]?.source?.url ||
+    thumbnail;
+
   return (
     <div className='post-container'>
       <div className='title-section'>
         <a href={`https://www.reddit.com${permalink}`} target='_blank'><h3>{title}</h3></a>
-        <p className='sub-time'>{`r/${subreddit}, 7 hr. ago`}</p>
+        <p className='sub-name'>{`r/${subreddit}, `}
+        <i>{<TimeAgo createdTime={created_utc}/>}h ago</i></p>
         <p className='author'>Author: {author}</p>
       </div>
       <div className='img-section'>
-        <img src={thumbnail} />
+        {is_video ? (
+            <video
+              controls
+              loop
+              src={videoDisplay}
+              onMouseOver={(e)=>e.currentTarget.play()}
+              onMouseOut={(e)=>e.currentTarget.pause()}
+              // width={media?.reddit_video?.width}
+              // height={media?.reddit_video?.height}
+            >
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            imageDisplay && (
+              <img
+                src={imageDisplay}
+                alt={title}
+                className="post-image"
+              />
+            )
+          )}
       </div>
       <h4>Upvotes: {ups}</h4>
     </div>
@@ -23,14 +63,3 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
 }
 
 export default PostContainer;
-
-
-// export interface Post {
-//   author: string;
-//   title: string;
-//   url: string;
-//   subreddit: string;
-//   ups: number;
-//   thumbnail: string | undefined;
-//   id: string;
-// };

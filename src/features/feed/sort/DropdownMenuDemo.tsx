@@ -4,49 +4,19 @@ import {
 	HamburgerMenuIcon,
 	DotFilledIcon,
 	CheckIcon,
-	ChevronRightIcon,
 } from "@radix-ui/react-icons";
 import "../../../styles/OptionsMenu.scss"
-
 import { changeFeedSort, sortValue } from '../feedSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-
-  
-
-import RefreshIcon from "../../../app/components/icons/RefreshIcon";
-
 const DropdownMenuDemo: React.FC = () => {
-	const [bookmarksChecked, setBookmarksChecked] = useState(true);
-	const [urlsChecked, setUrlsChecked] = useState(false);
-	const [person, setPerson] = useState("pedro");
-
-
+	const [singleColumn, setSingleColumn] = useState(false);
 
 	const dispatch = useDispatch();
   const handleSelectSort = (value: string) => {
     dispatch(changeFeedSort(value))
   };
 
-	const example = (
-	<form>
-		<label htmlFor='sort-select' />
-		<select 
-			name='sort-select' 
-			id='sort-select' 
-			defaultValue={'hot'} 
-			value={useSelector(sortValue)}
-			onChange={handleSelectSort}
-		>
-			<option value={'hot'}>Hot</option>
-			<option value={'new'}>New</option>
-			<option value={'top'}>Top</option>
-			<option value={'rising'}>Rising</option>
-			<option value={'controversial'}>Controversial</option>
-		</select>
-	</form>
-	)
-	example;
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
@@ -62,7 +32,7 @@ const DropdownMenuDemo: React.FC = () => {
 				<DropdownMenu.Content className="DropdownMenuContent" sideOffset={5}>
 
 					{/* Sort */}
-					
+
 					<DropdownMenu.Label className="DropdownMenuLabel">
 						Sort
 					</DropdownMenu.Label>
@@ -125,27 +95,15 @@ const DropdownMenuDemo: React.FC = () => {
 					</DropdownMenu.Label>
 					<DropdownMenu.CheckboxItem
 						className="DropdownMenuCheckboxItem"
-						checked={bookmarksChecked}
-						onCheckedChange={setBookmarksChecked}
+						checked={singleColumn}
+						onCheckedChange={setSingleColumn}
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />
-							
 						</DropdownMenu.ItemIndicator>
 						Single Column 
-						<div className="RightSlot">⌘+B</div>
+						{/* <div className="RightSlot">⌘+B</div> */}
 					</DropdownMenu.CheckboxItem>
-					<DropdownMenu.CheckboxItem
-						className="DropdownMenuCheckboxItem"
-						checked={urlsChecked}
-						onCheckedChange={setUrlsChecked}
-					>
-						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
-							<CheckIcon />
-						</DropdownMenu.ItemIndicator>
-						Show Full URLs
-					</DropdownMenu.CheckboxItem>
-
 					<DropdownMenu.Arrow className="DropdownMenuArrow" />
 				</DropdownMenu.Content>
 			</DropdownMenu.Portal>
