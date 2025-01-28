@@ -1,6 +1,8 @@
 import React from 'react'
 import TimeAgo from '../../../features/feed/TimeAgo';
 import { Post } from '../../../types/api'
+import { useSelector } from 'react-redux';
+import { feedMedia } from '../../../features/feed/feedSlice';
 
 interface PostContainerProps {
   post: Post;
@@ -20,6 +22,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
     created_utc
   } = post;
 
+  const displayMedia = useSelector(feedMedia);
   const videoDisplay = is_video ?
   media?.reddit_video?.fallback_url.split("?")[0] :
   undefined;
@@ -35,15 +38,15 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
         <p className='author'>Author: {author}</p>
       </div>
       <div className='img-section'>
-        {is_video ? (
+        {
+        displayMedia ?
+          is_video ? (
             <video
               controls
               loop
               src={videoDisplay}
               onMouseOver={(e)=>e.currentTarget.play()}
               onMouseOut={(e)=>e.currentTarget.pause()}
-              // width={media?.reddit_video?.width}
-              // height={media?.reddit_video?.height}
             >
               Your browser does not support the video tag.
             </video>
@@ -55,7 +58,8 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
                 className="post-image"
               />
             )
-          )}
+          ): null
+        }
       </div>
       <h4>Upvotes: {ups}</h4>
     </div>

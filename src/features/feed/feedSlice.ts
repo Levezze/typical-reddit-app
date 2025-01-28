@@ -7,7 +7,7 @@ const initialState: Feed = {
   limit: 10,
   sort: 'hot',
   feedResults: [],
-  feedColumns: 1,
+  feedColumns: 2,
   showMedia: true,
 };
 
@@ -19,8 +19,7 @@ const feedSlice = createSlice({
       state.sort = action.payload;
     },
     changeFeedColumns(state, action: PayloadAction<boolean>) {
-      if (!action.payload) {state.feedColumns = 1}
-      else {state.feedColumns = 2};
+      state.feedColumns = action.payload ? 1 : 2;
     },
     changeDisplayMedia(state, action: PayloadAction<boolean>) {
       state.showMedia = action.payload;
@@ -31,5 +30,7 @@ const feedSlice = createSlice({
 export const limitValue = (state: RootState): number => state.feed.limit;
 export const sortValue = (state: RootState): string => state.feed.sort;
 export const feedArray = (state: RootState): Post[] => state.feed.feedResults;
-export const { changeFeedSort } = feedSlice.actions;
+export const feedColumns = (state: RootState): number => state.feed.feedColumns;
+export const feedMedia = (state: RootState): boolean => state.feed.showMedia;
+export const { changeFeedSort, changeFeedColumns, changeDisplayMedia } = feedSlice.actions;
 export default feedSlice.reducer;

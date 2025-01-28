@@ -7,7 +7,7 @@ import { useGetPostsFromSubredditsQuery } from '../../services/feedAPI';
 import { sortValue } from '../../features/feed/feedSlice';
 import Refresh from '../../features/feed/Refresh';
 import '../../styles/FeedPage.scss';
-import DropdownMenuDemo from '../../features/feed/sort/DropdownMenuDemo';
+import OptionsMenu from '../../features/feed/sort/OptionsMenu';
 
 
 
@@ -29,7 +29,7 @@ const FeedPage: React.FC = () => {
       <div className='feed-top'>
         <h1>Your Feed</h1>
         <div className='feed-control'>
-          <DropdownMenuDemo />
+          <OptionsMenu />
           <Refresh refetch={refetch} />
         </div>
       </div>

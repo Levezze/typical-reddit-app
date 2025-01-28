@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import { DropdownMenu } from "radix-ui";
 import {
 	HamburgerMenuIcon,
@@ -6,16 +6,34 @@ import {
 	CheckIcon,
 } from "@radix-ui/react-icons";
 import "../../../styles/OptionsMenu.scss"
-import { changeFeedSort, sortValue } from '../feedSlice'
+import { 
+	changeFeedSort, 
+	changeFeedColumns, 
+	changeDisplayMedia, 
+	sortValue,
+	feedColumns,
+	feedMedia,
+} from '../feedSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const DropdownMenuDemo: React.FC = () => {
-	const [singleColumn, setSingleColumn] = useState(false);
-
+const OptionsMenu: React.FC = () => {
+	const isSingleColumn = useSelector(feedColumns) === 1;
+	const showMedia = useSelector(feedMedia);
+	const sort = useSelector(sortValue);
+	
 	const dispatch = useDispatch();
-  const handleSelectSort = (value: string) => {
-    dispatch(changeFeedSort(value))
-  };
+
+	const handleSelectSort = useCallback((value: string) => {
+		dispatch(changeFeedSort(value))
+	},[dispatch]);
+
+	const handleChangeColumn = useCallback((value: boolean) => {
+    dispatch(changeFeedColumns(value));
+  },[dispatch]);
+
+	const handleShowMedia = useCallback((value: boolean) => {
+    dispatch(changeDisplayMedia(value))
+  },[dispatch]);
 
 	return (
 		<DropdownMenu.Root>
@@ -37,7 +55,7 @@ const DropdownMenuDemo: React.FC = () => {
 						Sort
 					</DropdownMenu.Label>
 					<DropdownMenu.RadioGroup 
-						value={useSelector(sortValue)} 
+						value={sort} 
 						onValueChange={handleSelectSort}>
 						<DropdownMenu.RadioItem
 							className="DropdownMenuRadioItem"
@@ -88,20 +106,34 @@ const DropdownMenuDemo: React.FC = () => {
 
 					<DropdownMenu.Separator className="DropdownMenuSeparator" />
 
-					{/* Display  */}
+					{/* Display Columns */}
 
 					<DropdownMenu.Label className="DropdownMenuLabel">
 						Display
 					</DropdownMenu.Label>
 					<DropdownMenu.CheckboxItem
 						className="DropdownMenuCheckboxItem"
-						checked={singleColumn}
-						onCheckedChange={setSingleColumn}
+						checked={isSingleColumn}
+						onCheckedChange={handleChangeColumn}
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />
 						</DropdownMenu.ItemIndicator>
 						Single Column 
+						{/* <div className="RightSlot">⌘+B</div> */}
+					</DropdownMenu.CheckboxItem>
+
+					{/* Display Media */}
+
+					<DropdownMenu.CheckboxItem
+						className="DropdownMenuCheckboxItem"
+						checked={showMedia}
+						onCheckedChange={handleShowMedia}
+					>
+						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
+							<CheckIcon />
+						</DropdownMenu.ItemIndicator>
+						Display Media 
 						{/* <div className="RightSlot">⌘+B</div> */}
 					</DropdownMenu.CheckboxItem>
 					<DropdownMenu.Arrow className="DropdownMenuArrow" />
@@ -111,4 +143,4 @@ const DropdownMenuDemo: React.FC = () => {
 	);
 };
 
-export default DropdownMenuDemo;
+export default OptionsMenu;
