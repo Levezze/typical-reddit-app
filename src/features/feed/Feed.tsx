@@ -7,6 +7,7 @@ import PostContainer from '../../app/components/Post/PostContainer';
 import BottomGradient from '../../app/components/BottomGradient/BottomGradient';
 import { feedColumns } from './feedSlice';
 import { useSelector } from 'react-redux';
+import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 
 interface FeedProps {
   data: PostsResponseData | undefined;
@@ -34,13 +35,27 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
 
   return (
     <div className='feed-container'>
-      <div className='feed-items' ref={feedItemRef}>
+      <div>
         {
-          isLoading ? <p>Loading...</p>
+          isLoading ? 
+          <div className='before-feed'>
+            <p>Loading...</p>
+          </div>
           :
-          error ? <p>Select Subreddits to view your personalized feed.</p>
+          error ? 
+          <div className='before-feed no-subs-selected'>
+            <div className='before-feed-icon'>
+              <ExclamationTriangleIcon />
+            </div>
+            <p>
+              Select Subreddits to view your personalized feed.
+            </p>
+          </div>
           :
-          data ? parsedData.map(post => <PostContainer key={post.id} post={post} />)
+          data ? 
+          <div className='feed-items' ref={feedItemRef}>
+            {parsedData.map(post => <PostContainer key={post.id} post={post} />)}
+          </div>
           :
           <p>sets</p>
         }

@@ -10,7 +10,7 @@
   .subreddits-select-container {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 80px - 100px);
+    height: calc($top-spacing - 80px - 100px);
 
     .search-container {
       margin-bottom: 20px;

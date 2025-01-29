@@ -82,7 +82,7 @@
   overflow: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  height: calc(100vh - 80px - 120px - 90px - 20px);
+  height: calc($top-spacing - 80px - 120px - 90px - 20px);
   padding-bottom: 50px;
 
   .bottom-gradient {
@@ -92,7 +92,26 @@
   .feed-container::-webkit-scrollbar {
     display: none;
   }
-  
+
+  .before-feed {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    width: 100%;
+    color: $text-color;
+    text-align: center;
+
+    p {
+      margin: 10px 0;
+    }
+
+    .before-feed-icon {
+      min-height: 30px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
   .feed-items {
     --feed-column-number: 2;
     column-count: var(--feed-column-number); /* Define the number of columns */
@@ -100,6 +119,8 @@
     column-gap: 20px; /* Set the gap between columns */
     list-style: none;
     margin: 0;
+
+    
   }
 
   .post-container {

@@ -39,11 +39,13 @@
 
   li .menu-item {
     @include nav-style;
-    text-transform: uppercase;
     color: $text-color;
-    &:hover {
-      color: $primary-color;
-    }
+    text-transform: uppercase;
+    // @media (hover: hover) {
+    //   &:hover {
+    //     color: $primary-color;
+    //   }
+    // }
   }
 
   .contact-button {

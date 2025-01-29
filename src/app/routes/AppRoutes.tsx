@@ -11,13 +11,13 @@ import SubredditsPage from '../pages/SubredditsPage';
 import FeedPage from '../pages/FeedPage';
 import ProfilePage from '../pages/ProfilePage';
 import restoreAuth from '../../utils/restoreAuth';
-import { selectedSubreddits } from '../../features/subreddits/subredditSlice';
+// import { selectedSubreddits } from '../../features/subreddits/subredditSlice';
 
 const AppRoutes: React.FC = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const subredditsArray = useSelector(selectedSubreddits);
-  const subredditsArrayActive = subredditsArray.length > 0;
+  // const subredditsArray = useSelector(selectedSubreddits);
+  // const subredditsArrayActive = subredditsArray.length > 0;
 
   useEffect(() => {
     restoreAuth(dispatch)
@@ -28,8 +28,7 @@ const AppRoutes: React.FC = () => {
       <Route path='/' element={<App />}>
         {/* Public Routes */}
         <Route index element={
-          subredditsArrayActive ? <FeedPage /> :
-          isAuthenticated ? <SubredditsPage /> : <LandingPage />} />
+          isAuthenticated ? <FeedPage /> : <LandingPage />} />
         <Route path='/callback' element={<AuthCallback />} />
         <Route path='/contact' element={<ContactPage />} />
 

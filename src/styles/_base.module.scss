@@ -13,8 +13,6 @@ $ui-width: 1100px;
 $top-spacing: 60px;
 $icon-bottom-padding: 2px;
 
-$feed-column-number: 2;
-
 :export {
   colorPrimary: $primary-color;
   colorSecondary: $secondary-color;
@@ -28,7 +26,6 @@ $feed-column-number: 2;
   fontWeightBlack: $font-black;
   transitionAll: $transition-effect;
   uiWidth: $ui-width;
-  feedColumnNumber: $feed-column-number;
 }
 
 @mixin bottom-gradient (
@@ -36,7 +33,7 @@ $feed-column-number: 2;
 ) {
   // background-image: linear-gradient(to bottom, transparent 0%, $gradient-color 100%);
   background-image: -webkit-gradient(linear, left bottom, left top, from($bg-color), to(rgba(0,0,0,0)), color-stop(.1, $bg-color));
-  height: 150px;
+  height: 70px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -47,9 +44,9 @@ $feed-column-number: 2;
 }
 
 @mixin nav-style (
-  $color: #fff,
-  $hover-color: #B4B5BC,
-  $transition: .3s,
+  $color: #B4B5BC,
+  $hover-color: #fff,
+  $transition: .2s,
 ) {
   color: $color;
   transition: $transition;
@@ -66,12 +63,28 @@ $feed-column-number: 2;
     background-color: $secondary-color;
     transition: .2s ease-in;
   }
-  &:hover {
-    color: $hover-color;
+
+  @media (hover: hover) {
+    &:hover {
+      color: $hover-color;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
   }
 
-  &:hover:after {
-    width: 100%;
+  // &:active {
+  //   color: $hover-color;
+  // }
+
+  &.touch-hover {
+    color: $hover-color;
+    transition: $transition;
+
+    &::after {
+      width: 100%;
+    }
   }
 }
 
