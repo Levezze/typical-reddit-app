@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store/store';
 import App from '../App';
 import LandingPage from '../pages/LandingPage';
@@ -10,15 +10,26 @@ import ProtectedRoute from './ProtectedRoute';
 import SubredditsPage from '../pages/SubredditsPage';
 import FeedPage from '../pages/FeedPage';
 import ProfilePage from '../pages/ProfilePage';
+import restoreAuth from '../../utils/restoreAuth';
+import { selectedSubreddits } from '../../features/subreddits/subredditSlice';
 
 const AppRoutes: React.FC = () => {
+  const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const subredditsArray = useSelector(selectedSubreddits);
+  const subredditsArrayActive = subredditsArray.length > 0;
+
+  useEffect(() => {
+    restoreAuth(dispatch)
+  },[dispatch]);
 
   return (
     <Routes>
       <Route path='/' element={<App />}>
         {/* Public Routes */}
-        <Route index element={isAuthenticated ? <SubredditsPage /> : <LandingPage />} />
+        <Route index element={
+          subredditsArrayActive ? <FeedPage /> :
+          isAuthenticated ? <SubredditsPage /> : <LandingPage />} />
         <Route path='/callback' element={<AuthCallback />} />
         <Route path='/contact' element={<ContactPage />} />
 

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
   token: string | null;
@@ -14,11 +14,15 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login(state) {
+    login(state, action: PayloadAction<{ token: string }>) {
+      state.token = action.payload.token;
       state.isAuthenticated = true;
     },
     logout(state) {
+      state.token = null;
       state.isAuthenticated = false;
+      localStorage.removeItem('token');
+      localStorage.removeItem('token_expiry');
     },
   }
 });

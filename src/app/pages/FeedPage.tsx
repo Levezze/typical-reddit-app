@@ -27,7 +27,7 @@ const FeedPage: React.FC = () => {
   return (
     <>
       <div className='feed-top'>
-        <h1>My Typical Feed</h1>
+        <h1>Typical Feed</h1>
         <div className='feed-control'>
           <OptionsMenu />
           <Refresh refetch={refetch} />

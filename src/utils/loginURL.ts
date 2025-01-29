@@ -3,13 +3,11 @@ function generateRandomString(length = 16) {
   return Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('');
 }
 
-const randomState = generateRandomString();
-localStorage.setItem('oauth_state', randomState); // Store it for later verification
-
 export const generateLoginURL = () => {
   const CLIENT_ID = "yMSHBIADe0dj6H0d7stK5g";
   const TYPE = "code";
-  const RANDOM_STRING = localStorage.getItem('oauth_state');
+  const RANDOM_STRING = generateRandomString();
+  localStorage.setItem('oauth_state', RANDOM_STRING);
   const DURATION = "temporary";
   const SCOPE_STRING = "read";
   const URI = "http://localhost:5173/callback";

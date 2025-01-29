@@ -73,7 +73,23 @@ Below are prototype designs used during the development process to visualize the
 #### Feed View
 ![Prototype Image 2](public/mock-img/3-Feed.png)  
 #### Light Mode
-![Prototype Image 2](public/mock-img/2-Subreddits–Light.png)  
+![Prototype Image 2](public/mock-img/2-Subreddits–Light.png)
+
+## Tablet & Mobile
+### Tablets:
+#### Select Subreddits - Default
+![Prototype Image 1](public/mock-img/iPad–2-Subs-Dark.png)  
+#### Select Subreddits - Light
+![Prototype Image 2](public/mock-img/iPad–2-Subs-Light.png)  
+### Mobile:
+#### Subreddit Search - Default
+![Prototype Image 1](public/mock-img/Mobile-2-Subs-Dark.png)  
+#### Select Subreddits - Default
+![Prototype Image 2](public/mock-img/Mobile-2-SubsSelected-Dark.png)  
+#### Subreddit Search - Light
+![Prototype Image 1](public/mock-img/Mobile-2-Subs-Light.png)  
+#### Select Subreddits - Light
+![Prototype Image 2](public/mock-img/Mobile-2-SubsSelected-Light.png)  
 
 
 ---

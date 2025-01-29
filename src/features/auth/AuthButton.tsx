@@ -8,11 +8,9 @@ import Button from '../../app/components/Button/Button';
 const AuthButton: React.FC = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const loginURL = generateLoginURL();
-  console.log(loginURL)
 
   const handleLogin = () => {
-    window.location.href = loginURL;
+    window.location.href = generateLoginURL();
   };
 
   const handleLogout = () => {

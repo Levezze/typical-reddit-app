@@ -3,6 +3,7 @@ import TimeAgo from '../../../features/feed/TimeAgo';
 import { Post } from '../../../types/api'
 import { useSelector } from 'react-redux';
 import { feedMedia } from '../../../features/feed/feedSlice';
+import VotePost from '../VotePost/VotePost';
 
 interface PostContainerProps {
   post: Post;
@@ -61,7 +62,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
           ): null
         }
       </div>
-      <h4>Upvotes: {ups}</h4>
+      <VotePost ups={ups} />
     </div>
   )
 }

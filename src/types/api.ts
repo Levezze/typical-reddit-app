@@ -100,3 +100,8 @@ export interface Feed {
   feedColumns: number;
   showMedia: boolean;
 };
+
+export interface VotePayload {
+  id: string;
+  dir: 1 | 0 | -1;
+};
