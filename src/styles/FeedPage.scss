@@ -82,7 +82,7 @@
   overflow: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  height: calc($top-spacing - 80px - 120px - 90px - 20px);
+  height: calc(100vh - 80px - $top-spacing - 20px - 90px - 20px);
   padding-bottom: 50px;
 
   .bottom-gradient {
@@ -119,8 +119,6 @@
     column-gap: 20px; /* Set the gap between columns */
     list-style: none;
     margin: 0;
-
-    
   }
 
   .post-container {

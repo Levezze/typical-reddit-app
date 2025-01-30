@@ -8,13 +8,13 @@ const app = express();
 
 app.use(cors({ origin: '*' }));
 
-// app.get('/api/healthcheck', async (req, res) => {
-//   return res.json({status: "best"})
-// });
+app.get('/api/healthcheck', async (req, res) => {
+  return res.json({status: "best"})
+});
 
-// app.get('/healthcheck', async (req, res) => {
-//   return res.json({status: "best"})
-// });
+app.get('/healthcheck', async (req, res) => {
+  return res.json({status: "best"})
+});
 
 app.use("/api", apiRouter);
 
