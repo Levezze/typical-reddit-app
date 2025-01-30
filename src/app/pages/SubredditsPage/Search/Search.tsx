@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import debounce from "lodash.debounce";
-import { showPopular, searchValue, changeSearchValue } from "./searchSlice";
+import { showPopular, searchValue, changeSearchValue } from "../../../store/slices/searchSlice";
   
 export const Search: React.FC = () => {
   const [localSearchValue, setLocalSearchValue] = useState('');

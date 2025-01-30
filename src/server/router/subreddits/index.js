@@ -67,4 +67,4 @@ router.get('/r/:subreddits/:sort', async (req, res) => {
   }
 });
 
-export default router
+export default router;

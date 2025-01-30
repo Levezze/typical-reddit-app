@@ -12,6 +12,7 @@ const timeLog = (req, res, next) => {
 }
 router.use(timeLog)
 
+/*
 // define the home page route
 router.get('/', (req, res) => {
   res.send('Birds home page')
@@ -20,6 +21,7 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
   res.send('About birds')
 })
+*/
 
 router.get('/oauth/token', async (req, res) => {
   console.log("🔹 Received request to /api/oauth/token");
@@ -55,6 +57,7 @@ router.get('/oauth/token', async (req, res) => {
   }
 });
 
+router.use("/popular",subredditRouter)
 router.use("/subreddits",subredditRouter)
 
-export default router
+export default router;

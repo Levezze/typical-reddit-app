@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { PostsResponseData, Post } from '../../types/api';
+import { PostsResponseData, Post } from '../../../../types/api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
-import { parseFeedData } from '../../utils/parseResponseData';
-import PostContainer from '../../app/components/Post/PostContainer';
-import BottomGradient from '../../app/components/BottomGradient/BottomGradient';
-import { feedColumns } from './feedSlice';
+import { parseFeedData } from '../../../../utils/parseResponseData';
+import PostContainer from '../../../components/Post/PostContainer';
+import BottomGradient from '../../../components/BottomGradient/BottomGradient';
+import { feedColumns } from '../../../store/slices/feedSlice';
 import { useSelector } from 'react-redux';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 

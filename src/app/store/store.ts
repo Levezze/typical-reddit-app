@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query';
-import authReducer from '../../features/auth/authSlice';
-import subredditsReducer from '../../features/subreddits/subredditSlice';
-import searchReducer from '../../features/search/searchSlice';
-import darkLightReducer from '../../features/darkLightMode/darkLightSlice'
-import feedReducer from '../../features/feed/feedSlice';
-import { subredditsApi } from '../../services/subredditsAPI';
-import { feedApi } from '../../services/feedAPI';
+import authReducer from './slices/authSlice';
+import subredditsReducer from '../store/slices/subredditSlice';
+import searchReducer from '../store/slices/searchSlice';
+import darkLightReducer from '../pages/ProfilePage/darkLightMode/darkLightSlice'
+import feedReducer from '../store/slices/feedSlice';
+import { subredditsApi } from './middleware/subredditsAPI';
+import { feedApi } from './middleware/feedAPI';
 
 
 export const store = configureStore({

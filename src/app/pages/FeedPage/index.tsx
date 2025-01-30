@@ -1,13 +1,13 @@
 import React from 'react';
-import Feed from '../../features/feed/Feed';
-import { Subreddit } from '../../types/api';
-import { RootState } from '../store/store';
+import Feed from './feed/Feed';
+import { Subreddit } from '../../../types/api';
+import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
-import { useGetPostsFromSubredditsQuery } from '../../services/feedAPI';
-import { sortValue } from '../../features/feed/feedSlice';
-import Refresh from '../../features/feed/Refresh';
-import '../../styles/FeedPage.scss';
-import OptionsMenu from '../../features/feed/sort/OptionsMenu';
+import { useGetPostsFromSubredditsQuery } from '../../store/middleware/feedAPI';
+import { sortValue } from '../../store/slices/feedSlice'
+import Refresh from './feed/Refresh';
+import '../../../styles/FeedPage.scss'
+import OptionsMenu from './feed/sort/OptionsMenu';
 
 
 

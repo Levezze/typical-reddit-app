@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { ContactButton } from '../../../features/contact/ContactButton';
+import { ContactButton } from '../ContactButton/ContactButton';
 import '../../../styles/Header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
 

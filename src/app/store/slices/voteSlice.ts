@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { VotePayload } from "../types/api";
+import { VotePayload } from "../../../types/api";
 
 
 export const voteApi = createApi({

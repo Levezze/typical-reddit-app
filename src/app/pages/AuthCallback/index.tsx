@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { login } from '../../features/auth/authSlice'
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/slices/authSlice';
 import axios from 'axios';
 
 const AuthCallback: React.FC = () => {

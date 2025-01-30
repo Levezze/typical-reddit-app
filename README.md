@@ -104,55 +104,72 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┗ 📜BottomGradient.tsx
  ┃ ┃ ┣ 📂Button
  ┃ ┃ ┃ ┗ 📜Button.tsx
+ ┃ ┃ ┣ 📂ContactButton
+ ┃ ┃ ┃ ┗ 📜ContactButton.tsx
  ┃ ┃ ┣ 📂FeedUnit
  ┃ ┃ ┃ ┗ 📜FeedUnit.tsx
  ┃ ┃ ┣ 📂Header
  ┃ ┃ ┃ ┗ 📜Header.tsx
  ┃ ┃ ┣ 📂icons
- ┃ ┃ ┃ ┗ 📜RefreshIcon.tsx
+ ┃ ┃ ┃ ┣ 📜RefreshIcon.tsx
+ ┃ ┃ ┃ ┗ 📜VoteArrow.tsx
  ┃ ┃ ┣ 📂Post
  ┃ ┃ ┃ ┗ 📜PostContainer.tsx
  ┃ ┃ ┣ 📂SubredditSearchUnit
  ┃ ┃ ┃ ┗ 📜SubredditSearchUnit.tsx
- ┃ ┃ ┗ 📂SubredditSelectedUnit
+ ┃ ┃ ┣ 📂SubredditSelectedUnit
  ┃ ┃ ┃ ┗ 📜SubredditSelectedUnit.tsx
+ ┃ ┃ ┗ 📂VotePost
+ ┃ ┃ ┃ ┗ 📜VotePost.tsx
  ┃ ┣ 📂pages
- ┃ ┃ ┣ 📜AuthCallback.tsx
- ┃ ┃ ┣ 📜ContactPage.tsx
- ┃ ┃ ┣ 📜FeedPage.tsx
- ┃ ┃ ┣ 📜LandingPage.tsx
- ┃ ┃ ┣ 📜ProfilePage.tsx
- ┃ ┃ ┗ 📜SubredditsPage.tsx
+ ┃ ┃ ┣ 📂AuthCallback
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂ContactPage
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂FeedPage
+ ┃ ┃ ┃ ┣ 📂feed
+ ┃ ┃ ┃ ┃ ┣ 📂sort
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜OptionsMenu.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜Feed.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜Refresh.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜TimeAgo.tsx
+ ┃ ┃ ┃ ┣ 📂vote
+ ┃ ┃ ┃ ┃ ┗ 📜vote.ts
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂LandingPage
+ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┃ ┗ 📜AuthButton.tsx
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┣ 📂ProfilePage
+ ┃ ┃ ┃ ┣ 📂darkLightMode
+ ┃ ┃ ┃ ┃ ┗ 📜darkLightSlice.ts
+ ┃ ┃ ┃ ┣ 📂user
+ ┃ ┃ ┃ ┃ ┗ 📜user.ts
+ ┃ ┃ ┃ ┗ 📜index.tsx
+ ┃ ┃ ┗ 📂SubredditsPage
+ ┃ ┃ ┃ ┣ 📂Search
+ ┃ ┃ ┃ ┃ ┗ 📜Search.tsx
+ ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┣ 📜SubredditSelectedList.tsx
+ ┃ ┃ ┃ ┗ 📜SubredditSelector.tsx
  ┃ ┣ 📂routes
  ┃ ┃ ┣ 📜AppRoutes.tsx
  ┃ ┃ ┗ 📜ProtectedRoute.tsx
  ┃ ┣ 📂store
+ ┃ ┃ ┣ 📂middleware
+ ┃ ┃ ┃ ┣ 📜feedAPI.ts
+ ┃ ┃ ┃ ┗ 📜subredditsAPI.ts
+ ┃ ┃ ┣ 📂slices
+ ┃ ┃ ┃ ┣ 📜authSlice.ts
+ ┃ ┃ ┃ ┣ 📜feedSlice.ts
+ ┃ ┃ ┃ ┣ 📜searchSlice.ts
+ ┃ ┃ ┃ ┣ 📜subredditSlice.ts
+ ┃ ┃ ┃ ┣ 📜userSlice.ts
+ ┃ ┃ ┃ ┗ 📜voteSlice.ts
  ┃ ┃ ┗ 📜store.ts
  ┃ ┗ 📜App.tsx
  ┣ 📂assets
  ┃ ┗ 📜react.svg
- ┣ 📂features
- ┃ ┣ 📂auth
- ┃ ┃ ┣ 📜AuthButton.tsx
- ┃ ┃ ┗ 📜authSlice.ts
- ┃ ┣ 📂contact
- ┃ ┃ ┗ 📜ContactButton.tsx
- ┃ ┣ 📂darkLightMode
- ┃ ┃ ┗ 📜darkLightSlice.ts
- ┃ ┣ 📂feed
- ┃ ┃ ┣ 📂sort
- ┃ ┃ ┃ ┗ 📜OptionsMenu.tsx
- ┃ ┃ ┣ 📜Feed.tsx
- ┃ ┃ ┣ 📜feedSlice.ts
- ┃ ┃ ┣ 📜Refresh.tsx
- ┃ ┃ ┗ 📜TimeAgo.tsx
- ┃ ┣ 📂search
- ┃ ┃ ┣ 📜Search.tsx
- ┃ ┃ ┗ 📜searchSlice.ts
- ┃ ┗ 📂subreddits
- ┃ ┃ ┣ 📜SubredditSelectedList.tsx
- ┃ ┃ ┣ 📜SubredditSelector.tsx
- ┃ ┃ ┗ 📜subredditSlice.ts
  ┣ 📂img
  ┃ ┣ 📂logo
  ┃ ┃ ┣ 📜editedLogo.png
@@ -164,10 +181,12 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜refresh.svg
  ┃ ┃ ┣ 📜sort.svg
  ┃ ┃ ┗ 📜upvote.svg
- ┣ 📂services
- ┃ ┣ 📜feedAPI.ts
- ┃ ┣ 📜server.js
- ┃ ┗ 📜subredditsAPI.ts
+ ┣ 📂server
+ ┃ ┣ 📂router
+ ┃ ┃ ┣ 📂subreddits
+ ┃ ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┗ 📜api.js
+ ┃ ┗ 📜server.js
  ┣ 📂styles
  ┃ ┣ 📜App.scss
  ┃ ┣ 📜FeedPage.scss
@@ -187,7 +206,9 @@ Below are prototype designs used during the development process to visualize the
  ┣ 📂utils
  ┃ ┣ 📜helpers.ts
  ┃ ┣ 📜loginURL.ts
- ┃ ┗ 📜parseResponseData.ts
+ ┃ ┣ 📜parseResponseData.ts
+ ┃ ┣ 📜resetToken.js
+ ┃ ┗ 📜restoreAuth.ts
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
 ```
@@ -200,30 +221,60 @@ This project uses a lightweight **Express.js** server to handle Reddit API reque
 
 ### Express Server Configuration
 
-1. **Server Location**: The server code is located in the `src/services/server.js` file.
+1. **Server Location**: The server code is located in the `src/server` folder.
 
 2. **Code Sample**:
    ```javascript
-   const express = require('express');
-   const axios = require('axios');
-   const cors = require('cors');
+   import express from 'express';
+   import cors from 'cors';
+   import axios from 'axios';
+
+   import apiRouter from "./router/api.js"
 
    const app = express();
-   const PORT = 5000;
+
+   app.use(cors({ origin: '*' }));
+   app.get('/api/healthcheck', async (req, res) => {
+   return res.json({status: "best"})
+   });
+   app.get('/healthcheck', async (req, res) => {
+   return res.json({status: "best"})
+   });
+
+   app.use("/api", apiRouter)
+
+   const PORT = 4000;
+   app.listen(PORT, () => {
+   console.log(`Server running on http://localhost:${PORT}`);
+   });
+   ```
+
+   ```javascript
+   import express from 'express';
+   import axios from 'axios';
+   const router = express.Router()
 
    // Enable CORS
    app.use(cors());
-
+   
    // Route to fetch subreddit data
-   app.get('/api/subreddits', async (req, res) => {
-       try {
-           const { data } = await axios.get('https://www.reddit.com/subreddits/popular.json');
-           res.json(data);
-       } catch (error) {
-           console.error(error);
-           res.status(500).json({ error: 'Failed to fetch subreddits' });
-       }
+   router.get('/popular', async (_req, res) => {
+   console.log('Received request to /subreddits/popular');  // Check if the endpoint is being hit
+
+   try {
+      const response = await axios.get("https://www.reddit.com/subreddits/popular.json?&raw_json=1$limit=10");
+      
+      if (response.status < 200 || response.status >= 300) {
+         throw new Error(`Reddit API error: ${response.statusText}`)
+      }
+
+      res.json(response.data);
+   } catch (error) {
+      console.error('Failed to fetch popular subreddits:', error.message);
+      res.status(500).json({ error: 'Failed to fetch popular subreddits' });
+   }
    });
+   
 
    // Start the server
    app.listen(PORT, () => {
@@ -234,7 +285,7 @@ This project uses a lightweight **Express.js** server to handle Reddit API reque
 3. **Run the Server**:
    From the project root, navigate to the `src/services` folder and run:
    ```bash
-   node server.js
+   npm run dev
    ```
    The server will start on `http://localhost:5000`.
 

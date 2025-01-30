@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ResponseData } from "../types/api";
+import { ResponseData } from "../../../types/api";
 
 export const subredditsApi = createApi({
   reducerPath: 'subredditsApi',

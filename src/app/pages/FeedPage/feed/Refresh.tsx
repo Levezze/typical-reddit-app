@@ -1,5 +1,5 @@
 import React from 'react'
-import RefreshIcon from '../../app/components/icons/RefreshIcon';
+import RefreshIcon from '../../../components/icons/RefreshIcon';
 
 interface RefreshProps {
   refetch: () => void;

@@ -8,7 +8,7 @@ import {
 	SpaceBetweenHorizontallyIcon,
 	ImageIcon,
 } from "@radix-ui/react-icons";
-import "../../../styles/OptionsMenu.scss"
+import "../../../../../styles/OptionsMenu.scss"
 import { 
 	changeFeedSort, 
 	changeFeedColumns, 
@@ -16,7 +16,7 @@ import {
 	sortValue,
 	feedColumns,
 	feedMedia,
-} from '../feedSlice'
+} from '../../../../store/slices/feedSlice';
 import { useDispatch, useSelector } from 'react-redux'
 
 const OptionsMenu: React.FC = () => {

@@ -1,8 +1,8 @@
-import { Subreddit } from '../../types/api'
-import { useSelector } from 'react-redux'
-import { subredditsResults } from '../search/searchSlice'
-import SubredditSearchUnit from '../../app/components/SubredditSearchUnit/SubredditSearchUnit';
-import BottomGradient from '../../app/components/BottomGradient/BottomGradient';
+import { Subreddit } from '../../../types/api';
+import { useSelector } from 'react-redux';
+import { subredditsResults } from '../../store/slices/searchSlice';
+import SubredditSearchUnit from '../../components/SubredditSearchUnit/SubredditSearchUnit';
+import BottomGradient from '../../components/BottomGradient/BottomGradient';
 
 
 const SubredditSelector = () => {

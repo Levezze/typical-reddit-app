@@ -1,6 +1,6 @@
-import LoginButton from '../../features/auth/AuthButton'
-import '../../styles/LandingPage.scss';
-import landingImg from '../../img/logo/landingLogo.png'
+import LoginButton from './auth/AuthButton';
+import '../../../styles/LandingPage.scss';
+import landingImg from '../../../img/logo/landingLogo.png';
 
 const LandingPage: React.FC = () => {
   return (
@@ -20,4 +20,4 @@ const LandingPage: React.FC = () => {
   )
 }
 
-export default LandingPage
+export default LandingPage;

@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { Subreddit } from '../../../types/api'
 import Button from '../Button/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import { addSubreddit } from '../../../features/subreddits/subredditSlice';
+import { addSubreddit } from '../../store/slices/subredditSlice';
 import { RootState } from '../../store/store';
 import { decodeHTML } from '../../../utils/helpers';
 import { subSubImg } from '../../../utils/helpers';

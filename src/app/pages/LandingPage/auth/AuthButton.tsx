@@ -1,9 +1,9 @@
-import { RootState } from '../../app/store/store';
+import { RootState } from '../../../store/store';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { generateLoginURL } from '../../utils/loginURL';
-import { logout } from './authSlice';
-import Button from '../../app/components/Button/Button';
+import { generateLoginURL } from '../../../../utils/loginURL';
+import { logout } from '../../../store/slices/authSlice';
+import Button from '../../../components/Button/Button';
 
 const AuthButton: React.FC = () => {
   const dispatch = useDispatch();

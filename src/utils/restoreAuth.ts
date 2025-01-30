@@ -1,5 +1,5 @@
-import { login } from "../features/auth/authSlice";
-import { setSubreddits } from "../features/subreddits/subredditSlice";
+import { login } from "../app/store/slices/authSlice";
+import { setSubreddits } from "../../src/app/store/slices/subredditSlice";
 import { AppDispatch } from "../app/store/store";
 
 const restoreAuth = (dispatch: AppDispatch) => {

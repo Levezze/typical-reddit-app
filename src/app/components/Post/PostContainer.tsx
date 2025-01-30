@@ -1,8 +1,8 @@
 import React from 'react'
-import TimeAgo from '../../../features/feed/TimeAgo';
+import TimeAgo from '../../pages/FeedPage/feed/TimeAgo';
 import { Post } from '../../../types/api'
 import { useSelector } from 'react-redux';
-import { feedMedia } from '../../../features/feed/feedSlice';
+import { feedMedia } from '../../store/slices/feedSlice';
 import VotePost from '../VotePost/VotePost';
 
 interface PostContainerProps {

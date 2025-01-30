@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SubredditsState } from "../../types/store";
-import { Subreddit } from "../../types/api";
+import { SubredditsState } from "../../../types/store";
+import { Subreddit } from "../../../types/api";
 
 const initialState: SubredditsState = {
   selected: [],
   subredditsFull: false,
 };
 
-const subredditsSlice = createSlice({
-  name: 'subreddits',
+const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
     addSubreddit(state, action: PayloadAction<Subreddit>) {
@@ -24,5 +24,5 @@ const subredditsSlice = createSlice({
   },
 });
 
-export const { addSubreddit, removeSubreddit } = subredditsSlice.actions;
-export default subredditsSlice.reducer;
+export const { addSubreddit, removeSubreddit } = userSlice.actions;
+export default userSlice.reducer;

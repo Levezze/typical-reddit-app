@@ -1,15 +1,16 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store/store';
-import SubredditSelectedUnit from '../../app/components/SubredditSelectedUnit/SubredditSelectedUnit';
-import Button from '../../app/components/Button/Button';
+import { RootState } from '../../store/store';
+import SubredditSelectedUnit from '../../components/SubredditSelectedUnit/SubredditSelectedUnit';
+import Button from '../../components/Button/Button';
 import { useNavigate } from 'react-router';
+import { Subreddit } from '../../../types/api';
 
 const SubredditSelectedList = () => {
   const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);
   const navigate = useNavigate();
 
   const subredditsDisplay = [
-    ...subredditsArray.map((subreddit) => (
+    ...subredditsArray.map((subreddit:Subreddit) => (
       <li key={subreddit.id}>
         <SubredditSelectedUnit subreddit={subreddit} />
       </li>

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { Subreddit } from '../../../types/api'
+import { Subreddit } from '../../../types/api';
 import { useDispatch } from 'react-redux';
-import { removeSubreddit } from '../../../features/subreddits/subredditSlice';
+import { removeSubreddit } from '../../store/slices/subredditSlice';
 import { subSubImg } from '../../../utils/helpers';
 
 type Props = {
