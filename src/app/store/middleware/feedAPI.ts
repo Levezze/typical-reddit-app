@@ -3,7 +3,7 @@ import { PostsResponseData } from "../../../types/api";
 
 export const feedApi = createApi({
   reducerPath: 'feedApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/api' }),
   endpoints: (builder) => ({
     getPostsFromSubreddits: builder.query<PostsResponseData, { subreddits: string[], sort: string, params?: Record<string, string>}>({
       query: ({subreddits, sort, params}) => {

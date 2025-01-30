@@ -8,17 +8,15 @@ const app = express();
 
 app.use(cors({ origin: '*' }));
 
-app.get('/api/healthcheck', async (req, res) => {
-  return res.json({status: "best"})
-});
+// app.get('/api/healthcheck', async (req, res) => {
+//   return res.json({status: "best"})
+// });
 
-app.get('/healthcheck', async (req, res) => {
-  return res.json({status: "best"})
-});
+// app.get('/healthcheck', async (req, res) => {
+//   return res.json({status: "best"})
+// });
 
-app.use("/api", apiRouter)
-app.use("/popular", apiRouter)
-app.use("/subreddits", apiRouter)
+app.use("/api", apiRouter);
 
 const PORT = 4000;
 app.listen(PORT, () => {

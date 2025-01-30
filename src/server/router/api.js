@@ -1,6 +1,5 @@
 import express from 'express';
 import axios from 'axios';
-
 import subredditRouter from "./subreddits/index.js"
 
 const router = express.Router()
@@ -57,7 +56,29 @@ router.get('/oauth/token', async (req, res) => {
   }
 });
 
-router.use("/popular",subredditRouter)
-router.use("/subreddits",subredditRouter)
+router.use("/subreddits", subredditRouter);
+
+router.get('/r/:subreddits/:sort', async (req, res) => {
+  const { subreddits, sort } = req.params;
+  const queryParams = req.query;
+  const queryString = new URLSearchParams(queryParams).toString();
+
+  const url = `https://www.reddit.com/r/${subreddits}/${sort}?${queryString}&raw_json=1`;
+
+  console.log(`Fetching posts from ${url}`);
+
+  try {
+    const response = await axios.get(url);
+    
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`Reddit API error: ${response.statusText}`)
+    }
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('Failed to fetch posts:', error.message);
+    res.status(500).json({ error: 'Failed to fetch posts' });
+  }
+});
 
 export default router;
