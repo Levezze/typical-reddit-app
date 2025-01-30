@@ -23,7 +23,7 @@ const AuthCallback: React.FC = () => {
 
     // Auth code for access token
     axios.get(
-      `http://localhost:4000/api/oauth/token?code=${code}`)
+      `/api/oauth/token?code=${code}`)
       .then((response) => {
         const { access_token, expires_in} = response.data;
 
@@ -31,7 +31,13 @@ const AuthCallback: React.FC = () => {
         localStorage.setItem('token_expiry', (Date.now() + expires_in * 1000).toString());
 
         dispatch(login({ token: access_token }));
-        navigate('/subreddits');
+
+        if (!localStorage.getItem('first_login')) {
+          localStorage.setItem('first_login', 'true');
+          navigate('/subreddits');
+        } else {
+          navigate('/feed');
+        }
       })
       .catch((error) => {
         console.error('Failed to fetch access token:', error);

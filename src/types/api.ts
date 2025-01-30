@@ -28,37 +28,6 @@ export interface Search {
   showPopular: boolean;
 };
 
-// export interface PostsResponseData {
-//   data: {
-//     children: Array<{
-//       data: {
-//         author: string;
-//         title: string;
-//         permalink: string;
-//         subreddit: string;
-//         ups: number;
-//         thumbnail?: string | undefined;
-//         is_video: boolean;
-//         media?: {
-//           reddit_video?: {
-//             fallback_url: string;
-//             height: number;
-//             width: number;
-//           }
-//         } | null,
-//         preview?: {
-//           images?: Array<{
-//             source?: {
-//               url?: string;
-//             }
-//           }>
-//         } | null,
-//         id: string;
-//       }
-//     }>
-//   }
-// };
-
 export interface Post {
   author: string;
   title: string;

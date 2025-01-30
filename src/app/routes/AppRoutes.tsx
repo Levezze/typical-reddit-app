@@ -23,12 +23,14 @@ const AppRoutes: React.FC = () => {
     restoreAuth(dispatch)
   },[dispatch]);
 
+  const isFirstLogin = localStorage.getItem('first_login') === 'true';
+
   return (
     <Routes>
       <Route path='/' element={<App />}>
         {/* Public Routes */}
         <Route index element={
-          isAuthenticated ? <FeedPage /> : <LandingPage />} />
+          isAuthenticated ? (isFirstLogin ? <SubredditsPage/> : <FeedPage />) : <LandingPage />} />
         <Route path='/callback' element={<AuthCallback />} />
         <Route path='/contact' element={<ContactPage />} />
 

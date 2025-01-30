@@ -1,46 +1,8 @@
 import express from 'express';
-import cors from 'cors';
 import axios from 'axios';
+const router = express.Router()
 
-const app = express();
-
-app.use(cors({ origin: '*' }));
-
-app.get('/api/oauth/token', async (req, res) => {
-  console.log("🔹 Received request to /api/oauth/token");
-  console.log("🔹 Query Params:", req.query);
-  const code = req.query.code; // Extract code from query parameters
-
-  if (!code) {
-    console.error('❌ Missing authorization code');
-    return res.status(400).json({ error: 'Authorization code is required' });
-  }
-
-  try {
-    const response = await axios.post(
-      'https://www.reddit.com/api/v1/access_token',
-      new URLSearchParams({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: 'http://localhost:5173/callback',
-      }).toString(),
-      {
-        headers: {
-          Authorization: `Basic ${Buffer.from('yMSHBIADe0dj6H0d7stK5g:buhFs8Y2ZJQvGY6SKrt1zs_v3wbB_g').toString('base64')}`,
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      }
-    );
-
-    console.log("✅ Successfully retrieved access token from Reddit:", response.data);
-    res.json(response.data);
-  } catch (error) {
-    console.error('❌ Failed to fetch access token:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to fetch access token' });
-  }
-});
-
-app.get('/subreddits/popular', async (req, res) => {
+router.get('/popular', async (req, res) => {
   console.log('Received request to /subreddits/popular');  // Check if the endpoint is being hit
 
   try {
@@ -57,7 +19,7 @@ app.get('/subreddits/popular', async (req, res) => {
   }
 });
 
-app.get('/subreddits/search.json', async (req, res) => {
+router.get('/subreddits/search.json', async (req, res) => {
   const query = req.query.q;
   const limit = req.query.limit || 10;
   const sort = req.query.sort || 'relevance';
@@ -82,7 +44,7 @@ app.get('/subreddits/search.json', async (req, res) => {
   }
 });
 
-app.get('/r/:subreddits/:sort', async (req, res) => {
+router.get('/r/:subreddits/:sort', async (req, res) => {
   const { subreddits, sort } = req.params;
   const queryParams = req.query;
   const queryString = new URLSearchParams(queryParams).toString();
@@ -105,7 +67,4 @@ app.get('/r/:subreddits/:sort', async (req, res) => {
   }
 });
 
-const PORT = 4000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+export default router
