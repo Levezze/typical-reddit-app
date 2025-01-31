@@ -71,8 +71,8 @@ export interface Feed {
 };
 
 export interface VotePayload {
-  id: string;
-  dir: 1 | 0 | -1;
+  ID: string;
+  DIR: 1 | 0 | -1;
 };
 
 export interface userData {

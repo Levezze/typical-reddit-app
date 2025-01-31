@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Search, Subreddit } from "../../types/api";
-import { RootState } from "../../app/store/store";
+import { Search, Subreddit } from "../../../types/api";
+import { RootState } from "../../../app/store/store";
 
 const initialState: Search = {
   searchValue: '',

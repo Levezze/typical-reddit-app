@@ -23,6 +23,8 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       localStorage.removeItem('token');
       localStorage.removeItem('token_expiry');
+      localStorage.removeItem('first_login');
+      localStorage.removeItem('selected_subreddits');
     },
   }
 });

@@ -7,6 +7,8 @@ import darkLightReducer from '../pages/ProfilePage/darkLightMode/darkLightSlice'
 import feedReducer from '../store/slices/feedSlice';
 import { subredditsApi } from './middleware/subredditsAPI';
 import { feedApi } from './middleware/feedAPI';
+import { voteApi } from './middleware/voteAPI';
+import { tokenApi } from './middleware/tokenAPI';
 
 
 export const store = configureStore({
@@ -18,9 +20,16 @@ export const store = configureStore({
     feed: feedReducer,
     [subredditsApi.reducerPath]: subredditsApi.reducer,
     [feedApi.reducerPath]: feedApi.reducer,
+    [voteApi.reducerPath]: voteApi.reducer,
+    [tokenApi.reducerPath]: tokenApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(subredditsApi.middleware, feedApi.middleware),
+    getDefaultMiddleware().concat(
+      subredditsApi.middleware, 
+      feedApi.middleware, 
+      voteApi.middleware,
+      tokenApi.middleware
+    ),
 })
 
 setupListeners(store.dispatch);

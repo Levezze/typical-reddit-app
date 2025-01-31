@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store/store';
 import App from '../App';
-import LandingPage from '../pages/LandingPage';
+import LandingPage from '../pages';
 import ContactPage from '../pages/ContactPage';
 import AuthCallback from '../pages/AuthCallback';
 import ProtectedRoute from './ProtectedRoute';

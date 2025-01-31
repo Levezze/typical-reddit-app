@@ -1,6 +1,6 @@
-import LoginButton from './auth/AuthButton';
-import '../../../styles/LandingPage.scss';
-import landingImg from '../../../img/logo/landingLogo.png';
+import LoginButton from '../components/auth/AuthButton';
+import '../../styles/LandingPage.scss';
+import landingImg from '../../img/logo/landingLogo.png';
 
 const LandingPage: React.FC = () => {
   return (

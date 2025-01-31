@@ -19,7 +19,7 @@ router.get(['/popular', '/popular.json'], async (_req, res) => {
   }
 });
 
-router.get('/subreddits/search.json', async (req, res) => {
+router.get('/search.json', async (req, res) => {
   const query = req.query.q;
   const limit = req.query.limit || 10;
   const sort = req.query.sort || 'relevance';

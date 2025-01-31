@@ -5,7 +5,7 @@ import { VotePayload } from "../../../types/api";
 export const voteApi = createApi({
   reducerPath: 'voteApi',
   baseQuery: fetchBaseQuery({ 
-    baseUrl: 'https://oauth.reddit.com/',
+    baseUrl: 'http://localhost:4000/api',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as any).auth.token;
       if (token) {
@@ -16,10 +16,10 @@ export const voteApi = createApi({
   }),
   endpoints: (builder) => ({
     vote: builder.mutation<void, VotePayload>({
-      query: ({ id, dir}) => ({
+      query: ({ ID, DIR }) => ({
         url: 'api/vote',
         method: 'POST',
-        body: { id, dir },
+        body: { ID, DIR },
       }),
     }),
   }),

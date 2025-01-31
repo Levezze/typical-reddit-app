@@ -21,16 +21,22 @@ const AuthCallback: React.FC = () => {
       return;
     };
 
+    console.log('code', code);
+    console.log('state', state);
+
     // Auth code for access token
     axios.get(
       `/api/oauth/token?code=${code}`)
       .then((response) => {
         const { access_token, expires_in} = response.data;
+        console.log('New token:', access_token);
 
         localStorage.setItem('token', access_token);
         localStorage.setItem('token_expiry', (Date.now() + expires_in * 1000).toString());
 
         dispatch(login({ token: access_token }));
+
+        console.log('Stored token:', localStorage.getItem('token'));
 
         if (!localStorage.getItem('first_login')) {
           localStorage.setItem('first_login', 'true');
@@ -38,10 +44,11 @@ const AuthCallback: React.FC = () => {
         } else {
           navigate('/feed');
         }
+
       })
       .catch((error) => {
         console.error('Failed to fetch access token:', error);
-        navigate('/');
+        // navigate('/');
       });
   }, [dispatch, location, navigate])
 
