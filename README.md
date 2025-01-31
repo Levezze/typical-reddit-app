@@ -71,25 +71,29 @@ Below are prototype designs used during the development process to visualize the
 #### Select Subreddits
 ![Prototype Image 2](public/mock-img/2-Subreddits.png)  
 #### Feed View
-![Prototype Image 2](public/mock-img/3-Feed.png)  
+![Prototype Image 3](public/mock-img/3-Feed.png)  
 #### Light Mode
-![Prototype Image 2](public/mock-img/2-Subreddits–Light.png)
+![Prototype Image 4](public/mock-img/2-Subreddits–Light.png)
 
 ## Tablet & Mobile
 ### Tablets:
 #### Select Subreddits - Default
-![Prototype Image 1](public/mock-img/iPad–2-Subs-Dark.png)  
+![Prototype Image 5](public/mock-img/iPad–2-Subs-Dark.png)  
 #### Select Subreddits - Light
-![Prototype Image 2](public/mock-img/iPad–2-Subs-Light.png)  
+![Prototype Image 6](public/mock-img/iPad–2-Subs-Light.png)  
 ### Mobile:
 #### Subreddit Search - Default
-![Prototype Image 1](public/mock-img/Mobile-2-Subs-Dark.png)  
+![Prototype Image 7](public/mock-img/Mobile-2-Subs-Dark.png)  
 #### Select Subreddits - Default
-![Prototype Image 2](public/mock-img/Mobile-2-SubsSelected-Dark.png)  
+![Prototype Image 8](public/mock-img/Mobile-2-SubsSelected-Dark.png)  
+#### Select Feed - Default
+![Prototype Image 9](public/mock-img/Mobile-2-Feed-Dark.png)  
 #### Subreddit Search - Light
-![Prototype Image 1](public/mock-img/Mobile-2-Subs-Light.png)  
+![Prototype Image 10](public/mock-img/Mobile-2-Subs-Light.png)  
 #### Select Subreddits - Light
-![Prototype Image 2](public/mock-img/Mobile-2-SubsSelected-Light.png)  
+![Prototype Image 11](public/mock-img/Mobile-2-SubsSelected-Light.png)  
+#### Select Feed - Light
+![Prototype Image 12](public/mock-img/Mobile-2-Feed-Light.png)  
 
 
 ---
