@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import LogoutButton from '../../components/auth/AuthButton';
 import { useGetProfileDataQuery } from '../../store/middleware/profileAPI';
 import { setProfile } from '../../store/slices/profileSlice';
@@ -6,23 +6,26 @@ import '../../../styles/ProfilePage.scss'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import User from './User/User';
+import DarkLightButton from './DarkLightButton';
 
 
 const ProfilePage: React.FC = () => {
+  const profileSet = useRef(false);
   const dispatch = useDispatch();
   const profileName = useSelector((state: RootState) => state.profile.name)
   const { data, error, isLoading } = useGetProfileDataQuery(undefined, 
     { skip: !!profileName });
 
-  data ? dispatch(setProfile({
-    name: data.name, 
-    icon_img: data.icon_img, 
-    total_karma: data. total_karma 
-  })) : {};
-  console.log('Profile name', profileName);
-  console.log('Profile fetch', data ? data : error);
-  const icon_img = useSelector((state: RootState) => state.profile.icon_img)
-  console.log(icon_img);
+  useEffect(()=> {
+    if (profileSet.current) return;
+    profileSet.current = true;
+    data ? dispatch(setProfile({
+      name: data.name, 
+      icon_img: data.icon_img, 
+      total_karma: data. total_karma 
+    })) : {};
+    console.log('Profile fetch', data ? data : error);
+  }, [data, dispatch])
 
   return (
     <>
@@ -33,8 +36,9 @@ const ProfilePage: React.FC = () => {
         {isLoading ? <p>Loading profile...</p> :
         <User />}
       </div>
-      <div className='logout-button'>
-        <LogoutButton />
+      <div className="profile-buttons">
+          <DarkLightButton />
+          <LogoutButton />
       </div>
     </>
   )

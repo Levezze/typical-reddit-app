@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isDark: true,
@@ -8,10 +8,8 @@ const darkLightSlice = createSlice({
   name: 'darkLight',
   initialState,
   reducers: {
-    switchDarkLight(state, action: PayloadAction<boolean>) {
-      if (state.isDark !== action.payload) {
-        state.isDark = action.payload;
-      }
+    switchDarkLight(state) {
+        state.isDark = !state.isDark;
     }
   }
 });
