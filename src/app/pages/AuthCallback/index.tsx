@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../../store/slices/authSlice';
@@ -9,7 +9,12 @@ const AuthCallback: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const calledToken = useRef(false);
+
   useEffect(() => {
+    if (calledToken.current) return;
+    calledToken.current = true;
+
     const queryParams = new URLSearchParams(location.search);
     const state = queryParams.get('state');
     const code = queryParams.get('code');
@@ -28,11 +33,14 @@ const AuthCallback: React.FC = () => {
     axios.get(
       `/api/oauth/token?code=${code}`)
       .then((response) => {
-        const { access_token, expires_in} = response.data;
+        const { access_token, expires_in, scope } = response.data;
+        console.log('scope',scope);
         console.log('New token:', access_token);
 
         localStorage.setItem('token', access_token);
         localStorage.setItem('token_expiry', (Date.now() + expires_in * 1000).toString());
+        localStorage.setItem('scope', scope);
+
 
         dispatch(login({ token: access_token }));
 

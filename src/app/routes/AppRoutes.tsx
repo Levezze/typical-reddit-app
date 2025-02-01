@@ -15,14 +15,11 @@ import restoreAuth from '../../utils/restoreAuth';
 
 const AppRoutes: React.FC = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  // const subredditsArray = useSelector(selectedSubreddits);
-  // const subredditsArrayActive = subredditsArray.length > 0;
-
   useEffect(() => {
     restoreAuth(dispatch)
   },[dispatch]);
 
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const isFirstLogin = localStorage.getItem('first_login') === 'true';
 
   return (

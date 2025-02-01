@@ -9,8 +9,8 @@ const restoreAuth = (dispatch: AppDispatch) => {
   if (token && expiry && Date.now() < parseInt(expiry, 10)) {
     console.log('Date now:',Date.now());
     console.log('Expiry:',parseInt(expiry, 10));
-    console.log('Expiry bool:',(Date.now() < parseInt(expiry, 10)));
-    console.log('loggen in, token:',token);
+    console.log('Expired:',(Date.now() > parseInt(expiry, 10)));
+    // console.log('loggen in, token:', token);
     console.log('Time remaining:', parseInt(expiry, 10) - Date.now());
     dispatch(login({ token }));
 
@@ -23,6 +23,7 @@ const restoreAuth = (dispatch: AppDispatch) => {
     console.log('Token expired')
     localStorage.removeItem('token');
     localStorage.removeItem('token_expiry');
+    localStorage.removeItem('scope');
     localStorage.removeItem('selected_subreddits');
   };
 };

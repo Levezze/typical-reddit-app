@@ -35,7 +35,7 @@ router.get('/oauth/token', async (req, res) => {
         headers: {
           Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
           'Content-Type': 'application/x-www-form-urlencoded',
-          'User-Agent': 'typical-redd-app/0.1 (by u/Comfortable-Jury1660)',
+          'User-Agent': 'Typical-Redd-App/0.1 (by u/Comfortable-Jury1660)',
         },
       }
     );
@@ -74,7 +74,7 @@ router.post('/v1/revoke_token', async (req, res) => {
         headers: {
           Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
           'Content-Type': 'application/x-www-form-urlencoded',
-          'User-Agent': 'typical-redd-app/0.1 (by u/Comfortable-Jury1660)',
+          'User-Agent': 'Typical-Redd-App/0.1 (by u/Comfortable-Jury1660)',
         },
       }
     );
@@ -148,8 +148,41 @@ router.get('/r/:subreddits/:sort', async (req, res) => {
   try {
     const response = await axios.get(url, {
       headers: {
-        Authentication: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
         'User-Agent': 'typical-redd-app/0.1 (by u/Comfortable-Jury1660)',
+      }
+    });
+    
+    if (response.status < 200 || response.status >= 300) {
+      throw new Error(`Reddit API error: ${response.statusText}`)
+    }
+
+    res.json(response.data);
+  } catch (error) {
+    console.error('Failed to fetch posts:', error.message);
+    res.status(error.response?.status || 500).json({ error: 'Failed to fetch posts' });
+  }
+});
+
+
+// PROFILE INFORMATION
+
+router.get('/v1/me', async (req, res) => {
+  const token = req.headers.authorization?.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Missing access token' });
+  };
+
+  const url = `https://oauth.reddit.com/api/v1/me`; // &raw_json=1
+
+  console.log(`Fetching posts from ${url} with token: ${token}`);
+
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'Typical-Redd-App/0.1 (by u/Comfortable-Jury1660)',
       }
     });
     

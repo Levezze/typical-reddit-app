@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query';
 import authReducer from './slices/authSlice';
-import subredditsReducer from '../store/slices/subredditSlice';
-import searchReducer from '../store/slices/searchSlice';
-import darkLightReducer from '../pages/ProfilePage/darkLightMode/darkLightSlice'
-import feedReducer from '../store/slices/feedSlice';
+import subredditsReducer from './slices/subredditSlice';
+import searchReducer from './slices/searchSlice';
+import darkLightReducer from './slices/darkLightSlice'
+import feedReducer from './slices/feedSlice';
+import profileReducer from './slices/profileSlice';
 import { subredditsApi } from './middleware/subredditsAPI';
 import { feedApi } from './middleware/feedAPI';
 import { voteApi } from './middleware/voteAPI';
 import { tokenApi } from './middleware/tokenAPI';
+import { profileApi } from './middleware/profileAPI';
 
 
 export const store = configureStore({
@@ -18,17 +20,20 @@ export const store = configureStore({
     search: searchReducer,
     darkLight: darkLightReducer,
     feed: feedReducer,
+    profile: profileReducer,
     [subredditsApi.reducerPath]: subredditsApi.reducer,
     [feedApi.reducerPath]: feedApi.reducer,
     [voteApi.reducerPath]: voteApi.reducer,
     [tokenApi.reducerPath]: tokenApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       subredditsApi.middleware, 
       feedApi.middleware, 
       voteApi.middleware,
-      tokenApi.middleware
+      tokenApi.middleware,
+      profileApi.middleware,
     ),
 })
 

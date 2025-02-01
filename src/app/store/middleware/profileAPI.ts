@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { VotePayload } from "../../../types/api";
+import { profileData } from "../../../types/api";
 
-
-export const voteApi = createApi({
-  reducerPath: 'voteApi',
+export const profileApi = createApi({
+  reducerPath: 'profileApi',
   baseQuery: fetchBaseQuery({ 
     baseUrl: 'http://localhost:4000/api',
     prepareHeaders: (headers, { getState }) => {
@@ -15,15 +14,11 @@ export const voteApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    vote: builder.mutation<void, VotePayload>({
-      query: ({ ID, DIR }) => ({
-        url: 'api/vote',
-        method: 'POST',
-        body: { ID, DIR },
-      }),
+    getProfileData: builder.query<profileData, void>({
+      query: () => 'v1/me',
     }),
   }),
 });
 
   
-export const { useVoteMutation } = voteApi;
+export const { useGetProfileDataQuery,  } = profileApi;

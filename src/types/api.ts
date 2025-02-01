@@ -75,6 +75,8 @@ export interface VotePayload {
   DIR: 1 | 0 | -1;
 };
 
-export interface userData {
-  
-}
+export interface profileData {
+  name: string;
+  icon_img: string;
+  total_karma: number | null;
+};
