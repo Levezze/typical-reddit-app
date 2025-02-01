@@ -17,7 +17,9 @@ export const User:React.FC = () => {
         </div>
       </div>
       <div className="profile_img">
-        <img src={icon_img} alt={`Profile image of ${name}`} />
+        <div className="round-corners">
+          <img src={icon_img} alt={`Profile image of ${name}`} />
+        </div>
       </div>
     </>
   )

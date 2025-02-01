@@ -36,6 +36,9 @@ export interface Post {
   ups: number;
   thumbnail: string | undefined;
   is_video: boolean;
+  created_utc: number;
+  num_comments: number | undefined | null;
+  id: string;
   media?: {
     reddit_video?: {
       fallback_url: string;
@@ -50,8 +53,6 @@ export interface Post {
       }
     }>
   } | null;
-  id: string;
-  created_utc: number;
 };
 
 export interface PostsResponseData {

@@ -11,7 +11,6 @@ import SubredditsPage from '../pages/SubredditsPage';
 import FeedPage from '../pages/FeedPage';
 import ProfilePage from '../pages/ProfilePage';
 import restoreAuth from '../../utils/restoreAuth';
-// import { selectedSubreddits } from '../../features/subreddits/subredditSlice';
 
 const AppRoutes: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ const AppRoutes: React.FC = () => {
   },[dispatch]);
 
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const isFirstLogin = localStorage.getItem('first_login') === 'true';
+  const isFirstLogin = useSelector((state: RootState) => state.subreddits.firstLogin);
 
   return (
     <Routes>

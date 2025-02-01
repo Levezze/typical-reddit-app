@@ -20,7 +20,8 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
     permalink, 
     author, 
     ups,
-    created_utc
+    created_utc,
+    num_comments,
   } = post;
 
   const displayMedia = useSelector(feedMedia);
@@ -29,6 +30,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
   undefined;
   const imageDisplay = preview?.images?.[0]?.source?.url ||
     thumbnail;
+  console.log('comments', num_comments);
 
   return (
     <div className='post-container'>
@@ -62,7 +64,12 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
           ): null
         }
       </div>
+      <div className="votes-comments">
       <Vote ups={ups} id={'a'} />
+      <p>
+      {num_comments ? num_comments.toString() : '0'}
+      </p>
+      </div>
     </div>
   )
 }

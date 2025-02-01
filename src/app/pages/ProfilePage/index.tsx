@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import LogoutButton from '../../components/auth/AuthButton';
 import { useGetProfileDataQuery } from '../../store/middleware/profileAPI';
 import { setProfile } from '../../store/slices/profileSlice';
@@ -10,21 +10,18 @@ import DarkLightButton from './DarkLightButton';
 
 
 const ProfilePage: React.FC = () => {
-  const profileSet = useRef(false);
   const dispatch = useDispatch();
-  const profileName = useSelector((state: RootState) => state.profile.name)
-  const { data, error, isLoading } = useGetProfileDataQuery(undefined, 
-    { skip: !!profileName });
+  const profile = useSelector((state: RootState) => state.profile)
+  const { data, isLoading } = useGetProfileDataQuery(undefined, 
+    { skip: !!profile.name });
 
   useEffect(()=> {
-    if (profileSet.current) return;
-    profileSet.current = true;
-    data ? dispatch(setProfile({
+    if (data && profile.name !== data.name) {
+    dispatch(setProfile({
       name: data.name, 
       icon_img: data.icon_img, 
       total_karma: data. total_karma 
-    })) : {};
-    console.log('Profile fetch', data ? data : error);
+    }))};
   }, [data, dispatch])
 
   return (

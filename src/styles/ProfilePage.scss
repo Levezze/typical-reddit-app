@@ -75,14 +75,20 @@
           color: $text-color;
         }
       }
-
-    img {
+    
+    .round-corners {
       display: flex;
       width: 250px;
+      height: auto;
       padding-top: 30px;
       margin: 0 auto;
-      border-radius: 100%;
-    }    
+      
+      img {
+        width: 100%;
+        border-radius: 50%/50%;
+      }    
+    }
+
   }
 
   .profile-buttons {
