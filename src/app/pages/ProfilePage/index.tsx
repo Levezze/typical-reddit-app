@@ -30,15 +30,17 @@ const ProfilePage: React.FC = () => {
   return (
     <>
       <div className='profile-top'>
-        <h1>Typical Profile</h1>
+        <h1>Reddit Profile</h1>
       </div>
-      <div className="profile-container">
-        {isLoading ? <p>Loading profile...</p> :
-        <User />}
-      </div>
-      <div className="profile-buttons">
-          <DarkLightButton />
+      <div className='profile-layout'>
+        <div className="profile-container">
+          {isLoading ? <p>Loading profile...</p> :
+          <User />}
+        </div>
+        <div className="profile-buttons">
           <LogoutButton />
+          <DarkLightButton />
+        </div>
       </div>
     </>
   )
