@@ -17,7 +17,7 @@ export const voteApi = createApi({
   endpoints: (builder) => ({
     vote: builder.mutation<void, VotePayload>({
       query: ({ ID, DIR }) => ({
-        url: 'api/vote',
+        url: 'vote',
         method: 'POST',
         body: { ID, DIR },
       }),

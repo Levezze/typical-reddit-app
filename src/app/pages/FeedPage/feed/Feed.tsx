@@ -30,7 +30,7 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
   },[columns]);
 
   const parsedData: Post[] = data ? parseFeedData(data as PostsResponseData): [];
-  console.log('Feed Data:', data)
+  console.log('Feed Data:', parsedData)
   console.log('Feed Error:', error)
 
   return (

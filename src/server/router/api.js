@@ -13,7 +13,7 @@ const REDIRECT_URI = 'http://localhost:5173/callback';
 router.get('/oauth/token', async (req, res) => {
   console.log("🔹 Received request to /api/oauth/token");
   console.log("🔹 Query Params:", req.query);
-  const code = req.query.code; // Extract code from query parameters
+  const code = req.query.code;
 
   if (!code) {
     console.error('❌ Missing authorization code');
@@ -54,7 +54,7 @@ router.get('/oauth/token', async (req, res) => {
 router.post('/v1/revoke_token', async (req, res) => {
   console.log("🔹 Received request to /v1/revoke_token");
   console.log("🔹 Request Body:", req.body);
-  const TOKEN = req.body.token; // Extract code from query parameters
+  const TOKEN = req.body.token;
 
   if (!TOKEN) {
     console.error('❌ Missing token');
@@ -93,11 +93,10 @@ router.post('/v1/revoke_token', async (req, res) => {
 router.post('/vote', async (req, res) => {
   console.log("🔹 Received request to /api/vote");
   console.log("🔹 Query Params:", req.query);
-  const DIR = req.query.dir; // Extract code from query parameters
-  const ID = req.query.id; // Extract code from query parameters
-  const TOKEN = req.query.token; // Extract code from query parameters
+  const { DIR, ID } = req.body;
+  const TOKEN = req.headers.authorization?.split(" ")[1];
 
-  if (!DIR || !ID) {
+  if (typeof DIR === "undefined" || typeof ID === "undefined") {
     console.error('❌ Missing params dir/id');
     return res.status(400).json({ error: 'Direction and ID are required' });
   }
@@ -110,9 +109,14 @@ router.post('/vote', async (req, res) => {
       'https://oauth.reddit.com/api/vote',
       new URLSearchParams({
         dir: DIR,
-        id: ID,
+        id: `t3_${ID}`,
       }).toString(),
-    );
+      {
+        headers: {
+        Authorization: `Bearer ${TOKEN}`,
+        'User-Agent': 'Typical-Redd-App/0.1 (by u/Comfortable-Jury1660)',
+      }
+    });
 
     console.log("✅ Successfully voted:", response.data);
     res.json(response.data);
@@ -149,7 +153,7 @@ router.get('/r/:subreddits/:sort', async (req, res) => {
     const response = await axios.get(url, {
       headers: {
         Authorization: `Bearer ${token}`,
-        'User-Agent': 'typical-redd-app/0.1 (by u/Comfortable-Jury1660)',
+        'User-Agent': 'Typical-Redd-App/0.1 (by u/Comfortable-Jury1660)',
       }
     });
     
