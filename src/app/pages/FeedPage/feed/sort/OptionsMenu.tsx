@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { DropdownMenu } from "radix-ui";
 import {
-	HamburgerMenuIcon,
 	DotFilledIcon,
 	CheckIcon,
 	StretchHorizontallyIcon,
@@ -17,6 +16,7 @@ import {
 	feedColumns,
 	feedMedia,
 } from '../../../../store/slices/feedSlice';
+import OptionsIcon from "../../../../components/icons/OptionsIcon";
 import { useDispatch, useSelector } from 'react-redux'
 
 const OptionsMenu: React.FC = () => {
@@ -44,7 +44,7 @@ const OptionsMenu: React.FC = () => {
 				<div className='feed-refresh' aria-label="Customise options">
 					<h3>OPTIONS</h3>
 					<div className="feed-icon">
-						<HamburgerMenuIcon />
+						<OptionsIcon />
 					</div>
 				</div>
 			</DropdownMenu.Trigger>

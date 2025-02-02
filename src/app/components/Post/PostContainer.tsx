@@ -3,7 +3,9 @@ import TimeAgo from '../../pages/FeedPage/feed/TimeAgo';
 import { Post } from '../../../types/api'
 import { useSelector } from 'react-redux';
 import { feedMedia } from '../../store/slices/feedSlice';
-import Vote from '../Vote';
+import Vote from '../Vote/Vote';
+import Comments from '../Comments/Comments';
+import { formatNumber } from '../../../utils/helpers';
 
 interface PostContainerProps {
   post: Post;
@@ -65,10 +67,12 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
         }
       </div>
       <div className="votes-comments">
-      <Vote ups={ups} id={id} />
-      <p>
-      {num_comments ? num_comments.toString() : '0'}
-      </p>
+        <Vote ups={formatNumber(ups)} id={id} />
+        <a href={`https://www.reddit.com${permalink}`} target='_blank'>
+          <Comments 
+            num_comments={num_comments ? formatNumber(num_comments) : num_comments} 
+          />
+        </a>
       </div>
     </div>
   )

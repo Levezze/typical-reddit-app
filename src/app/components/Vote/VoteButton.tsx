@@ -1,4 +1,4 @@
-import VoteArrow from '../icons/VoteArrow';
+import ArrowIcon from '../icons/ArrowIcon';
 import { useVoteMutation } from '../../store/middleware/voteAPI';
 import { VotePayload } from '../../../types/api'
 
@@ -13,7 +13,7 @@ const VoteButton:React.FC<VotePayload> = ({ DIR, ID }) => {
     <div 
       className='vote-btn'
       onClick={handleVote}>
-        <VoteArrow />
+        <ArrowIcon />
     </div>
   )
 }

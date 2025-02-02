@@ -18,3 +18,9 @@ export const subSubImg = (subIcon:string | undefined):string => {
     : defaultImg
     : defaultImg;
 };
+
+export const formatNumber = (value: number | string):string => {
+  if (typeof value === 'string') value = parseInt(value);
+  if (value > 1000) return `${Math.round(value / 1000)}K`;
+  return value.toString();
+}
