@@ -190,7 +190,7 @@ a {
       img,
       video {
         max-width: 100%;
-        max-height: 55vh;
+        max-height: calc(100vh - 270px - (30px*2) - 95px - 20px - 31px - 40px);
         border-radius: 6px;
       }
     } 

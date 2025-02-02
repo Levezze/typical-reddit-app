@@ -56,7 +56,7 @@ const AuthCallback: React.FC = () => {
       })
       .catch((error) => {
         console.error('Failed to fetch access token:', error);
-        // navigate('/');
+        navigate('/');
       });
   }, [dispatch, location, navigate])
 

@@ -126,6 +126,10 @@
       flex-direction: column;
       gap: 20px;
 
+      .continue-btn {
+        z-index: 10;
+      }
+
       .selected-subs {
         ul {
           padding: 0;
@@ -145,14 +149,12 @@
 
             .subreddit-empty-container {
               height: 60px;
-              // width: 100%;
               border-radius: 0 10px 10px 0;
             }
 
             .subreddit-container {
               border-left: 10px solid $secondary-color;
               height: 60px;
-              // width: 100%;
               display: flex;
               align-items: center;
               padding-left: 10px;
@@ -201,7 +203,6 @@
   p {
     color: $text-color;
     line-height: 1.25;
-    // max-width: 600px;
   }
 
   .logo-img img {
