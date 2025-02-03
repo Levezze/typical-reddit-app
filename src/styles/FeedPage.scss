@@ -13,10 +13,11 @@ a {
   display: flex;
   justify-content: space-between;
   width: $ui-width;
-  margin-top: calc($top-spacing + 20px);
   border-bottom: 2px solid $secondary-color;
-  margin-bottom: 20px;
-  height: 90px;
+  margin-top: $top-spacing;
+  margin-bottom: $page-top-margin-bottom;
+  height: $page-top-height;
+  padding-top: $page-top-padding;
 
   h1 {
     font-size: 72px;
@@ -41,7 +42,7 @@ a {
 
     .feed-refresh {
       display: flex;
-      gap: 10px;
+      gap: 5px;
       height: 40px;
       align-items: center;
       cursor: pointer; 
@@ -49,29 +50,38 @@ a {
       .refresh-icon {
         color: $secondary-color;
         transition: transform .5s;
+        width: 16px;
+        height: 16px;
       }
       
       h3 {
         color: $text-color;
+        font-weight: 500;
         @include transition;
         align-self: center;
       }
 
       .feed-icon {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         display: inline-flex;
         align-items: center;
         padding-bottom: $icon-bottom-padding;
+
+        svg {
+          width: 100%;
+          height: auto;
+          color: $secondary-color;
+        }
+
+        .options-icon {
+          width: 16px;
+          height: 16px;
+          transition: .5s;
+        }
       }
-      .options-icon {
-        color: $secondary-color;
-        transition: .5s;
-      }
+
       
-      .refresh-icon {
-        width: 13px;
-      }
 
       &:hover {
         h3 {
@@ -146,7 +156,7 @@ a {
     padding: 30px;
     border-radius: 10px;
     border: 2px $border-color;
-    max-height: calc(100vh - 270px);
+    // max-height: calc(100vh - 270px);
     position: relative;
 
     .title-section {
@@ -192,8 +202,8 @@ a {
       img,
       video {
         max-width: 100%;
-        max-height:100px;
-        max-height: calc(100vh - 270px - (30px*2) - 95px - 20px - 31px - 40px);
+        // max-height:100px;
+        // max-height: calc(100vh - 270px - (30px*2) - 95px - 20px - 31px - 40px);
         border-radius: 6px;
       }
     } 
@@ -221,6 +231,10 @@ a {
           cursor: pointer;
           transition: .3s;
           color: $text-color;
+
+          &:hover {
+            color: $secondary-color;
+          }
         }
 
         .vote.down {

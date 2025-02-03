@@ -10,10 +10,11 @@
   display: flex;
   justify-content: space-between;
   width: $ui-width;
-  margin-top: calc($top-spacing + 20px);
+  margin-top: $top-spacing;
   border-bottom: 2px solid $secondary-color;
-  margin-bottom: 20px;
-  height: 90px;
+  margin-bottom: $page-top-margin-bottom;
+  height: $page-top-height;
+  padding-top: $page-top-padding;
 
   h1 {
     font-size: 72px;

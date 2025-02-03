@@ -4,6 +4,7 @@
 :root {
   isolation: isolate;
   font-family: $font-stack;
+  font-size: $font-size;
   background-color: $bg-color;
   transition: background-color .3s;
 
@@ -11,7 +12,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 
   --primary-color: #fff;
   --secondary-color: #EF6D58;
@@ -30,4 +30,3 @@
 ul {
   list-style-type: none;
 }
-

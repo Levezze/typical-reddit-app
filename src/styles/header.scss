@@ -39,13 +39,6 @@
   
     li .menu-item {
       @include nav-style;
-      color: $text-color;
-      text-transform: uppercase;
-      @media (hover: hover) {
-        &:hover {
-          color: $primary-color;
-        }
-      }
     }
   }
 

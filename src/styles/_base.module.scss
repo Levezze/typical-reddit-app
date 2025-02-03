@@ -1,4 +1,11 @@
+// Fonts
 $font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
+$font-size: 16px;
+$font-regular: 400;
+$font-bold: 700;
+$font-black: 900;
+
+//Colors
 $primary-color: var(--primary-color);
 $secondary-color: var(--secondary-color);
 $text-color: var(--text-color);
@@ -6,13 +13,17 @@ $bg-color: var(--bg-color);
 $secondary-bg-color: var(--secondary-bg-color);
 $container-bg-color: var(--container-bg-color);
 $border-color: solid var(--border-color);
-$font-regular: 400;
-$font-bold: 700;
-$font-black: 900;
+
+// Transition
 $transition-effect: all .2s ease-in;
+
+// Measurements
+$page-top-height: 110px;
+$page-top-padding: 20px;
+$page-top-margin-bottom: 20px;
 $ui-width: 1100px;
-$top-spacing: 60px;
-$icon-bottom-padding: 2px;
+$top-spacing: 40px;
+$icon-bottom-padding: 4px;
 
 :export {
   colorPrimary: $primary-color;
@@ -31,8 +42,8 @@ $icon-bottom-padding: 2px;
 }
 
 @mixin bottom-gradient () {
-  background-image: -webkit-gradient(linear, left bottom, left top, from($bg-color), to(rgba(0,0,0,0)), color-stop(.1, $bg-color));
-  height: 70px;
+  background-image: -webkit-gradient(linear, left bottom, left top, from($bg-color), to(rgba(0,0,0,0)));
+  height: 50px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -41,15 +52,12 @@ $icon-bottom-padding: 2px;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
 }
 
-@mixin nav-style (
-  $color: #B4B5BC,
-  $hover-color: #fff,
-  $transition: .2s,
-) {
-  color: $color;
-  transition: $transition;
+@mixin nav-style () {
+  color: $text-color;
+  transition: $transition-effect;
   text-decoration: none;
   position: relative;
+  text-transform: uppercase;
 
   &::after {
     content: '';
@@ -64,7 +72,7 @@ $icon-bottom-padding: 2px;
 
   @media (hover: hover) {
     &:hover {
-      color: $hover-color;
+      color: $primary-color;
     }
 
     &:hover:after {
@@ -72,13 +80,9 @@ $icon-bottom-padding: 2px;
     }
   }
 
-  // &:active {
-  //   color: $hover-color;
-  // }
-
   &.touch-hover {
-    color: $hover-color;
-    transition: $transition;
+    color: $primary-color;
+    transition: $transition-effect;
 
     &::after {
       width: 100%;

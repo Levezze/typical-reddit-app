@@ -38,7 +38,7 @@ const DarkLightButton: React.FC = () => {
     <Button
       className='darklight-button'
       handleClick={handleDarkLight}
-      buttonName={isDark ? "LIGHT MODE" : "DARK MODE"}
+      buttonName={isDark ? "LIGHT THEME" : "DARK THEME"}
     />
   );
 };
