@@ -43,7 +43,7 @@
       .title-section {
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid $secondary-color;
+        border-bottom: 2px solid $secondary-color;
         
         h2 {
           font-size: 24px;
@@ -51,6 +51,7 @@
           margin: 0 0 10px;
           color: $secondary-color;
           text-decoration: none;
+          text-align: center;
         }
 
         h3 {
@@ -59,6 +60,7 @@
           margin: 0 0 10px;
           color: $primary-color;
           text-decoration: none;
+          text-align: center;
         }
 
         .sub-name {
@@ -104,6 +106,12 @@
     
     .darklight-button {
       @include button;
+      background-color: var(--switch-btn-bg);
+      color: $bg-color;
+
+      &:hover {
+        background-color: var(--switch-btn-bg);
+      }
     }
   }
 }

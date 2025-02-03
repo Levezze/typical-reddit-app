@@ -54,7 +54,7 @@ const Header: React.FC = () => {
               to="/profile"
               onTouchStart={()=> handleTouch('profile')}
             >
-              Profile
+              ACCOUNT
             </Link>
           </li>
         </ul>

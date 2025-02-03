@@ -43,6 +43,7 @@ export const Search: React.FC = () => {
           onChange={handleSearch} 
           id='searchInput' 
           type='text' 
+          spellCheck='false'
           placeholder={
             localSearchValue ? localSearchValue
             : 

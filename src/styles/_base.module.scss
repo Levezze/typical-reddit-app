@@ -4,6 +4,7 @@ $secondary-color: var(--secondary-color);
 $text-color: var(--text-color);
 $bg-color: var(--bg-color);
 $secondary-bg-color: var(--secondary-bg-color);
+$container-bg-color: var(--container-bg-color);
 $border-color: solid var(--border-color);
 $font-regular: 400;
 $font-bold: 700;
@@ -19,6 +20,7 @@ $icon-bottom-padding: 2px;
   colorText: $text-color;
   colorBg: $bg-color;
   colorSecondaryBg: $secondary-bg-color;
+  colorContainerBg: $container-bg-color;
   colorBorder: solid $border-color;
   fontStack: $font-stack;
   fontWeightRegular: $font-regular;
@@ -28,10 +30,7 @@ $icon-bottom-padding: 2px;
   uiWidth: $ui-width;
 }
 
-@mixin bottom-gradient (
-  $gradient-color: #1C1D2A,
-) {
-  // background-image: linear-gradient(to bottom, transparent 0%, $gradient-color 100%);
+@mixin bottom-gradient () {
   background-image: -webkit-gradient(linear, left bottom, left top, from($bg-color), to(rgba(0,0,0,0)), color-stop(.1, $bg-color));
   height: 70px;
   position: fixed;
@@ -40,7 +39,6 @@ $icon-bottom-padding: 2px;
   z-index: 10;
   pointer-events: none;
   filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
-  // background: none !important;
 }
 
 @mixin nav-style (
@@ -89,7 +87,7 @@ $icon-bottom-padding: 2px;
 }
 
 @mixin transition (
-  $duration-1: .5s,
+  $duration-1: .3s,
   $duration-2: .2s,
   $duration-3: 1s,
   $ease: ease,
@@ -102,23 +100,15 @@ $icon-bottom-padding: 2px;
 }
 
 @mixin button-hover(
-  $color: #ee8979, 
-  $text-color: #fff, 
-  $border-color: #fff,
   ) {
-  background-color: $color;
-  color: $text-color;
-  border: 1px solid $border-color; 
+  background-color: $secondary-color;
+  border: 2px $border-color; 
   letter-spacing: .3px;
 }
 
-@mixin button-disabled(
-  $color: #303146, 
-  $text-color: #B4B5BC, 
-  $border-color: #707070,
-) {
-  border: 1px solid $border-color;
-  background-color: $color;
+@mixin button-disabled() {
+  background-color: $secondary-bg-color;
+  border: 2px $border-color;
   color: $text-color;
   cursor: auto;
 }
@@ -132,7 +122,6 @@ $icon-bottom-padding: 2px;
   $font-family: 'Epilogue', 
   $font-size: 20px, 
   $font-weight: 800,        
-  $border: none,
   ) {
   position: relative;
   background-color: $color;
@@ -140,7 +129,6 @@ $icon-bottom-padding: 2px;
   height: $height;
   width: $width;
   border-radius: 6px;
-  border: $border;
   font-family: $font-family;
   font-size: $font-size;
   font-weight: $font-weight;
@@ -148,6 +136,7 @@ $icon-bottom-padding: 2px;
   cursor: pointer;
   text-align: center;
   overflow: hidden;
+  border: 2px solid rgba(0,0,0,0);
   
   @include transition();
 

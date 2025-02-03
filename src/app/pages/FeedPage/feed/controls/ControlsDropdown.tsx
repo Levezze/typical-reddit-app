@@ -19,7 +19,7 @@ import {
 import OptionsIcon from "../../../../components/icons/OptionsIcon";
 import { useDispatch, useSelector } from 'react-redux'
 
-const OptionsMenu: React.FC = () => {
+const ControlsDropdown: React.FC = () => {
 	const isSingleColumn = useSelector(feedColumns) === 1;
 	const showMedia = useSelector(feedMedia);
 	const sort = useSelector(sortValue);
@@ -42,7 +42,7 @@ const OptionsMenu: React.FC = () => {
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
 				<div className='feed-refresh' aria-label="Customise options">
-					<h3>OPTIONS</h3>
+					<h3>CUSTOMIZE</h3>
 					<div className="feed-icon">
 						<OptionsIcon />
 					</div>
@@ -146,4 +146,4 @@ const OptionsMenu: React.FC = () => {
 	);
 };
 
-export default OptionsMenu;
+export default ControlsDropdown;

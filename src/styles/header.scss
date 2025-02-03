@@ -27,26 +27,28 @@
       margin-left: 15px;
     }
   }
+  
   nav {
     align-content: center;
+    
+    ul {
+      display: flex;
+      gap: 105px;
+      padding: 0;
+    }
+  
+    li .menu-item {
+      @include nav-style;
+      color: $text-color;
+      text-transform: uppercase;
+      @media (hover: hover) {
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
   }
 
-  ul {
-    display: flex;
-    gap: 105px;
-    padding: 0;
-  }
-
-  li .menu-item {
-    @include nav-style;
-    color: $text-color;
-    text-transform: uppercase;
-    // @media (hover: hover) {
-    //   &:hover {
-    //     color: $primary-color;
-    //   }
-    // }
-  }
 
   .contact-button {
     width: 120px;

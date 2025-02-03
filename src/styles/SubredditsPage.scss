@@ -72,7 +72,7 @@
       margin-bottom: 20px; /* Spacing between items */
     
       .sub-unit-container {
-        background-color: $secondary-bg-color;
+        background-color: $container-bg-color;
         padding: 30px;
         border-radius: 10px;
         border: 2px $border-color;
@@ -141,11 +141,11 @@
           li {
             border: 2px $border-color;
             border-radius: 0 10px 10px 0;
-            transition: $transition-effect;
-            &:hover {
-              background-color: $secondary-color;
-              color: $primary-color;
-            }
+            // transition: $transition-effect;
+            // &:hover {
+            //   background-color: $secondary-color;
+            //   color: $primary-color;
+            // }
 
             .subreddit-empty-container {
               height: 60px;
@@ -153,6 +153,7 @@
             }
 
             .subreddit-container {
+              background-color: $secondary-bg-color;
               border-left: 10px solid $secondary-color;
               height: 60px;
               display: flex;
@@ -160,6 +161,12 @@
               padding-left: 10px;
               cursor: pointer;
               border-radius: 0 10px 10px 0;
+              transition: $transition-effect;
+
+              &:hover {
+                background-color: $secondary-color;
+                color: $primary-color;
+              }
 
               .sub-img {
                 width: 45px;

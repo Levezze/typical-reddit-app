@@ -142,10 +142,12 @@ a {
     display: inline-block; /* Necessary for column layout */
     width: 100%; /* Ensures items take full column width */
     margin-bottom: 20px; /* Spacing between items */
-    background-color: $secondary-bg-color;
+    background-color: $container-bg-color;
     padding: 30px;
     border-radius: 10px;
     border: 2px $border-color;
+    max-height: calc(100vh - 270px);
+    position: relative;
 
     .title-section {
       display: flex;
@@ -190,6 +192,7 @@ a {
       img,
       video {
         max-width: 100%;
+        max-height:100px;
         max-height: calc(100vh - 270px - (30px*2) - 95px - 20px - 31px - 40px);
         border-radius: 6px;
       }

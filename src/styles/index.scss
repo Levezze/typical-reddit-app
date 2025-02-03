@@ -4,7 +4,8 @@
 :root {
   isolation: isolate;
   font-family: $font-stack;
-  background-color: #1C1D2A;
+  background-color: $bg-color;
+  transition: background-color .3s;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,7 +18,9 @@
   --text-color: #B4B5BC;
   --bg-color: #1C1D2A;
   --secondary-bg-color: #303146;
+  --container-bg-color: #303146;
   --border-color: #ADADB2;
+  --switch-btn-bg: #F6F6F6;
 }
 
 *, *::after, *::before {
