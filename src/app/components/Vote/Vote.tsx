@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import VoteButton from './VoteButton';
 
 interface Props {
   ups: string;
   id: string;
+  likes: null | boolean;
 }
 
-const Vote:React.FC<Props> = ({ ups, id }) => {
+const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   const [voted, setVoted] = useState(0);
-  const tempDataLike = null;
 
-  const voteUpClass = `vote up ${voted === 1 || tempDataLike ?
+  useEffect(()=> {
+    if (likes === true) {
+      setVoted(1);
+    } else if (likes === false) {
+      setVoted(-1);
+    } else {
+      setVoted(0);
+    };
+  },[likes]);
+
+  const voteUpClass = `vote up ${voted === 1 ?
     'active' : ''}`;
-  const voteDownClass = `vote down ${voted === -1 || tempDataLike ?
+  const voteDownClass = `vote down ${voted === -1 ?
     'active' : ''}`;
 
   const handleVote = (direction: number) => {11111

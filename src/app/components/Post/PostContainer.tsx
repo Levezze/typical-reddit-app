@@ -24,6 +24,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
     ups,
     created_utc,
     num_comments,
+    likes,
     id,
   } = post;
 
@@ -67,7 +68,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
         }
       </div>
       <div className="votes-comments">
-        <Vote ups={formatNumber(ups)} id={id} />
+        <Vote ups={formatNumber(ups)} id={id} likes={likes} />
         <a href={`https://www.reddit.com${permalink}`} target='_blank'>
           <Comments 
             num_comments={num_comments ? formatNumber(num_comments) : num_comments} 

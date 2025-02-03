@@ -31,6 +31,7 @@ export const parseFeedData = (response: PostsResponseData): Post[] => {
       media: post.media ?? null,
       preview: post.preview ?? null,
       id: post.id,
+      likes: post.likes,
       created_utc: post.created_utc,
       num_comments: post.num_comments,
     };

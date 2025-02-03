@@ -39,6 +39,7 @@ export interface Post {
   created_utc: number;
   num_comments: number | undefined | null;
   id: string;
+  likes: boolean | null;
   media?: {
     reddit_video?: {
       fallback_url: string;
