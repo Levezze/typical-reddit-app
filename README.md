@@ -104,17 +104,22 @@ Below are prototype designs used during the development process to visualize the
 📦src
  ┣ 📂app
  ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┗ 📜AuthButton.tsx
  ┃ ┃ ┣ 📂BottomGradient
  ┃ ┃ ┃ ┗ 📜BottomGradient.tsx
  ┃ ┃ ┣ 📂Button
  ┃ ┃ ┃ ┗ 📜Button.tsx
+ ┃ ┃ ┣ 📂Comments
+ ┃ ┃ ┃ ┗ 📜Comments.tsx
  ┃ ┃ ┣ 📂ContactButton
  ┃ ┃ ┃ ┗ 📜ContactButton.tsx
- ┃ ┃ ┣ 📂FeedUnit
- ┃ ┃ ┃ ┗ 📜FeedUnit.tsx
  ┃ ┃ ┣ 📂Header
  ┃ ┃ ┃ ┗ 📜Header.tsx
  ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📜ArrowIcon.tsx
+ ┃ ┃ ┃ ┣ 📜CommentsIcon.tsx
+ ┃ ┃ ┃ ┣ 📜OptionsIcon.tsx
  ┃ ┃ ┃ ┣ 📜RefreshIcon.tsx
  ┃ ┃ ┃ ┗ 📜VoteArrow.tsx
  ┃ ┃ ┣ 📂Post
@@ -123,8 +128,9 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┗ 📜SubredditSearchUnit.tsx
  ┃ ┃ ┣ 📂SubredditSelectedUnit
  ┃ ┃ ┃ ┗ 📜SubredditSelectedUnit.tsx
- ┃ ┃ ┗ 📂VotePost
- ┃ ┃ ┃ ┗ 📜VotePost.tsx
+ ┃ ┃ ┗ 📂Vote
+ ┃ ┃ ┃ ┣ 📜Vote.tsx
+ ┃ ┃ ┃ ┗ 📜VoteButton.tsx
  ┃ ┣ 📂pages
  ┃ ┃ ┣ 📂AuthCallback
  ┃ ┃ ┃ ┗ 📜index.tsx
@@ -132,44 +138,43 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┗ 📜index.tsx
  ┃ ┃ ┣ 📂FeedPage
  ┃ ┃ ┃ ┣ 📂feed
- ┃ ┃ ┃ ┃ ┣ 📂sort
- ┃ ┃ ┃ ┃ ┃ ┗ 📜OptionsMenu.tsx
+ ┃ ┃ ┃ ┃ ┣ 📂controls
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ControlsDropdown.tsx
  ┃ ┃ ┃ ┃ ┣ 📜Feed.tsx
  ┃ ┃ ┃ ┃ ┣ 📜Refresh.tsx
  ┃ ┃ ┃ ┃ ┗ 📜TimeAgo.tsx
  ┃ ┃ ┃ ┣ 📂vote
  ┃ ┃ ┃ ┃ ┗ 📜vote.ts
  ┃ ┃ ┃ ┗ 📜index.tsx
- ┃ ┃ ┣ 📂LandingPage
- ┃ ┃ ┃ ┣ 📂auth
- ┃ ┃ ┃ ┃ ┗ 📜AuthButton.tsx
- ┃ ┃ ┃ ┗ 📜index.tsx
  ┃ ┃ ┣ 📂ProfilePage
- ┃ ┃ ┃ ┣ 📂darkLightMode
- ┃ ┃ ┃ ┃ ┗ 📜darkLightSlice.ts
- ┃ ┃ ┃ ┣ 📂user
- ┃ ┃ ┃ ┃ ┗ 📜user.ts
+ ┃ ┃ ┃ ┣ 📂User
+ ┃ ┃ ┃ ┃ ┗ 📜User.tsx
+ ┃ ┃ ┃ ┣ 📜DarkLightButton.tsx
  ┃ ┃ ┃ ┗ 📜index.tsx
- ┃ ┃ ┗ 📂SubredditsPage
+ ┃ ┃ ┣ 📂SubredditsPage
  ┃ ┃ ┃ ┣ 📂Search
  ┃ ┃ ┃ ┃ ┗ 📜Search.tsx
  ┃ ┃ ┃ ┣ 📜index.tsx
  ┃ ┃ ┃ ┣ 📜SubredditSelectedList.tsx
  ┃ ┃ ┃ ┗ 📜SubredditSelector.tsx
+ ┃ ┃ ┗ 📜index.tsx
  ┃ ┣ 📂routes
  ┃ ┃ ┣ 📜AppRoutes.tsx
  ┃ ┃ ┗ 📜ProtectedRoute.tsx
  ┃ ┣ 📂store
  ┃ ┃ ┣ 📂middleware
  ┃ ┃ ┃ ┣ 📜feedAPI.ts
- ┃ ┃ ┃ ┗ 📜subredditsAPI.ts
+ ┃ ┃ ┃ ┣ 📜profileAPI.ts
+ ┃ ┃ ┃ ┣ 📜subredditsAPI.ts
+ ┃ ┃ ┃ ┣ 📜tokenAPI.ts
+ ┃ ┃ ┃ ┗ 📜voteAPI.ts
  ┃ ┃ ┣ 📂slices
  ┃ ┃ ┃ ┣ 📜authSlice.ts
+ ┃ ┃ ┃ ┣ 📜darkLightSlice.ts
  ┃ ┃ ┃ ┣ 📜feedSlice.ts
+ ┃ ┃ ┃ ┣ 📜profileSlice.ts
  ┃ ┃ ┃ ┣ 📜searchSlice.ts
- ┃ ┃ ┃ ┣ 📜subredditSlice.ts
- ┃ ┃ ┃ ┣ 📜userSlice.ts
- ┃ ┃ ┃ ┗ 📜voteSlice.ts
+ ┃ ┃ ┃ ┗ 📜subredditSlice.ts
  ┃ ┃ ┗ 📜store.ts
  ┃ ┗ 📜App.tsx
  ┣ 📂assets
@@ -180,8 +185,11 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜github-logo-typical-reddit.png
  ┃ ┃ ┗ 📜landingLogo.png
  ┃ ┗ 📂svg
+ ┃ ┃ ┣ 📜arrow-square.svg
+ ┃ ┃ ┣ 📜comments-square.svg
  ┃ ┃ ┣ 📜comments.svg
  ┃ ┃ ┣ 📜downvote.svg
+ ┃ ┃ ┣ 📜options.svg
  ┃ ┃ ┣ 📜refresh.svg
  ┃ ┃ ┣ 📜sort.svg
  ┃ ┃ ┗ 📜upvote.svg
@@ -198,6 +206,7 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📜index.scss
  ┃ ┣ 📜LandingPage.scss
  ┃ ┣ 📜OptionsMenu.scss
+ ┃ ┣ 📜ProfilePage.scss
  ┃ ┣ 📜reset.css
  ┃ ┣ 📜Sort.module.scss
  ┃ ┣ 📜SubredditsPage.scss
@@ -211,7 +220,6 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📜helpers.ts
  ┃ ┣ 📜loginURL.ts
  ┃ ┣ 📜parseResponseData.ts
- ┃ ┣ 📜resetToken.js
  ┃ ┗ 📜restoreAuth.ts
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
