@@ -1,6 +1,9 @@
+// Breakpoints
+$tab-width: 1200px;
+
 // Fonts
 $font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
-$font-size: 16px;
+$font-size-main-title: var(--font-size-main-title);
 $font-regular: 400;
 $font-bold: 700;
 $font-black: 900;

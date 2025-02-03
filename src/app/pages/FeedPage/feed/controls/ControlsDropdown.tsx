@@ -1,4 +1,5 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
+import { debounce } from "lodash";
 import { DropdownMenu } from "radix-ui";
 import {
 	DotFilledIcon,
@@ -20,6 +21,41 @@ import OptionsIcon from "../../../../components/icons/OptionsIcon";
 import { useDispatch, useSelector } from 'react-redux'
 
 const ControlsDropdown: React.FC = () => {
+	const [displayMode, setDisplayMode] = useState(() => {
+		return getComputedStyle(document.documentElement)
+			.getPropertyValue('--display-mode')
+			.trim();
+	});
+
+	const UpdateDisplayMode = useMemo(
+		() =>
+			debounce(()=> {
+				setDisplayMode(
+					getComputedStyle(document.documentElement)
+					.getPropertyValue('--display-mode')
+					.trim()
+				);
+			},200),
+		[]
+	);
+
+	useEffect(()=> {
+		
+		
+		window.addEventListener('resize', UpdateDisplayMode);
+		UpdateDisplayMode();
+
+		return () => {
+			UpdateDisplayMode.cancel();
+			window.removeEventListener('resize', UpdateDisplayMode);
+		}
+		},[UpdateDisplayMode]);
+		
+	console.log('displayMode:',displayMode);
+	console.log('displayMode !== "web":',displayMode !== "web");
+	console.log('!displayMode.includes("web"):',!displayMode.includes("web"));
+
+
 	const isSingleColumn = useSelector(feedColumns) === 1;
 	const showMedia = useSelector(feedMedia);
 	const sort = useSelector(sortValue);
@@ -37,6 +73,7 @@ const ControlsDropdown: React.FC = () => {
 	const handleShowMedia = useCallback((value: boolean) => {
     dispatch(changeDisplayMedia(value))
   },[dispatch]);
+
 
 	return (
 		<DropdownMenu.Root>
@@ -118,6 +155,7 @@ const ControlsDropdown: React.FC = () => {
 						className="DropdownMenuCheckboxItem"
 						checked={isSingleColumn}
 						onCheckedChange={handleChangeColumn}
+						disabled={displayMode !== "web"}
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />

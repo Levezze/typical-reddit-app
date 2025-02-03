@@ -4,7 +4,6 @@
 :root {
   isolation: isolate;
   font-family: $font-stack;
-  font-size: $font-size;
   background-color: $bg-color;
   transition: background-color .3s;
 
@@ -13,6 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  // Display
+  --display-mode: web;
+
+  // Colors
   --primary-color: #fff;
   --secondary-color: #EF6D58;
   --text-color: #B4B5BC;
@@ -21,6 +24,16 @@
   --container-bg-color: #303146;
   --border-color: #ADADB2;
   --switch-btn-bg: #F6F6F6;
+
+  // Fonts
+  --font-size-main-title: 72px;
+}
+
+@media (max-width: $tab-width) {
+  :root {
+    --font-size-main-title: 40px;
+    --display-mode: tablet;
+  }
 }
 
 *, *::after, *::before {
