@@ -7,10 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import User from './User/User';
 import DarkLightButton from './DarkLightButton';
+import { setPage } from '../../store/slices/pageSlice';
 
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setPage('account'));
+  },[dispatch]);
   const profile = useSelector((state: RootState) => state.profile)
   const { data, isLoading } = useGetProfileDataQuery(undefined, 
     { skip: !!profile.name });
@@ -22,7 +26,7 @@ const ProfilePage: React.FC = () => {
       icon_img: data.icon_img, 
       total_karma: data. total_karma 
     }))};
-  }, [data, dispatch])
+  }, [data, profile.name, dispatch])
 
   return (
     <>

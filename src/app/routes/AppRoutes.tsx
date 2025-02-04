@@ -34,7 +34,7 @@ const AppRoutes: React.FC = () => {
         <Route element={<ProtectedRoute redirectPath='/' />}>
           <Route path='/subreddits' element={<SubredditsPage />} />
           <Route path='/feed' element={<FeedPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/account' element={<ProfilePage />} />
         </Route>
 
         {/* Fallback Route */}

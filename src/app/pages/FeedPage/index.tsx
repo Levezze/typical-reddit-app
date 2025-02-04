@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Feed from './feed/Feed';
 import { Subreddit } from '../../../types/api';
 import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetPostsFromSubredditsQuery } from '../../store/middleware/feedAPI';
 import { sortValue } from '../../store/slices/feedSlice'
 import Refresh from './feed/Refresh';
 import '../../../styles/FeedPage.scss'
 import ControlsDropdown from './feed/controls/ControlsDropdown';
+import { setPage } from '../../store/slices/pageSlice';
 
 
 
 const FeedPage: React.FC = () => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setPage('feed'));
+  },[dispatch]);
   const sort = useSelector(sortValue);
   const subredditsArray: Subreddit[] = useSelector(
     (state: RootState) => state.subreddits.selected

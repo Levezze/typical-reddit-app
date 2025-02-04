@@ -17,8 +17,9 @@ $secondary-bg-color: var(--secondary-bg-color);
 $container-bg-color: var(--container-bg-color);
 $border-color: solid var(--border-color);
 
-// Transition
+// Effects
 $transition-effect: all .2s ease-in;
+$container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
 // Measurements
 $page-top-height: 110px;
@@ -46,7 +47,7 @@ $icon-bottom-padding: 4px;
 
 @mixin bottom-gradient () {
   background-image: -webkit-gradient(linear, left bottom, left top, from($bg-color), to(rgba(0,0,0,0)));
-  height: 50px;
+  height: 40px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -87,6 +88,12 @@ $icon-bottom-padding: 4px;
     color: $primary-color;
     transition: $transition-effect;
 
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.current-page {
     &::after {
       width: 100%;
     }

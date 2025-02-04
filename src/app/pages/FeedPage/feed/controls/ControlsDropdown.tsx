@@ -21,6 +21,7 @@ import OptionsIcon from "../../../../components/icons/OptionsIcon";
 import { useDispatch, useSelector } from 'react-redux'
 
 const ControlsDropdown: React.FC = () => {
+	const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 	const [displayMode, setDisplayMode] = useState(() => {
 		return getComputedStyle(document.documentElement)
 			.getPropertyValue('--display-mode')
@@ -40,8 +41,6 @@ const ControlsDropdown: React.FC = () => {
 	);
 
 	useEffect(()=> {
-		
-		
 		window.addEventListener('resize', UpdateDisplayMode);
 		UpdateDisplayMode();
 
@@ -49,7 +48,14 @@ const ControlsDropdown: React.FC = () => {
 			UpdateDisplayMode.cancel();
 			window.removeEventListener('resize', UpdateDisplayMode);
 		}
-		},[UpdateDisplayMode]);
+	},[UpdateDisplayMode]);
+
+	const handleTouch = (item: string) => {
+    setActiveItem(item);
+    setTimeout(()=> {
+      setActiveItem(null);
+    }, 500);
+  };
 		
 	console.log('displayMode:',displayMode);
 	console.log('displayMode !== "web":',displayMode !== "web");
@@ -78,7 +84,7 @@ const ControlsDropdown: React.FC = () => {
 	return (
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
-				<div className='feed-refresh' aria-label="Customise options">
+				<div className='feed-customize' aria-label="Customise options">
 					<h3>CUSTOMIZE</h3>
 					<div className="feed-icon">
 						<OptionsIcon />
@@ -155,7 +161,7 @@ const ControlsDropdown: React.FC = () => {
 						className="DropdownMenuCheckboxItem"
 						checked={isSingleColumn}
 						onCheckedChange={handleChangeColumn}
-						disabled={displayMode !== "web"}
+						disabled={displayMode > 0}
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />

@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ContactButton } from '../ContactButton/ContactButton';
+import { RootState } from '../../store/store';
+import { useSelector } from 'react-redux';
 import '../../../styles/Header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
 
 const Header: React.FC = () => {
+  const pageName = useSelector((state: RootState) => state.page.pageName);
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+
 
   const handleTouch = (item: string) => {
     setActiveItem(item);
@@ -27,7 +33,8 @@ const Header: React.FC = () => {
         <ul>
           <li>
             <Link className={
-              `menu-item ${activeItem === 'feed' ? 'touch-hover' : ''}`
+              `menu-item ${activeItem === 'feed' ? 'touch-hover' : ''}
+              ${pageName === 'feed' ? 'current-page' : ''}`.trim()
               } 
               to="/feed"
               onTouchStart={()=> handleTouch('feed')}
@@ -38,7 +45,8 @@ const Header: React.FC = () => {
           
           <li>
             <Link className={
-              `menu-item ${activeItem === 'subreddits' ? 'touch-hover' : ''}`
+              `menu-item ${activeItem === 'subreddits' ? 'touch-hover' : ''}
+              ${pageName === 'subreddits' ? 'current-page' : ''}`.trim()
               } 
               to="/subreddits"
               onTouchStart={()=> handleTouch('subreddits')}
@@ -49,10 +57,11 @@ const Header: React.FC = () => {
           
           <li>
             <Link className={
-              `menu-item ${activeItem === 'profile' ? 'touch-hover' : ''}`
+              `menu-item ${activeItem === 'account' ? 'touch-hover' : ''}
+              ${pageName === 'account' ? 'current-page' : ''}`.trim()
               } 
-              to="/profile"
-              onTouchStart={()=> handleTouch('profile')}
+              to="/account"
+              onTouchStart={()=> handleTouch('account')}
             >
               ACCOUNT
             </Link>

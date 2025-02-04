@@ -6,12 +6,16 @@ import { Search } from './Search/Search';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { showPopular, searchValue, setSubredditsResults } from '../../store/slices/searchSlice';
 import { RootState } from '../../store/store';
+import { setPage } from '../../store/slices/pageSlice';
 import SubredditSelector from './SubredditSelector';
 import SubredditSelectedList from './SubredditSelectedList';
 import '../../../styles/SubredditsPage.scss'
 
 const SubredditsPage: React.FC = () => {
   const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setPage('subreddits'));
+  },[dispatch]);
   const isShowPopular = useSelector(showPopular, shallowEqual);
   const updatedSearchVal = useSelector(searchValue, shallowEqual);
 

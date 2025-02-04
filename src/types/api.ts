@@ -82,3 +82,7 @@ export interface profileData {
   icon_img: string;
   total_karma: number | null;
 };
+
+export interface pageData {
+  pageName: string;
+};

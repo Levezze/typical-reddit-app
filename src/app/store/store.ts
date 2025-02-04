@@ -6,6 +6,7 @@ import searchReducer from './slices/searchSlice';
 import darkLightReducer from './slices/darkLightSlice'
 import feedReducer from './slices/feedSlice';
 import profileReducer from './slices/profileSlice';
+import pageReducer from './slices/pageSlice';
 import { subredditsApi } from './middleware/subredditsAPI';
 import { feedApi } from './middleware/feedAPI';
 import { voteApi } from './middleware/voteAPI';
@@ -21,6 +22,7 @@ export const store = configureStore({
     darkLight: darkLightReducer,
     feed: feedReducer,
     profile: profileReducer,
+    page: pageReducer,
     [subredditsApi.reducerPath]: subredditsApi.reducer,
     [feedApi.reducerPath]: feedApi.reducer,
     [voteApi.reducerPath]: voteApi.reducer,

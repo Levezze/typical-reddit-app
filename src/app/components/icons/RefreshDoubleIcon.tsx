@@ -1,10 +1,10 @@
 import React from 'react'
 import { svg } from '../../../types/svg'
 
-const RefreshDoubleIcon:React.FC<svg> = ({ width = '16px', height = '16px' }) => {
+const RefreshDoubleIcon:React.FC<svg> = ({ className = 'refresh-icon', width = '16px', height = '16px' }) => {
   return (
     <svg 
-    className='refresh-icon'
+    className={className}
     xmlns="http://www.w3.org/2000/svg" 
     width={width} 
     height={height} 

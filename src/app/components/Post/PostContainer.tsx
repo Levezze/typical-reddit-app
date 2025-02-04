@@ -53,9 +53,6 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
               src={videoDisplay}
               onMouseOver={(e)=>e.currentTarget.play()}
               onMouseOut={(e)=>e.currentTarget.pause()}
-              onClick={(e)=> e.currentTarget.paused 
-                ? e.currentTarget.play() 
-                : e.currentTarget.pause()}
               onTouchStart={(e)=> e.currentTarget.paused 
                 ? e.currentTarget.play() 
                 : e.currentTarget.pause()}

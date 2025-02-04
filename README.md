@@ -371,10 +371,10 @@ If you have any questions, feel free to contact the developer:
 ## Future Improvements
 
 - **Infinite Scrolling**: Enhance feed to allow infinite scrolling.
-- **Post Sorting**: Add options for sorting posts (e.g., by hot, top, new).
 - **Subreddit Insights**: Display detailed insights for each subreddit (e.g., activity stats).
 - **PWA**: Convert the app into a Progressive Web App for offline support.
 - **Backend**: Create a user-based experience to serve as a reddit portal for regular use + notifications.
 - **App**: Convert into a mobile app.
+- **Share**: Add share button for posts.
 
 ---
