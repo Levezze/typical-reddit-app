@@ -12,8 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // Display
-  --display-mode: web;
+  // Display 0: Web | 1: Tablet | 2: Mobile
+  --display-mode: 0;
 
   // Colors
   --primary-color: #fff;
@@ -32,7 +32,7 @@
 @media (max-width: $tab-width) {
   :root {
     --font-size-main-title: 40px;
-    --display-mode: tablet;
+    --display-mode: 1;
   }
 }
 
