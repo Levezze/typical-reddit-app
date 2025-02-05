@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { PostsResponseData, Post } from '../../../../types/api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
 import { parseFeedData } from '../../../../utils/parseResponseData';
 import PostContainer from '../../../components/Post/PostContainer';
 import BottomGradient from '../../../components/BottomGradient/BottomGradient';
-import { feedColumns } from '../../../store/slices/feedSlice';
-import { useSelector } from 'react-redux';
+
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 
 interface FeedProps {
@@ -16,27 +15,6 @@ interface FeedProps {
 }
 
 const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
-  const columns = useSelector(feedColumns);
-
-  // return getComputedStyle(document.documentElement)
-  //     .getPropertyValue('--display-mode')
-  //     .trim();
-
-  console.log('column number:', columns)
-  useEffect(()=>{
-    if (typeof window !== "undefined") {
-      document.documentElement.style.setProperty(
-        "--feed-column-number",
-        columns.toString()
-      );
-      console.log(
-        "Updated CSS variable:",
-        getComputedStyle(document.documentElement)
-          .getPropertyValue("--feed-column-number")
-      );
-    }
-    
-  },[columns]);
 
   const parsedData: Post[] = data ? parseFeedData(data as PostsResponseData): [];
   // console.log('Unparsed Feed Data:', data)

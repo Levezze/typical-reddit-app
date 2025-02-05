@@ -13,13 +13,31 @@ const Header: React.FC = () => {
   const pageName = useSelector((state: RootState) => state.page.pageName);
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const [displayMode] = useState(() => {
-    return getComputedStyle(document.documentElement)
-      .getPropertyValue('--display-mode')
-      .trim();
-  });
-  dispatch(setView(parseInt(displayMode, 10)))
+  // const [displayMode] = useState(() => {
+  //   return getComputedStyle(document.documentElement)
+  //     .getPropertyValue('--display-mode')
+  //     .trim();
+  // });
+  // dispatch(setView(parseInt(displayMode, 10)))
 
+  const columns = useSelector((state: RootState) => state.feed.feedColumns);
+  
+  console.log('column number:', columns)
+  useEffect(()=>{
+    if (typeof window !== "undefined") {
+      document.documentElement.style.setProperty(
+        "--feed-column-number",
+        columns.toString()
+      );
+      console.log(
+        "Updated CSS variable:",
+        getComputedStyle(document.documentElement)
+          .getPropertyValue("--feed-column-number")
+      );
+    }
+    
+  },[columns]);
+  
   useEffect(()=> {
     const updateView = () => {
       const updatedView = parseInt(
@@ -33,7 +51,7 @@ const Header: React.FC = () => {
 
     updateView(); // Update the view on each re-render
 
-    const debouncedUpdateView = debounce(updateView, 100);
+    const debouncedUpdateView = debounce(updateView, 10);
 
     window.addEventListener('resize', debouncedUpdateView);
 

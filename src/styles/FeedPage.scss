@@ -229,6 +229,8 @@ a {
         margin: 5px 0 0;
         color: $text-color;
         line-height: 1;
+        min-width: 30px;
+        text-align: center;
       }
 
       .vote-container {

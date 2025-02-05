@@ -60,7 +60,7 @@
     
     ul {
       padding: 0;
-      column-count: 2; /* Define the number of columns */
+      column-count: var(--feed-column-number); /* Define the number of columns */
       column-gap: 20px; /* Set the gap between columns */
       list-style: none;
       margin: 0;
