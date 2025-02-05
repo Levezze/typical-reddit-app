@@ -1,5 +1,6 @@
 // Breakpoints
 $tab-width: 1200px;
+$mobile-width: 600px;
 
 // Fonts
 $font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -94,6 +95,8 @@ $icon-bottom-padding: 4px;
   }
 
   &.current-page {
+    color: $primary-color;
+
     &::after {
       width: 100%;
     }

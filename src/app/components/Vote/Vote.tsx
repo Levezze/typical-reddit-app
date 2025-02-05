@@ -22,7 +22,7 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   },[likes]);
 
   useEffect(()=> {
-    setNumberOfVotes((parseInt(ups) + voted).toString());
+    setNumberOfVotes((parseInt(ups, 10) + voted).toString());
   },[ups, voted])
   
   const voteUpClass = `vote up ${voted === 1 ?

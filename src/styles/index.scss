@@ -37,6 +37,13 @@
   }
 }
 
+@media (max-width: $mobile-width) {
+  :root {
+    --font-size-main-title: 40px;
+    --display-mode: 2;
+  }
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
 }

@@ -7,6 +7,8 @@ import darkLightReducer from './slices/darkLightSlice'
 import feedReducer from './slices/feedSlice';
 import profileReducer from './slices/profileSlice';
 import pageReducer from './slices/pageSlice';
+import viewReducer from './slices/viewSlice';
+import viewListenerMiddleware from './middleware/viewMiddleware';
 import { subredditsApi } from './middleware/subredditsAPI';
 import { feedApi } from './middleware/feedAPI';
 import { voteApi } from './middleware/voteAPI';
@@ -23,6 +25,7 @@ export const store = configureStore({
     feed: feedReducer,
     profile: profileReducer,
     page: pageReducer,
+    view: viewReducer,
     [subredditsApi.reducerPath]: subredditsApi.reducer,
     [feedApi.reducerPath]: feedApi.reducer,
     [voteApi.reducerPath]: voteApi.reducer,
@@ -36,6 +39,7 @@ export const store = configureStore({
       voteApi.middleware,
       tokenApi.middleware,
       profileApi.middleware,
+      viewListenerMiddleware.middleware,
     ),
 })
 

@@ -68,6 +68,7 @@ export interface Feed {
   limit: number;
   sort: string;
   feedResults: Post[];
+  singleColumn: boolean;
   feedColumns: number;
   showMedia: boolean;
 };
@@ -85,4 +86,8 @@ export interface profileData {
 
 export interface pageData {
   pageName: string;
+};
+
+export interface viewData {
+  viewSize: null | number;
 };

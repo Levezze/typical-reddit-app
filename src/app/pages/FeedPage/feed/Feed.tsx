@@ -26,6 +26,8 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
         "--feed-column-number",
         columns.toString()
       );
+      console.log("Updated CSS variable:", 
+        feedItemRef.current.style.getPropertyValue("--feed-column-number"));
     }
   },[columns]);
 

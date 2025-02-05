@@ -376,5 +376,6 @@ If you have any questions, feel free to contact the developer:
 - **Backend**: Create a user-based experience to serve as a reddit portal for regular use + notifications.
 - **App**: Convert into a mobile app.
 - **Share**: Add share button for posts.
+- **Skeleton**: Loading animation for subreddits / Feed / Profile.
 
 ---

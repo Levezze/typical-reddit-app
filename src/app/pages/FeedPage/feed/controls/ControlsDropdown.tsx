@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState, useMemo } from "react";
-import { debounce } from "lodash";
+import React, { useCallback } from "react";
 import { DropdownMenu } from "radix-ui";
 import {
 	DotFilledIcon,
@@ -19,49 +18,19 @@ import {
 } from '../../../../store/slices/feedSlice';
 import OptionsIcon from "../../../../components/icons/OptionsIcon";
 import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from "../../../../store/store";
 
 const ControlsDropdown: React.FC = () => {
-	const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-	const [displayMode, setDisplayMode] = useState(() => {
-		return getComputedStyle(document.documentElement)
-			.getPropertyValue('--display-mode')
-			.trim();
-	});
-
-	const UpdateDisplayMode = useMemo(
-		() =>
-			debounce(()=> {
-				setDisplayMode(
-					getComputedStyle(document.documentElement)
-					.getPropertyValue('--display-mode')
-					.trim()
-				);
-			},200),
-		[]
-	);
-
-	useEffect(()=> {
-		window.addEventListener('resize', UpdateDisplayMode);
-		UpdateDisplayMode();
-
-		return () => {
-			UpdateDisplayMode.cancel();
-			window.removeEventListener('resize', UpdateDisplayMode);
-		}
-	},[UpdateDisplayMode]);
-
-	const handleTouch = (item: string) => {
-    setActiveItem(item);
-    setTimeout(()=> {
-      setActiveItem(null);
-    }, 500);
-  };
-		
-	console.log('displayMode:',displayMode);
-	console.log('displayMode !== "web":',displayMode !== "web");
-	console.log('!displayMode.includes("web"):',!displayMode.includes("web"));
+	// const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
 
+	// const handleTouch = (item: string) => {
+  //   setActiveItem(item);
+  //   setTimeout(()=> {
+  //     setActiveItem(null);
+  //   }, 500);
+  // };
+	const viewType = useSelector((state: RootState) => state.view.viewSize);
 	const isSingleColumn = useSelector(feedColumns) === 1;
 	const showMedia = useSelector(feedMedia);
 	const sort = useSelector(sortValue);
@@ -161,7 +130,7 @@ const ControlsDropdown: React.FC = () => {
 						className="DropdownMenuCheckboxItem"
 						checked={isSingleColumn}
 						onCheckedChange={handleChangeColumn}
-						disabled={displayMode > 0}
+						disabled={viewType !== null ? viewType > 0 : false}
 					>
 						<DropdownMenu.ItemIndicator className="DropdownMenuItemIndicator">
 							<CheckIcon />

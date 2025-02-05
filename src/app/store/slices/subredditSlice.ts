@@ -31,7 +31,6 @@ const subredditsSlice = createSlice({
       localStorage.setItem('selected_subreddits', JSON.stringify(state.selected));
       // Change this to splice for n(1) best case
       state.subredditsFull = false;
-      state.firstLogin = state.selected.length === 0;
     },
   },
 });

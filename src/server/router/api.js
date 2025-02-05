@@ -21,7 +21,6 @@ router.get('/oauth/token', async (req, res) => {
   }
 
   try {
-    // test
     console.log("🔹 Sending request to Reddit API for access token...");
 
     const response = await axios.post(
@@ -62,7 +61,6 @@ router.post('/v1/revoke_token', async (req, res) => {
   }
 
   try {
-    // test
     console.log("🔹 Sending request to revoke the token...");
 
     const response = await axios.post('https://www.reddit.com/api/v1/revoke_token',
@@ -102,7 +100,6 @@ router.post('/vote', async (req, res) => {
   }
 
   try {
-    // test
     console.log("🔹 Sending request to Reddit API to vote...");
 
     const response = await axios.post(

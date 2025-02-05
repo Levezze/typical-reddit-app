@@ -117,7 +117,6 @@
         border-bottom: 2px solid $text-color;
         align-self: flex-end;
         width: 100%;
-        // text-align: center;
         padding-bottom: 10px;
       }
     }
@@ -142,11 +141,8 @@
           li {
             border: 2px $border-color;
             border-radius: 0 10px 10px 0;
-            // transition: $transition-effect;
-            // &:hover {
-            //   background-color: $secondary-color;
-            //   color: $primary-color;
-            // }
+            box-shadow: $container-shadow;
+
 
             .subreddit-empty-container {
               height: 60px;

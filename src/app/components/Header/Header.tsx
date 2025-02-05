@@ -1,19 +1,51 @@
-import React, { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { ContactButton } from '../ContactButton/ContactButton';
 import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { debounce } from 'lodash';
+import { setView } from '../../store/slices/viewSlice';
 import '../../../styles/Header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
 
 const Header: React.FC = () => {
+  const dispatch = useDispatch();
   const pageName = useSelector((state: RootState) => state.page.pageName);
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location.pathname);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [displayMode, setDisplayMode] = useState(() => {
+    return getComputedStyle(document.documentElement)
+      .getPropertyValue('--display-mode')
+      .trim();
+  });
 
+  const UpdateDisplayMode = useMemo(
+    () =>
+      debounce(()=> {
+        setDisplayMode(
+          getComputedStyle(document.documentElement)
+          .getPropertyValue('--display-mode')
+          .trim()
+        );
+      },100),
+    []
+  );
 
+  useEffect(()=> {
+    window.addEventListener('resize', UpdateDisplayMode);
+    UpdateDisplayMode();
+
+    return () => {
+      UpdateDisplayMode.cancel();
+      window.removeEventListener('resize', UpdateDisplayMode);
+    }
+  },[UpdateDisplayMode]);
+
+  useEffect(()=> {
+    const updatedView = parseInt(displayMode, 10);
+    dispatch(setView(updatedView));
+  },[dispatch, displayMode]);
+  
   const handleTouch = (item: string) => {
     setActiveItem(item);
     setTimeout(()=> {

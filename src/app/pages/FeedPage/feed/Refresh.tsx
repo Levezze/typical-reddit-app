@@ -10,7 +10,6 @@ const Refresh:React.FC<RefreshProps> = ({ refetch }) => {
 
   const handleTouch = (item: string) => {
     setActiveRefresh(item);
-    console.log('test');
     setTimeout(()=> {
       setActiveRefresh(null);
     }, 500);

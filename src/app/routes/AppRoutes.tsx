@@ -11,16 +11,26 @@ import SubredditsPage from '../pages/SubredditsPage';
 import FeedPage from '../pages/FeedPage';
 import ProfilePage from '../pages/ProfilePage';
 import restoreAuth from '../../utils/restoreAuth';
+import { setDarkLight } from '../store/slices/darkLightSlice';
+import { AppDispatch } from '../../app/store/store';
 
 const AppRoutes: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(()=> {
+    const isDark = localStorage.getItem('isDark');
+    console.log('is it dark?',isDark);
+    if (isDark !== null) {
+      dispatch(setDarkLight(localStorage.getItem('isDark') === 'true'));
+    };
+  },[dispatch]);
+
   useEffect(() => {
     restoreAuth(dispatch)
   },[dispatch]);
 
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
   const isFirstLogin = useSelector((state: RootState) => state.subreddits.firstLogin);
-
+  
   return (
     <Routes>
       <Route path='/' element={<App />}>
