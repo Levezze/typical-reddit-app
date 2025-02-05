@@ -155,7 +155,6 @@ a {
   }
 
   .feed-items {
-    --feed-column-number: 2;
     column-count: var(--feed-column-number); /* Define the number of columns */
     padding: 0;
     column-gap: 20px; /* Set the gap between columns */

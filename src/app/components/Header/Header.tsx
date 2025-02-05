@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { ContactButton } from '../ContactButton/ContactButton';
 import { RootState } from '../../store/store';
@@ -13,38 +13,35 @@ const Header: React.FC = () => {
   const pageName = useSelector((state: RootState) => state.page.pageName);
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const [displayMode, setDisplayMode] = useState(() => {
+  const [displayMode] = useState(() => {
     return getComputedStyle(document.documentElement)
       .getPropertyValue('--display-mode')
       .trim();
   });
-
-  const UpdateDisplayMode = useMemo(
-    () =>
-      debounce(()=> {
-        setDisplayMode(
-          getComputedStyle(document.documentElement)
-          .getPropertyValue('--display-mode')
-          .trim()
-        );
-      },100),
-    []
-  );
+  dispatch(setView(parseInt(displayMode, 10)))
 
   useEffect(()=> {
-    window.addEventListener('resize', UpdateDisplayMode);
-    UpdateDisplayMode();
+    const updateView = () => {
+      const updatedView = parseInt(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--display-mode')
+          .trim(),
+        10
+      );
+      dispatch(setView(updatedView))
+    };
+
+    updateView(); // Update the view on each re-render
+
+    const debouncedUpdateView = debounce(updateView, 100);
+
+    window.addEventListener('resize', debouncedUpdateView);
 
     return () => {
-      UpdateDisplayMode.cancel();
-      window.removeEventListener('resize', UpdateDisplayMode);
+      debouncedUpdateView.cancel();
+      window.removeEventListener('resize', debouncedUpdateView);
     }
-  },[UpdateDisplayMode]);
-
-  useEffect(()=> {
-    const updatedView = parseInt(displayMode, 10);
-    dispatch(setView(updatedView));
-  },[dispatch, displayMode]);
+  },[dispatch]);
   
   const handleTouch = (item: string) => {
     setActiveItem(item);

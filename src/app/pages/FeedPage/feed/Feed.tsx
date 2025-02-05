@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { PostsResponseData, Post } from '../../../../types/api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { SerializedError } from '@reduxjs/toolkit';
@@ -17,18 +17,25 @@ interface FeedProps {
 
 const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
   const columns = useSelector(feedColumns);
-  const feedItemRef = useRef<HTMLDivElement>(null);
+
+  // return getComputedStyle(document.documentElement)
+  //     .getPropertyValue('--display-mode')
+  //     .trim();
 
   console.log('column number:', columns)
   useEffect(()=>{
-    if (feedItemRef.current) {
-      feedItemRef.current.style.setProperty(
+    if (typeof window !== "undefined") {
+      document.documentElement.style.setProperty(
         "--feed-column-number",
         columns.toString()
       );
-      console.log("Updated CSS variable:", 
-        feedItemRef.current.style.getPropertyValue("--feed-column-number"));
+      console.log(
+        "Updated CSS variable:",
+        getComputedStyle(document.documentElement)
+          .getPropertyValue("--feed-column-number")
+      );
     }
+    
   },[columns]);
 
   const parsedData: Post[] = data ? parseFeedData(data as PostsResponseData): [];
@@ -56,7 +63,7 @@ const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
           </div>
           :
           data ? 
-          <div className='feed-items' ref={feedItemRef}>
+          <div className='feed-items'>
             {parsedData.map(post => <PostContainer key={post.id} post={post} />)}
           </div>
           :

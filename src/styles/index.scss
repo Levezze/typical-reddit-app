@@ -15,6 +15,7 @@
 
   // Display 0: Web | 1: Tablet | 2: Mobile
   --display-mode: 0;
+  --feed-column-number: 2;
 
   // Colors
   --primary-color: #fff;
@@ -25,6 +26,12 @@
   --container-bg-color: #303146;
   --border-color: #ADADB2;
   --switch-btn-bg: #F6F6F6;
+
+  // Measurements
+  --ui-width: 1100px;
+  --font-regular: 400;
+  --font-bold: 700;
+  --font-black: 900;
 
   // Fonts
   --font-size-main-title: 72px;
@@ -41,6 +48,7 @@
   :root {
     --font-size-main-title: 40px;
     --display-mode: 2;
+    --ui-width: none;
   }
 }
 

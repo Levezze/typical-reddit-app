@@ -7,8 +7,7 @@
   align-content: center;
   display: flex;
   justify-content: space-between;
-  min-width: calc(1100px - 40px);
-  max-width: $ui-width;
+  width: $ui-width;
   box-sizing: border-box;
 
   .Header-logo {
