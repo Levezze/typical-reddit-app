@@ -13,9 +13,9 @@
   
   h2 {
     font-size: 72px;
-    font-weight: $font-regular;
+    font-weight: var(--font-regular);
     margin: 0;
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   h1 {
@@ -23,7 +23,7 @@
     font-weight: 800;
     margin: 0;
     line-height: 0.9;
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   h3 {
@@ -31,11 +31,11 @@
     font-weight: 700;
     margin: 0;
     margin-top: 10px;
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   p {
-    color: $text-color;
+    color: var(--text-color);
     line-height: 1.8;
     max-width: 600px;
   }
@@ -48,8 +48,4 @@
   .auth-button {
     @include button;
   }
-
-  // .auth-button:hover {
-  //   @include button-hover;
-  // }
 }

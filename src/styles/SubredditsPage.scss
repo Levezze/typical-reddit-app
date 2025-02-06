@@ -1,38 +1,41 @@
 @use 'base.module' as *;
 
 .subreddits-container {
-  display: grid;
-  grid-template-columns: calc($ui-width - 300px - 20px) 300px;
-  width: $ui-width;
-  margin-top: $top-spacing;
+  display: var(--subs-container);
+  grid-template-columns: var(--grid-template-columns);
+  width: var(--ui-width);
+  margin-top: var(--top-spacing);
   gap: 20px;
   
   .subreddits-select-container {
-    display: flex;
+    width: 100%;
+    display: var(--search-subs-display);
     flex-direction: column;
-    height: calc(100vh - $top-spacing - 80px);
+    height: calc(100vh - var(--top-spacing) - 80px);
+    box-sizing: border-box;
 
     .search-container {
       margin-bottom: 20px;
+      padding: 0 var(--mobile-padding);
 
       h4 {
         height: 20px;
         font-size: 16px;
-        font-weight: $font-regular;
+        font-weight: var(--font-regular);
         margin: 0;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       input {
         height: 90px;
         width: 100%;
-        background-color: $bg-color;
+        background-color: var(--bg-color);
         border: none;
-        border-bottom: 2px solid $secondary-color;
+        border-bottom: 2px solid var(--secondary-color);
         align-self: self-end;
-        font-size: 72px;
-        font-weight: $font-bold;
-        color: $primary-color;
+        font-size: var(--font-size-main-title);
+        font-weight: var(--font-bold);
+        color: var(--primary-color);
       }
 
       textarea:focus, input:focus {
@@ -48,6 +51,7 @@
       scrollbar-width: none;  /* Firefox */
       justify-content: center;
       align-items: center;
+      padding: 0 var(--mobile-padding);
 
       .bottom-gradient {
         @include bottom-gradient;
@@ -60,35 +64,40 @@
     
     ul {
       padding: 0;
-      column-count: var(--feed-column-number); /* Define the number of columns */
-      column-gap: 20px; /* Set the gap between columns */
+      column-count: var(--feed-column-number);
+      column-gap: 20px;
       list-style: none;
       margin: 0;
     }
 
     li {
-      display: inline-block; /* Necessary for column layout */
-      width: 100%; /* Ensures items take full column width */
-      margin-bottom: 20px; /* Spacing between items */
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 20px;
     
       .sub-unit-container {
-        background-color: $container-bg-color;
-        padding: 30px;
+        background-color: var(--container-bg-color);
+        padding: var(--container-padding);
         border-radius: 10px;
-        border: 2px $border-color;
+        border: 2px solid var(--border-color);
         box-shadow: $container-shadow;
+        box-sizing: border-box;
 
         .title-section {
           display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          width: 100%;
           
           .sub-img {
             width: 60px;
+            height: 60px;
             border-radius: 50%;
             margin-right: 10px;
           }
 
           .title-text {
-            max-width: calc(390px - 30px - 60px - 10px - 30px);
+            max-width: calc(100% - 70px);
           }
         }
       }
@@ -99,7 +108,7 @@
 
   .subreddits-selected-container {
     width: calc(100%);
-    display: flex;
+    display: var(--selected-subs-display);
     flex-direction: column;
     height: calc(100vh - 80px - 100px);
   
@@ -111,10 +120,10 @@
       
       h1 {
         font-size: 48px;
-        font-weight: $font-bold;
+        font-weight: var(--font-bold);
         margin: 0;
-        color: $primary-color;
-        border-bottom: 2px solid $text-color;
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--text-color);
         align-self: flex-end;
         width: 100%;
         padding-bottom: 10px;
@@ -139,10 +148,9 @@
           margin: 0;
 
           li {
-            border: 2px $border-color;
+            border: 2px solid var(--border-color);
             border-radius: 0 10px 10px 0;
             box-shadow: $container-shadow;
-
 
             .subreddit-empty-container {
               height: 60px;
@@ -150,8 +158,8 @@
             }
 
             .subreddit-container {
-              background-color: $secondary-bg-color;
-              border-left: 10px solid $secondary-color;
+              background-color: var(--secondary-bg-color);
+              border-left: 10px solid var(--secondary-color);
               height: 60px;
               display: flex;
               align-items: center;
@@ -161,8 +169,8 @@
               transition: $transition-effect;
 
               &:hover {
-                background-color: $secondary-color;
-                color: $primary-color;
+                background-color: var(--secondary-color);
+                color: var(--primary-color);
               }
 
               .sub-img {
@@ -187,9 +195,9 @@
 
   h2 {
     font-size: 24px;
-    font-weight: $font-bold;
+    font-weight: var(--font-bold);
     margin: 0;
-    color: $secondary-color;
+    color: var(--secondary-color);
     text-overflow: ellipsis;
     overflow: hidden; 
     white-space: nowrap;
@@ -198,14 +206,14 @@
 
   h3 {
     font-size: 16px;
-    font-weight: $font-regular;
+    font-weight: var(--font-regular);
     margin: 0;
     margin-top: 10px;
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   p {
-    color: $text-color;
+    color: var(--text-color);
     line-height: 1.25;
   }
 

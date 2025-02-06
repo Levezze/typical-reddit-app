@@ -3,8 +3,8 @@
 
 :root {
   isolation: isolate;
-  font-family: $font-stack;
-  background-color: $bg-color;
+  font-family: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
   transition: background-color .3s;
 
   font-synthesis: none;
@@ -29,15 +29,43 @@
 
   // Measurements
   --ui-width: 1100px;
+  --top-spacing: 40px;
+  --mobile-padding: 0;
+  --container-padding: 30px;
+
+  // Fonts
   --font-regular: 400;
   --font-bold: 700;
   --font-black: 900;
 
   // Fonts
+  --font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-size-main-title: 72px;
+
+  // Header
+  --header-position: relative;
+  --header-height: 80px;
+  --header-top-margin: 0;
+  --header-justify-content: space-between;
+  --header-logo-height: none;
+
+  // Nav
+  --nav-position: relative;
+  --nav-bottom: none;
+  --ul-gap: 105px;
+  --li-width: none;
+  --nav-background-color: none;
+  --nav-width: none;
+
+  // Subreddits
+  --subs-container: grid;
+  --grid-template-columns: calc(var(--ui-width) - 300px - 20px) 300px;
+  --search-subs-display: flex;
+  --selected-subs-display: flex;
+  --sub-image: 60px;
 }
 
-@media (max-width: $tab-width) {
+@media ((min-width: $mobile-width) and (max-width: $tab-width)) {
   :root {
     --font-size-main-title: 40px;
     --display-mode: 1;
@@ -49,6 +77,30 @@
     --font-size-main-title: 40px;
     --display-mode: 2;
     --ui-width: none;
+    --mobile-padding: 35px;
+    --top-spacing: 0;
+    --container-padding: 20px;
+
+    // Header
+    --header-position: absolute;
+    --header-height: 150px;
+    --header-top-margin: 45px;
+    --header-justify-content: center;
+    --header-logo-height: 45px;
+
+    // Nav
+    --nav-position: absolute;
+    --nav-bottom: 0px;
+    --ul-gap: none;
+    --nav-li-width: 50px;
+    --nav-background-color: var(--secondary-bg-color);
+    --nav-width: 100%;
+
+    // Subreddits
+    --subs-container: flex;
+    --grid-template-columns: none;
+    --selected-subs-display: none;
+    --sub-image: 50px;
   }
 }
 

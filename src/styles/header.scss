@@ -1,20 +1,23 @@
 @use 'base.module' as *;
 
 .Header {
-  color: $primary-color;
-  height: 80px;
+  color: var(--primary-color);
+  height: var(--header-height);
   width: 100%;
   align-content: center;
   display: flex;
-  justify-content: space-between;
-  width: $ui-width;
+  justify-content: var(--header-justify-content);
+  width: var(--ui-width);
   box-sizing: border-box;
 
   .Header-logo {
+    position: var(--header-position);
+    top: var(--header-top-margin);
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 200px;
+    height: var(--header-logo-height);
     cursor: pointer;
 
     img {
@@ -28,26 +31,42 @@
   }
   
   nav {
+    background-color: var(--nav-background-color);
+    width: var(--nav-width);
     align-content: center;
+    position: var(--nav-position);
+    bottom: var(--nav-bottom);
+    z-index: 10;
     
     ul {
       display: flex;
-      gap: 105px;
-      padding: 0;
+      gap: var(--ul-gap);
+      padding: 0 35px;
+      justify-content: space-between;
+      margin: 0;
     }
   
-    li .menu-item {
+    li .full-nav-li {
       @include nav-style;
     }
-  }
 
+    li .mobile-nav-li {
+      display: flex;
+      width: var(--nav-li-width);
+      height: var(--nav-li-width);
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color)
+
+    }
+  }
 
   .contact-button {
     width: 120px;
     height: 40px;
-    color: $primary-color;
-    background-color: $bg-color;
-    border: 1px $border-color;
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 14px;
     font-weight: 800;
@@ -56,7 +75,7 @@
     @include transition;
 
     &:hover {
-      background-color: $secondary-bg-color;
+      background-color: var(--secondary-bg-color);
     }
   }
 }
