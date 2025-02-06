@@ -9,10 +9,13 @@ import { RootState } from '../../store/store';
 import { setPage } from '../../store/slices/pageSlice';
 import SubredditSelector from './SubredditSelector';
 import SubredditSelectedList from './SubredditSelectedList';
+import SearchSelectedSwitch from '../../components/Header/SearchSelectedSwitch';
 import '../../../styles/SubredditsPage.scss'
 
 const SubredditsPage: React.FC = () => {
+  const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   const dispatch = useDispatch();
+  
   useEffect(()=>{
     dispatch(setPage('subreddits'));
   },[dispatch]);
@@ -45,6 +48,7 @@ const SubredditsPage: React.FC = () => {
 
   return (
     <div className='subreddits-container'>
+      {pageViewMode === 2 ? <SearchSelectedSwitch /> : null}
       <div className='subreddits-select-container'>
         <Search />
         {

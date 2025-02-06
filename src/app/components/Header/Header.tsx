@@ -7,7 +7,6 @@ import { setView } from '../../store/slices/viewSlice';
 import Nav from './Nav';
 import '../../../styles/Header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
-import SearchSelectedSwitch from './SearchSelectedSwitch';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
@@ -62,7 +61,6 @@ const Header: React.FC = () => {
           />
           <h3>Typical Reddit</h3>
         </div>
-        {pageViewMode === 2 ? <SearchSelectedSwitch /> : null}
       </div>
       <Nav />
     </div>

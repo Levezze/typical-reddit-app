@@ -5,8 +5,67 @@
   grid-template-columns: var(--grid-template-columns);
   width: var(--ui-width);
   margin-top: var(--top-spacing);
-  gap: 20px;
+  gap: var(--switch-gap);
   
+  .SearchSelectedSwitch {
+    position: relative;
+    display: var(--switch-display);
+    flex-direction: row;
+    width: calc(100% - var(--mobile-padding) * 2);
+    height: var(--switch-height);
+    justify-content: center;
+    margin: 0 var(--mobile-padding);
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    box-shadow: $container-shadow;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .switch-slide-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        transition: transform 0.2s ease-in-out;
+        transform: translateX(0);
+
+      }
+      &.switched::before {
+        transform: translateX(100%);
+      }
+    }
+
+    .search-switch {
+      display: flex;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      transition: background-color .2s ease-in-out;
+      
+      h3 {
+        margin: 0;
+        transition: color .2s ease-in-out;
+      }
+    }
+
+    .switched {
+      h3 {
+        color: #fff;
+      }
+    }
+  }
+
   .subreddits-select-container {
     width: 100%;
     display: var(--search-subs-display);
@@ -46,7 +105,6 @@
         outline: none;
       }
     }
-  
 
     .subreddit-selector {
       padding-bottom: 50px;

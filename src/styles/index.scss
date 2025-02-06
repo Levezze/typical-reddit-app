@@ -50,11 +50,6 @@
   --header-top-margin: 0;
   --header-justify-content: space-between;
   --header-logo-height: none;
-  // Switch (Mobile Only)
-    --header-mobile-width: none;
-    --header-gap: 0;
-    --header-switch-display: none;
-    --header-switch-height: 40px;
 
   // Nav
   --nav-position: relative;
@@ -65,14 +60,20 @@
   --nav-width: none;
 
   // Subreddits
+    // Switch (Mobile Only)
+  --switch-mobile-width: none;
+  --switch-gap: 20px;
+  --switch-display: none;
+  --switch-height: 40px;
     // Search
   --search-margin-top: 0;
   --search-container-height: 110px;
   --search-h4-height: 20px;
   --search-input-height: 90px;
-  // Subs
+    // Subs
   --subs-container: grid;
   --grid-template-columns: calc(var(--ui-width) - 300px - 20px) 300px;
+  --grid-template-rows: 1fr;
   --search-subs-display: flex;
   --sub-image: 60px;
     //Selected
@@ -80,9 +81,9 @@
 
   // Feed
     // Post Interactions
-    --post-interaction-border: 2px solid var(--secondary-color);
+  --post-interaction-border: 2px solid var(--secondary-color);
       // Icons
-      --icon-height: 22px;
+    --icon-height: 22px;
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {
@@ -105,14 +106,10 @@
     // Header
     --header-position: relative;
     --header-flex-direction: column;
-    --header-height: 150px;
+    --header-height: 110px;
     --header-top-margin: 45px;
     --header-justify-content: center;
     --header-logo-height: 45px;
-      // Switch (Mobile Only)
-      --header-gap: 20px;
-      --header-mobile-width: 100%;
-      --header-switch-display: flex;
 
     // Nav
     --nav-position: absolute;
@@ -123,6 +120,10 @@
     --nav-width: 100%;
 
     // Subreddits
+      // Switch (Mobile Only)
+    --switch-gap: 0;
+    --switch-mobile-width: 100%;
+    --switch-display: flex;
       // Search
     --search-margin-top: 20px;
     --search-container-height: 70px;
@@ -130,8 +131,9 @@
     --search-input-height: 50px;
 
       // Subs
-    --subs-container: flex;
+    --subs-container: grid;
     --grid-template-columns: none;
+    --grid-template-rows: 40px 1fr;
     --selected-subs-display: none;
     --sub-image: 50px;
   }

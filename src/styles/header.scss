@@ -10,11 +10,11 @@
   box-sizing: border-box;
   
   .Header-container {
-    width: var(--header-mobile-width);
-    display: flex;
-    flex-direction: var(--header-flex-direction);
-    align-items: center;
-    gap: 20px;
+    // width: var(--switch-mobile-width);
+    // display: flex;
+    // flex-direction: var(--header-flex-direction);
+    // align-items: center;
+    // gap: 20px;
 
     .Header-logo {
       position: var(--header-position);
@@ -33,74 +33,6 @@
 
       h3 {
         margin-left: 15px;
-      }
-    }
-
-    .SearchSelectedSwitch {
-      position: relative;
-      display: var(--header-switch-display);
-      flex-direction: row;
-      width: calc(100% - var(--mobile-padding) * 2);
-      height: var(--header-switch-height);
-      justify-content: center;
-      margin: 0 var(--mobile-padding);
-      // background-color: var(--secondary-bg-color);
-      border-radius: 10px;
-      border: 2px solid var(--border-color);
-      box-shadow: $container-shadow;
-      box-sizing: border-box;
-      overflow: hidden;
-      // z-index: 1;
-
-      // .switch-background {
-      //   width: 100%;
-      //   background-color: var(--secondary-bg-color);
-      // }
-
-      .switch-slide-background {
-        
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 50%;
-          height: 100%;
-          background-color: var(--secondary-color);
-          transition: transform 0.2s ease-in-out;
-          transform: translateX(0);
-
-        }
-        &.switched::before {
-          transform: translateX(100%);
-        }
-      }
-
-      .search-switch {
-        display: flex;
-        width: 50%;
-        justify-content: center;
-        align-items: center;
-        transition: background-color .2s ease-in-out;
-        
-        h3 {
-          margin: 0;
-          transition: color .2s ease-in-out;
-        }
-      }
-
-      .switched {
-        h3 {
-          color: #fff;
-        }
       }
     }
   }
