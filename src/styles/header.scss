@@ -3,30 +3,74 @@
 .Header {
   color: var(--primary-color);
   height: var(--header-height);
-  width: 100%;
   align-content: center;
   display: flex;
   justify-content: var(--header-justify-content);
   width: var(--ui-width);
   box-sizing: border-box;
-
-  .Header-logo {
-    position: var(--header-position);
-    top: var(--header-top-margin);
+  
+  .Header-container {
+    width: var(--header-mobile-width);
     display: flex;
-    flex-direction: row;
+    flex-direction: var(--header-flex-direction);
     align-items: center;
-    width: 200px;
-    height: var(--header-logo-height);
-    cursor: pointer;
+    gap: 20px;
 
-    img {
-      width: 45px;
-      height: 45px;
+    .Header-logo {
+      position: var(--header-position);
+      margin-top: var(--header-top-margin);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 200px;
+      height: var(--header-logo-height);
+      cursor: pointer;
+
+      img {
+        width: 45px;
+        height: 45px;
+      }
+
+      h3 {
+        margin-left: 15px;
+      }
     }
 
-    h3 {
-      margin-left: 15px;
+    .SearchSelectedSwitch {
+      display: var(--header-switch-display);
+      flex-direction: row;
+      width: calc(100% - var(--mobile-padding) * 2);
+      height: var(--header-switch-height);
+      justify-content: center;
+      margin: 0 var(--mobile-padding);
+      background-color: var(--container-bg-color);
+      border-radius: 10px;
+      border: 2px solid var(--border-color);
+      box-shadow: $container-shadow;
+      box-sizing: border-box;
+      overflow: hidden;
+
+
+      .search-switch {
+        display: flex;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+        transition: background-color .2s ease-in-out;
+        
+        h3 {
+          margin: 0;
+          transition: color .2s ease-in-out;
+        }
+      }
+
+      .switched {
+        background-color: var(--secondary-color);
+
+        h3 {
+          color: #fff;
+        }
+      }
     }
   }
   
@@ -56,8 +100,12 @@
       height: var(--nav-li-width);
       justify-content: center;
       align-items: center;
-      color: var(--text-color)
+      color: var(--text-color);
 
+      &.current-page {
+        background-color: var(--secondary-color);
+        color: #fff;
+      }
     }
   }
 

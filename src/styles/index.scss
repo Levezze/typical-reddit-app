@@ -41,13 +41,20 @@
   // Fonts
   --font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-size-main-title: 72px;
+  --font-size-container-title: 24px;
 
   // Header
   --header-position: relative;
+  --header-flex-direction: row;
   --header-height: 80px;
   --header-top-margin: 0;
   --header-justify-content: space-between;
   --header-logo-height: none;
+  // Switch (Mobile Only)
+    --header-mobile-width: none;
+    --header-gap: 0;
+    --header-switch-display: none;
+    --header-switch-height: 40px;
 
   // Nav
   --nav-position: relative;
@@ -82,18 +89,24 @@
 @media (max-width: $mobile-width) {
   :root {
     --font-size-main-title: 30px;
+    --font-size-container-title: 20px;
     --display-mode: 2;
-    --ui-width: none;
+    --ui-width: 100%;
     --mobile-padding: 30px;
     --top-spacing: 0;
     --container-padding: 20px;
 
     // Header
-    --header-position: absolute;
+    --header-position: relative;
+    --header-flex-direction: column;
     --header-height: 150px;
     --header-top-margin: 45px;
     --header-justify-content: center;
     --header-logo-height: 45px;
+      // Switch (Mobile Only)
+      --header-gap: 20px;
+      --header-mobile-width: 100%;
+      --header-switch-display: flex;
 
     // Nav
     --nav-position: absolute;

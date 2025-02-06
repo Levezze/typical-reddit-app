@@ -7,13 +7,14 @@ import { setView } from '../../store/slices/viewSlice';
 import Nav from './Nav';
 import '../../../styles/Header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
+import SearchSelectedSwitch from './SearchSelectedSwitch';
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const columns = useSelector((state: RootState) => state.feed.feedColumns);
+  const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   
-  // console.log('column number:', columns)
   useEffect(()=>{
     if (typeof window !== "undefined") {
       document.documentElement.style.setProperty(
@@ -54,11 +55,16 @@ const Header: React.FC = () => {
   
   return (
     <div className='Header'>
-      <div className='Header-logo' onClick={()=>navigate('/')}>
-        <img 
-          src={landingImg} 
-        />
-        <h3>Typical Reddit</h3>
+      <div 
+        className={`Header-container ${pageViewMode === 2 ? 
+          'mobile-header' : null}`}>
+        <div className='Header-logo' onClick={()=>navigate('/')}>
+          <img 
+            src={landingImg} 
+          />
+          <h3>Typical Reddit</h3>
+        </div>
+        {pageViewMode === 2 ? <SearchSelectedSwitch /> : null}
       </div>
       <Nav />
     </div>
