@@ -76,8 +76,8 @@
   --subs-container: grid;
   --grid-template-columns: calc(var(--ui-width) - 300px - 20px) 300px;
   --grid-template-rows: 1fr;
-  --search-subs-display: flex;
   --sub-image: 60px;
+  --search-subs-display: flex;
     //Selected
   --selected-subs-display: flex;
 
@@ -116,7 +116,7 @@
     // Nav
     --nav-position: absolute;
     --nav-bottom: 0px;
-    --ul-gap: none;
+    --ul-gap: 0;
     --nav-li-width: 50px;
     --nav-background-color: var(--secondary-bg-color);
     --nav-width: 100%;
@@ -136,7 +136,7 @@
     --subs-container: grid;
     --grid-template-columns: none;
     --grid-template-rows: 40px 1fr;
-    --selected-subs-display: none;
+    // --selected-subs-display: none;
     --sub-image: 50px;
   }
 }

@@ -19,6 +19,14 @@ const SubredditsPage: React.FC = () => {
   useEffect(()=>{
     dispatch(setPage('subreddits'));
   },[dispatch]);
+
+  useEffect(()=> {
+    if (pageViewMode !== 2) {
+      document.documentElement.style.setProperty('--search-subs-display', 'flex');
+      document.documentElement.style.setProperty('--selected-subs-display', 'flex');
+    }
+  },[pageViewMode]);
+  
   const isShowPopular = useSelector(showPopular, shallowEqual);
   const updatedSearchVal = useSelector(searchValue, shallowEqual);
 
