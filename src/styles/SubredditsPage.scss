@@ -16,10 +16,12 @@
 
     .search-container {
       margin-bottom: 20px;
+      margin-top: var(--search-margin-top);
       padding: 0 var(--mobile-padding);
+      height: var(--search-container-height);
 
       h4 {
-        height: 20px;
+        height: var(--search-h4-height);
         font-size: 16px;
         font-weight: var(--font-regular);
         margin: 0;
@@ -27,7 +29,8 @@
       }
 
       input {
-        height: 90px;
+        display: flex;
+        height: var(--search-input-height);
         width: 100%;
         background-color: var(--bg-color);
         border: none;
@@ -52,6 +55,7 @@
       justify-content: center;
       align-items: center;
       padding: 0 var(--mobile-padding);
+      height: calc(100vh - 260px - 50px);
 
       .bottom-gradient {
         @include bottom-gradient;

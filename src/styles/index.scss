@@ -58,11 +58,18 @@
   --nav-width: none;
 
   // Subreddits
+    // Search
+  --search-margin-top: 0;
+  --search-container-height: 110px;
+  --search-h4-height: 20px;
+  --search-input-height: 90px;
+  // Subs
   --subs-container: grid;
   --grid-template-columns: calc(var(--ui-width) - 300px - 20px) 300px;
   --search-subs-display: flex;
-  --selected-subs-display: flex;
   --sub-image: 60px;
+    //Selected
+  --selected-subs-display: flex;
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {
@@ -74,10 +81,10 @@
 
 @media (max-width: $mobile-width) {
   :root {
-    --font-size-main-title: 40px;
+    --font-size-main-title: 30px;
     --display-mode: 2;
     --ui-width: none;
-    --mobile-padding: 35px;
+    --mobile-padding: 30px;
     --top-spacing: 0;
     --container-padding: 20px;
 
@@ -97,6 +104,13 @@
     --nav-width: 100%;
 
     // Subreddits
+      // Search
+    --search-margin-top: 20px;
+    --search-container-height: 70px;
+    --search-h4-height: 20px;
+    --search-input-height: 50px;
+
+      // Subs
     --subs-container: flex;
     --grid-template-columns: none;
     --selected-subs-display: none;
