@@ -58,6 +58,8 @@
   --li-width: none;
   --nav-background-color: none;
   --nav-width: none;
+    // Mobile
+  --nav-translate-distance: var(--container-padding);
 
   // Subreddits
     // Switch (Mobile Only)
@@ -99,7 +101,7 @@
     --font-size-container-title: 20px;
     --display-mode: 2;
     --ui-width: 100%;
-    --mobile-padding: 30px;
+    --mobile-padding: 20px;
     --top-spacing: 0;
     --container-padding: 20px;
 

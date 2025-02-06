@@ -9,7 +9,7 @@ import { RootState } from '../../store/store';
 import { setPage } from '../../store/slices/pageSlice';
 import SubredditSelector from './SubredditSelector';
 import SubredditSelectedList from './SubredditSelectedList';
-import SearchSelectedSwitch from '../../components/Header/SearchSelectedSwitch';
+import SearchSelectedSwitch from './SearchSelectedSwitch';
 import '../../../styles/SubredditsPage.scss'
 
 const SubredditsPage: React.FC = () => {

@@ -44,13 +44,82 @@
     position: var(--nav-position);
     bottom: var(--nav-bottom);
     z-index: 10;
+
+    .nav-slide-container.mobile-bg {
+      position: relative;
+      display: var(--switch-display);
+      flex-direction: row;
+      // width: calc(100% - var(--mobile-padding) * 2);
+      height: 50px;
+      // justify-content: center;
+      // margin: 0 var(--mobile-padding);
+      // border-radius: 10px;
+      // border: 2px solid var(--border-color);
+      // box-shadow: $container-shadow;
+      box-sizing: border-box;
+      overflow: hidden;
+      --nav-gap-mobile: calc((100% - 200px - var(--mobile-padding) * 2) / 3);
+      z-index: -1;
+    
+      .nav-slide-background.mobile-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50px;
+          height: 100%;
+          background-color: var(--secondary-color);
+          transition: transform 0.2s ease-in-out;
+          transform: translateX(var(--nav-translate-distance));
+          z-index: -5;
+        }
+    
+        // &.subreddits-bg::after {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   // left: calc(var(--mobile-padding) + 100px + var(--nav-gap-mobile) * 2);
+        //   left: 0;
+        //   width: 50px;
+        //   height: 100%;
+        //   background-color: var(--secondary-color);
+        //   transition: transform 0.2s ease-in-out;
+        //   transform: translateX(calc(var(--mobile-padding) + 100px + var(--nav-gap-mobile) * 2));
+        //   transform: translateX(200px);
+        //   z-index: -5;
+        // }
+
+        // &.feed-bg::after {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   // left: calc(var(--mobile-padding) + 100px + var(--nav-gap-mobile) * 2);
+        //   left: 0;
+        //   width: 50px;
+        //   height: 100%;
+        //   background-color: var(--secondary-color);
+        //   transition: transform 0.2s ease-in-out;
+        //   transform: translateX(var(--nav-translate-distance));
+        //   z-index: -5;
+        // }
+      }
+    }
     
     ul {
       display: flex;
-      gap: var(--ul-gap);
-      padding: 0 35px;
+      // gap: var(--ul-gap);
+      padding: 0 var(--mobile-padding);
       justify-content: space-between;
       margin: 0;
+      z-index: 10;
     }
   
     li .full-nav-li {
@@ -65,10 +134,10 @@
       align-items: center;
       color: var(--text-color);
 
-      &.current-page {
-        background-color: var(--secondary-color);
-        color: #fff;
-      }
+      // &.current-page {
+      //   background-color: var(--secondary-color);
+      //   color: #fff;
+      // }
     }
   }
 
@@ -90,3 +159,4 @@
     }
   }
 }
+
