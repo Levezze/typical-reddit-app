@@ -42,9 +42,7 @@ const Header: React.FC = () => {
     };
 
     updateView(); // Update the view on each re-render
-
     const debouncedUpdateView = debounce(updateView, 10);
-
     window.addEventListener('resize', debouncedUpdateView);
 
     return () => {

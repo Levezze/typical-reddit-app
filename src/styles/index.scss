@@ -77,6 +77,12 @@
   --sub-image: 60px;
     //Selected
   --selected-subs-display: flex;
+
+  // Feed
+    // Post Interactions
+    --post-interaction-border: 2px solid var(--secondary-color);
+      // Icons
+      --icon-height: 22px;
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {

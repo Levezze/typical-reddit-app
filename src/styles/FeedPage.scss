@@ -63,8 +63,8 @@ a {
       }
 
       .feed-icon {
-        width: 18px;
-        height: 18px;
+        width: 19px;
+        height: 19px;
         display: inline-flex;
         align-items: center;
         padding-bottom: $icon-bottom-padding;
@@ -223,7 +223,14 @@ a {
     .votes-comments {
       display: flex;
       margin-top: 10px;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 40px;
+
+      .vote-container,
+      .comments-container {
+        padding-bottom: 10px;
+        border-bottom: var(--post-interaction-border);
+      }
       
       p {
         margin: 5px 0 0;
@@ -231,6 +238,8 @@ a {
         line-height: 1;
         min-width: 30px;
         text-align: center;
+        // font-size: 18px;
+        font-weight: 500;
       }
 
       .vote-container {
@@ -241,7 +250,7 @@ a {
         justify-content: center;
 
         .vote {
-          height: 20px;
+          height: var(--icon-height);
           cursor: pointer;
           transition: .3s;
           color: var(--text-color);
@@ -256,8 +265,8 @@ a {
         }
         
         .arrow-icon {
-          width: 20px;
-          height: 20px;
+          width: var(--icon-height);
+          height: var(--icon-height);
         }
 
         .active {
@@ -274,8 +283,8 @@ a {
 
 
         .comments-icon {
-          width: 20px;
-          height: 20px;
+          width: var(--icon-height);
+          height: var(--icon-height);
           color: var(--text-color);
           transition: .3s;
         }
