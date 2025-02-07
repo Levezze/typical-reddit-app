@@ -3,8 +3,11 @@ import { ContactButton } from '../ContactButton/ContactButton'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import OptionsIcon from '../icons/OptionsIcon';
 import { moveBackground, indexFromPage } from '../../../utils/header';
+import MobileFeedIcon from '../icons/nav-mobile/MobileFeedIcon';
+import MobileSubsIcon from '../icons/nav-mobile/MobileSubsIcon';
+import MobileAccountIcon from '../icons/nav-mobile/MobileAccountIcon';
+import MobileContactIcon from '../icons/nav-mobile/MobileContactIcon';
 
 const Nav:React.FC = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
@@ -54,7 +57,7 @@ const Nav:React.FC = () => {
                   to="/feed"
                   onTouchStart={()=> handleTouch('feed')}
                 >
-                  {pageViewMode === 2 ? <OptionsIcon /> : 'Feed'}
+                  {pageViewMode === 2 ? <MobileFeedIcon /> : 'Feed'}
                 </Link>
               </li>
               
@@ -67,7 +70,7 @@ const Nav:React.FC = () => {
                   to="/subreddits"
                   onTouchStart={()=> handleTouch('subreddits')}
                 >
-                  {pageViewMode === 2 ? <OptionsIcon /> : 'Subreddits'}
+                  {pageViewMode === 2 ? <MobileSubsIcon /> : 'Subreddits'}
                 </Link>
               </li>
               
@@ -80,7 +83,7 @@ const Nav:React.FC = () => {
                   to="/account"
                   onTouchStart={()=> handleTouch('account')}
                 >
-                  {pageViewMode === 2 ? <OptionsIcon /> : 'ACCOUNT'}
+                  {pageViewMode === 2 ? <MobileAccountIcon /> : 'ACCOUNT'}
                 </Link>
               </li>
               {pageViewMode === 2 ? 
@@ -93,7 +96,7 @@ const Nav:React.FC = () => {
                   to="/contact"
                   onTouchStart={()=> handleTouch('contact')}
                 >
-                  {pageViewMode === 2 ? <OptionsIcon /> : 'CONTACT'}
+                  {pageViewMode === 2 ? <MobileContactIcon /> : 'CONTACT'}
                 </Link>
               </li>
               :

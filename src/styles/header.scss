@@ -94,6 +94,10 @@
       color: var(--text-color);
       transition: color .3s ease-in-out;
 
+      .nav-icon {
+        height: 20px;
+        width: auto;
+      }
     }
     li .mobile-nav-li.current-page {
       color: #fff;
