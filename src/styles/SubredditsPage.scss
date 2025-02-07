@@ -68,10 +68,14 @@
 
   .subreddits-select-container {
     width: 100%;
-    display: var(--search-subs-display);
+    display: flex;
     flex-direction: column;
     height: calc(100vh - var(--top-spacing) - 80px);
     box-sizing: border-box;
+
+    &.hide {
+      display: none;
+    }
 
     .search-container {
       margin-bottom: 20px;
@@ -191,6 +195,10 @@
       grid-template-columns: 1fr;
       grid-template-rows: var(--search-container-height) 1fr var(--button-height);
       gap: 10px;
+    }
+
+    &.hide {
+      display: none;
     }
     
     .selected-title {

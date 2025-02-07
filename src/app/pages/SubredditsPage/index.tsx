@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useGetPopularSubredditsQuery, useSearchSubredditsQuery } from '../../store/middleware/subredditsAPI';
 import { parseSearchData } from '../../../utils/parseResponseData';
 import { ResponseData, Subreddit } from '../../../types/api';
@@ -13,6 +13,7 @@ import SearchSelectedSwitch from './SearchSelectedSwitch';
 import '../../../styles/SubredditsPage.scss'
 
 const SubredditsPage: React.FC = () => {
+  const [searchSwitch, setSearchSwitch] = useState<boolean>(false);
   const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   const dispatch = useDispatch();
   
@@ -20,12 +21,10 @@ const SubredditsPage: React.FC = () => {
     dispatch(setPage('subreddits'));
   },[dispatch]);
 
-  useEffect(()=> {
-    if (pageViewMode !== 2) {
-      document.documentElement.style.setProperty('--search-subs-display', 'flex');
-      document.documentElement.style.setProperty('--selected-subs-display', 'flex');
-    }
-  },[pageViewMode]);
+  const handleSearch = () => {
+    setSearchSwitch(!searchSwitch);
+    console.log(searchSwitch);
+  };
   
   const isShowPopular = useSelector(showPopular, shallowEqual);
   const updatedSearchVal = useSelector(searchValue, shallowEqual);
@@ -56,8 +55,14 @@ const SubredditsPage: React.FC = () => {
 
   return (
     <div className='subreddits-container'>
-      {pageViewMode === 2 ? <SearchSelectedSwitch /> : null}
-      <div className='subreddits-select-container'>
+      {pageViewMode === 2 ? 
+      <SearchSelectedSwitch
+        searchSwitch={searchSwitch}
+        handleSearch={handleSearch}
+      /> : null}
+      <div className={`subreddits-select-container 
+        ${pageViewMode === 2 ? searchSwitch 
+        ? 'hide' : '' : ''}`}>
         <Search />
         {
           error ? (<p>Error loading subreddits!</p>) 
@@ -67,8 +72,9 @@ const SubredditsPage: React.FC = () => {
           <SubredditSelector />
         }
       </div>
-        <div className={`subreddits-selected-container ${pageViewMode === 2 ?
-          'grid-layout' : 'flex-layout'}`}>
+        <div className={`subreddits-selected-container 
+        ${pageViewMode === 2 ? !searchSwitch ? 'hide' : 'grid-layout' : 'flex-layout'} 
+        `}>
           <div className='selected-title'>
             <h1>Selected</h1>
           </div>

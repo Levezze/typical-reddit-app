@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import OptionsIcon from '../icons/OptionsIcon';
+import { moveBackground, indexFromPage } from '../../../utils/header';
 
 const Nav:React.FC = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   const pageName = useSelector((state: RootState) => state.page.pageName);
 
@@ -17,36 +19,20 @@ const Nav:React.FC = () => {
     }, 300);
   };
 
-  console.log('pageViewMode',pageViewMode)
-  
-  const moveBackground = (
-    padding: number, 
-    gap: number, 
-    liWidth: number, 
-    index: number
-  ) => {
-    const translateValue = padding + (index) * liWidth + (index * gap);
-    console.log('translateValue',translateValue);
-    document.documentElement.style.setProperty('--nav-translate-distance', `${translateValue}px`);
-  };
-
-  const indexFromPage = (page: string) => {
-    if (page === 'feed') return 0;
-    if (page === 'subreddits') return 1;
-    if (page === 'account') return 2;
-    if (page === 'contact') return 3;
-    return 0;
-  };
+  useEffect(()=>{
+    const handleResize = () => setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize); // Cleanup
+  },[])
 
   useEffect(() => {
     const index = indexFromPage(pageName);
     const root = document.documentElement;
     const mobilePadding = parseInt(getComputedStyle(root).getPropertyValue('--mobile-padding'));
-    console.log('test',mobilePadding)
     const navLiWidth = parseInt(getComputedStyle(root).getPropertyValue('--nav-li-width'));
-    const navGap = (window.innerWidth - (navLiWidth * 4) - (mobilePadding * 2)) / 3;
+    const navGap = (windowSize - (navLiWidth * 4) - (mobilePadding * 2)) / 3;
     moveBackground(mobilePadding, navGap, navLiWidth, index);
-  },[pageName]);
+  },[pageName, windowSize]);
 
   return (
     <>
