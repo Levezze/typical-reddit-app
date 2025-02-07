@@ -67,7 +67,8 @@ const SubredditsPage: React.FC = () => {
           <SubredditSelector />
         }
       </div>
-        <div className='subreddits-selected-container'>
+        <div className={`subreddits-selected-container ${pageViewMode === 2 ?
+          'grid-layout' : 'flex-layout'}`}>
           <div className='selected-title'>
             <h1>Selected</h1>
           </div>

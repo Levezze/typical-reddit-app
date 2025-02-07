@@ -30,8 +30,9 @@
   // Measurements
   --ui-width: 1100px;
   --top-spacing: 40px;
-  --mobile-padding: 0;
+  --mobile-padding: 0px;
   --container-padding: 30px;
+  --button-height: 50px;
 
   // Fonts
   --font-regular: 400;
@@ -41,13 +42,14 @@
   // Fonts
   --font-stack: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-size-main-title: 72px;
+  --font-size-secondary-title: 48px;
   --font-size-container-title: 24px;
 
   // Header
   --header-position: relative;
   --header-flex-direction: row;
   --header-height: 80px;
-  --header-top-margin: 0;
+  --header-top-margin: 0px;
   --header-justify-content: space-between;
   --header-logo-height: none;
 
@@ -58,6 +60,7 @@
   --li-width: none;
   --nav-background-color: none;
   --nav-width: none;
+  --nav-li-width: none;
     // Mobile
   --nav-translate-distance: var(--container-padding);
 
@@ -68,7 +71,7 @@
   --switch-display: none;
   --switch-height: 40px;
     // Search
-  --search-margin-top: 0;
+  --search-margin-top: 0px;
   --search-container-height: 110px;
   --search-h4-height: 20px;
   --search-input-height: 90px;
@@ -80,6 +83,9 @@
   --search-subs-display: flex;
     //Selected
   --selected-subs-display: flex;
+  --sub-selected-width: 100%;
+  --sub-selected-btn-width: 100%;
+  --sub-selected-btn-height: none;
 
   // Feed
     // Post Interactions
@@ -98,11 +104,12 @@
 @media (max-width: $mobile-width) {
   :root {
     --font-size-main-title: 30px;
+    --font-size-secondary-title: 30px;
     --font-size-container-title: 20px;
     --display-mode: 2;
     --ui-width: 100%;
     --mobile-padding: 20px;
-    --top-spacing: 0;
+    --top-spacing: 0px;
     --container-padding: 20px;
 
     // Header
@@ -116,14 +123,14 @@
     // Nav
     --nav-position: absolute;
     --nav-bottom: 0px;
-    --ul-gap: 0;
+    --ul-gap: 0px;
     --nav-li-width: 50px;
     --nav-background-color: var(--secondary-bg-color);
     --nav-width: 100%;
 
     // Subreddits
       // Switch (Mobile Only)
-    --switch-gap: 0;
+    --switch-gap: 0px;
     --switch-mobile-width: 100%;
     --switch-display: flex;
       // Search
@@ -131,13 +138,16 @@
     --search-container-height: 70px;
     --search-h4-height: 20px;
     --search-input-height: 50px;
-
       // Subs
     --subs-container: grid;
     --grid-template-columns: none;
     --grid-template-rows: 40px 1fr;
-    // --selected-subs-display: none;
+    --selected-subs-display: grid;
     --sub-image: 50px;
+    --sub-selected-width: 100vw;
+    --sub-selected-btn-width: calc(100vw - (var(--mobile-padding) * 2));
+    --sub-selected-btn-height: 70px;
+
   }
 }
 

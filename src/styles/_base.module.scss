@@ -115,7 +115,7 @@ $icon-bottom-padding: 4px;
 @mixin button(
   $name: 'button',
   $width: 100%, 
-  $height: 50px,
+  $height: var(--button-height),
   $bg-color: var(--secondary-color), 
   $color: #fff, 
   $font-family: 'Epilogue', 

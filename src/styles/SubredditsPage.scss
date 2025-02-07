@@ -1,7 +1,7 @@
 @use 'base.module' as *;
 
 .subreddits-container {
-  display: var(--subs-container);
+  display: grid;
   grid-template-columns: var(--grid-template-columns);
   width: var(--ui-width);
   margin-top: var(--top-spacing);
@@ -169,22 +169,39 @@
 
   // Selected Column
 
+  --selected-height-calc: calc(100vh - var(--header-height) - var(--search-margin-top) - var(--top-spacing) -  var(--nav-li-width) - var(--button-height));
+
+  --selected-subs-height-calc: calc(var(--selected-height-calc) - var(--search-margin-top) - var(--button-height));
+
   .subreddits-selected-container {
-    width: 100%;
-    display: var(--selected-subs-display);
-    flex-direction: column;
-    max-height: calc(100vh - var(--top-spacing) - 80px);
-    overflow: auto;
-  
+    position: relative;
+    margin-top: var(--search-margin-top);
+    width: var(--sub-selected-width);
+    height: var(--selected-height-calc);
+    // overflow: auto;
+
+    &.flex-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &.grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: var(--search-container-height) 1fr var(--button-height);
+      gap: 10px;
+    }
+    
     .selected-title {
-      margin-top: var(--search-margin-top);
       height: var(--search-container-height);
       margin-bottom: 20px;
       display: flex;
+      padding: 0 var(--mobile-padding);
       
       h1 {
-        height: var(--search-input-height);
-        font-size: var(--font-size-main-title);
+        // height: var(--search-input-height);
+        font-size: var(--font-size-secondary-title);
         font-weight: var(--font-bold);
         margin: 0;
         color: var(--primary-color);
@@ -195,18 +212,23 @@
       }
     }
     
+    .continue-btn {
+      z-index: 10;
+      // position: absolute; // MOBILE ONLY
+      // bottom: 0; // MOBILE ONLY
+      margin: 0 var(--mobile-padding);
+      width: var(--sub-selected-btn-width);
+      box-sizing: cont-box;
+    }
+
     .subreddit-selected {
-      position: relative;
+      // position: relative;
       display: flex;
       flex-direction: column;
       gap: 20px;
-
-      .continue-btn {
-        z-index: 10;
-        position: absolute; // MOBILE ONLY
-        bottom: 0; // MOBILE ONLY
-        margin: 10px 0;
-      }
+      padding: 0 var(--mobile-padding);
+      max-height: var(--selected-subs-height-calc);
+      overflow: auto;
 
       .selected-subs {
         ul {
@@ -215,11 +237,10 @@
           flex-direction: column;
           gap: 20px;
           margin: 0;
-          max-height: calc(100vh - 260px - 50px);
+          // max-height: calc(100vh - 260px - 50px);
           overflow: auto;
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
-
 
           li {
             border: 2px solid var(--border-color);
