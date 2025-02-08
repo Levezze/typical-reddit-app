@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setPage } from '../../store/slices/pageSlice';
 import '../../../styles/ContactPage.scss'
-import Button from '../../components/Button/Button';
 import githubWhite from '../../../img/contact/github/github-mark-white.png';
 import githubBlack from '../../../img/contact/github/github-mark.png';
 import linkedinWhite from '../../../img/contact/linkedin/linkedin-white.png';
@@ -34,10 +33,9 @@ const ContactPage: React.FC = () => {
             </div>
           </div>
           <div className={`contact-buttons ${pageView === 2 ? 'mobile' : ''}`}>
-            <Button 
-              buttonName='CONTACT@LEVEZZE.COM' 
-              className='contact-email-button'
-            />
+            <a href="mailto:contact@levezze.com" className='contact-email-button'>
+              CONTACT@LEVEZZE.COM
+            </a>
             <a href="https://github.com/Levezze" target='_blank'>
               <img src={darkLight ? githubWhite : githubBlack} alt="Levezze's GitHub" />
             </a>
