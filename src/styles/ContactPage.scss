@@ -1,0 +1,107 @@
+@use 'base.module' as *;
+
+.refresh-icon {
+  color: var(--secondary-color);
+}
+
+// Top Section
+
+.contact-top {
+  display: flex;
+  justify-content: space-between;
+  width: var(--ui-width);
+  border-bottom: 2px solid var(--secondary-color);
+  margin: var(--top-spacing) 0 var(--page-top-margin-bottom);
+  height: var(--page-top-height);
+
+  h1 {
+    font-size: var(--font-size-main-title);
+    font-weight: var(--font-bold);
+    margin: var(--h1-mobile-margin);
+    color: var(--primary-color);
+  }
+}
+
+// contact
+
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .contact-container {
+    width: var(--acc-container-width);
+    display: flex;
+    flex-direction: column;
+    // min-height: 400px;
+    background-color: var(--secondary-bg-color);
+    padding: var(--container-padding);
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    box-shadow: $container-shadow;
+
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid var(--secondary-color);
+      
+      h2 {
+        font-size: var(--font-size-container-title);
+        font-weight: var(--font-bold);
+        margin: 0 0 10px;
+        color: var(--secondary-color);
+        text-decoration: none;
+        text-align: center;
+      }
+
+      p {
+        margin: 0 0 10px;
+        text-align: center;
+        color: var(--primary-color)
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: var(--font-regular);
+        margin: 0 0 10px;
+        color: var(--primary-color);
+        text-decoration: none;
+        text-align: center;
+      }
+    }
+
+    .contact-buttons {
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      justify-content: center;
+      gap: 20px;
+      
+      .contact-email-button {
+        width: 390px;
+        @include button;
+      }
+      
+      a {
+        img {
+          height: 50px;
+        }
+      }
+      
+      &.mobile {
+        position: relative;
+        width: calc(var(--acc-container-width) - (var(--container-padding) * 2));
+        margin-top: 10px;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        .contact-email-button {
+          width: 100%;
+        }
+      }
+
+    }
+  }
+}

@@ -192,7 +192,7 @@ a {
       width: 100%;
       padding: 10px 0;
       border-top: 2px solid var(--secondary-color);
-      border-bottom: 2px solid var(--secondary-color);
+      // border-bottom: 2px solid var(--secondary-color);
       margin: 0 auto;
       justify-content: center;
       
@@ -205,14 +205,11 @@ a {
     
     .votes-comments {
       display: flex;
-      margin-top: 10px;
       justify-content: space-evenly;
-
-      .vote-container,
-      .comments-container {
-        padding-bottom: 10px;
-        border-bottom: var(--post-interaction-border);
-      }
+      background-color: var(--container-bg-color);
+      padding: 8px;
+      border: var(--post-interaction-border);
+      border-radius: 6px;
       
       p {
         margin: 5px 0 0;

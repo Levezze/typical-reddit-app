@@ -9,9 +9,9 @@
 .profile-top {
   display: flex;
   justify-content: space-between;
-  width: var(--acc-container-width);
+  width: var(--ui-width);
   border-bottom: 2px solid var(--secondary-color);
-  margin: var(--top-spacing) var(--mobile-padding) var(--page-top-margin-bottom);
+  margin: var(--top-spacing) 0 var(--page-top-margin-bottom);
   height: var(--page-top-height);
 
   h1 {

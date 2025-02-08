@@ -105,6 +105,9 @@
   }
 
   .contact-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 120px;
     height: 40px;
     color: var(--primary-color);
