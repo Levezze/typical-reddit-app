@@ -10,7 +10,7 @@ interface Props {
 
 const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   const [voted, setVoted] = useState(0);
-  const [numberOfVotes, setNumberOfVotes] = useState(formatNumber(ups));
+  const [numberOfVotes, setNumberOfVotes] = useState(ups);
 
   useEffect(()=> {
     if (likes === true) {
@@ -23,7 +23,7 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   },[likes]);
 
   useEffect(()=> {
-    setNumberOfVotes(formatNumber((parseInt(ups, 10) + voted)));
+    setNumberOfVotes((parseInt(ups, 10) + voted).toString());
   },[ups, voted])
   
   const voteUpClass = `vote up ${voted === 1 ?
@@ -45,7 +45,7 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
         >
         <VoteButton DIR={voted === 1 ? 0 : 1} ID={id} />
       </div>
-      <p>{numberOfVotes}</p>
+      <p>{formatNumber(numberOfVotes)}</p>
       <div 
         className={voteDownClass}
         onClick={()=>handleVote(-1)}

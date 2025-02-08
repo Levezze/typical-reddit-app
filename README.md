@@ -393,5 +393,6 @@ If you have any questions, feel free to contact the developer:
 - **App**: Convert into a mobile app.
 - **Share**: Add share button for posts.
 - **Skeleton**: Loading animation for subreddits / Feed / Profile.
+- **Token Refresh**: Add auto token refresh option / logout when token expires.
 
 ---
