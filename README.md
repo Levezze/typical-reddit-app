@@ -115,11 +115,18 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📂ContactButton
  ┃ ┃ ┃ ┗ 📜ContactButton.tsx
  ┃ ┃ ┣ 📂Header
- ┃ ┃ ┃ ┗ 📜Header.tsx
+ ┃ ┃ ┃ ┣ 📜Header.tsx
+ ┃ ┃ ┃ ┗ 📜Nav.tsx
  ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┣ 📂nav-mobile
+ ┃ ┃ ┃ ┃ ┣ 📜MobileAccountIcon.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜MobileContactIcon.tsx
+ ┃ ┃ ┃ ┃ ┣ 📜MobileFeedIcon.tsx
+ ┃ ┃ ┃ ┃ ┗ 📜MobileSubsIcon.tsx
  ┃ ┃ ┃ ┣ 📜ArrowIcon.tsx
  ┃ ┃ ┃ ┣ 📜CommentsIcon.tsx
  ┃ ┃ ┃ ┣ 📜OptionsIcon.tsx
+ ┃ ┃ ┃ ┣ 📜RefreshDoubleIcon.tsx
  ┃ ┃ ┃ ┣ 📜RefreshIcon.tsx
  ┃ ┃ ┃ ┗ 📜VoteArrow.tsx
  ┃ ┃ ┣ 📂Post
@@ -139,12 +146,10 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📂FeedPage
  ┃ ┃ ┃ ┣ 📂feed
  ┃ ┃ ┃ ┃ ┣ 📂controls
- ┃ ┃ ┃ ┃ ┃ ┗ 📜ControlsDropdown.tsx
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜ControlsDropdown.tsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜Refresh.tsx
  ┃ ┃ ┃ ┃ ┣ 📜Feed.tsx
- ┃ ┃ ┃ ┃ ┣ 📜Refresh.tsx
  ┃ ┃ ┃ ┃ ┗ 📜TimeAgo.tsx
- ┃ ┃ ┃ ┣ 📂vote
- ┃ ┃ ┃ ┃ ┗ 📜vote.ts
  ┃ ┃ ┃ ┗ 📜index.tsx
  ┃ ┃ ┣ 📂ProfilePage
  ┃ ┃ ┃ ┣ 📂User
@@ -155,6 +160,7 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┣ 📂Search
  ┃ ┃ ┃ ┃ ┗ 📜Search.tsx
  ┃ ┃ ┃ ┣ 📜index.tsx
+ ┃ ┃ ┃ ┣ 📜SearchSelectedSwitch.tsx
  ┃ ┃ ┃ ┣ 📜SubredditSelectedList.tsx
  ┃ ┃ ┃ ┗ 📜SubredditSelector.tsx
  ┃ ┃ ┗ 📜index.tsx
@@ -167,14 +173,17 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┃ ┣ 📜profileAPI.ts
  ┃ ┃ ┃ ┣ 📜subredditsAPI.ts
  ┃ ┃ ┃ ┣ 📜tokenAPI.ts
+ ┃ ┃ ┃ ┣ 📜viewMiddleware.ts
  ┃ ┃ ┃ ┗ 📜voteAPI.ts
  ┃ ┃ ┣ 📂slices
  ┃ ┃ ┃ ┣ 📜authSlice.ts
  ┃ ┃ ┃ ┣ 📜darkLightSlice.ts
  ┃ ┃ ┃ ┣ 📜feedSlice.ts
+ ┃ ┃ ┃ ┣ 📜pageSlice.ts
  ┃ ┃ ┃ ┣ 📜profileSlice.ts
  ┃ ┃ ┃ ┣ 📜searchSlice.ts
- ┃ ┃ ┃ ┗ 📜subredditSlice.ts
+ ┃ ┃ ┃ ┣ 📜subredditSlice.ts
+ ┃ ┃ ┃ ┗ 📜viewSlice.ts
  ┃ ┃ ┗ 📜store.ts
  ┃ ┗ 📜App.tsx
  ┣ 📂assets
@@ -185,11 +194,17 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┃ ┣ 📜github-logo-typical-reddit.png
  ┃ ┃ ┗ 📜landingLogo.png
  ┃ ┗ 📂svg
+ ┃ ┃ ┣ 📂nav-mobile
+ ┃ ┃ ┃ ┣ 📜contact.svg
+ ┃ ┃ ┃ ┣ 📜feed.svg
+ ┃ ┃ ┃ ┣ 📜profile.svg
+ ┃ ┃ ┃ ┗ 📜subreddits.svg
  ┃ ┃ ┣ 📜arrow-square.svg
  ┃ ┃ ┣ 📜comments-square.svg
  ┃ ┃ ┣ 📜comments.svg
  ┃ ┃ ┣ 📜downvote.svg
  ┃ ┃ ┣ 📜options.svg
+ ┃ ┃ ┣ 📜refresh-double.svg
  ┃ ┃ ┣ 📜refresh.svg
  ┃ ┃ ┣ 📜sort.svg
  ┃ ┃ ┗ 📜upvote.svg
@@ -217,6 +232,7 @@ Below are prototype designs used during the development process to visualize the
  ┃ ┣ 📜store.ts
  ┃ ┗ 📜svg.ts
  ┣ 📂utils
+ ┃ ┣ 📜header.ts
  ┃ ┣ 📜helpers.ts
  ┃ ┣ 📜loginURL.ts
  ┃ ┣ 📜parseResponseData.ts

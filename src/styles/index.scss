@@ -8,10 +8,10 @@
     overflow: hidden;
   }
 
-  .feed-top {
-    overflow-y: auto;
-    max-height: 100vh;
-  }
+  // .feed-top {
+  //   overflow-y: auto;
+  //   max-height: 100vh;
+  // }
 
   isolation: isolate;
   font-family: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -114,6 +114,11 @@
     --options-icon-size: 16px;
     --refresh-icon-size: 19px;
     --feed-icon-gap: 30px;
+
+  // Account
+  --acc-container-width: calc(390px * 2 + 20px);
+  --acc-img-padding: 30px;
+
 
   .container {
     display: inline-block;
@@ -219,6 +224,10 @@
     --options-icon-size: 20px;
     --refresh-icon-size: 23px;
     --feed-icon-gap: 20px;
+
+    // Account
+    --acc-container-width: calc(100vw - (var(--mobile-padding) * 2));
+    --acc-img-padding: 15px;
   }
 }
 

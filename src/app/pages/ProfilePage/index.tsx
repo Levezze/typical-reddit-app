@@ -12,12 +12,15 @@ import { setPage } from '../../store/slices/pageSlice';
 
 const ProfilePage: React.FC = () => {
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(setPage('account'));
-  },[dispatch]);
+  const pageView = useSelector((state: RootState) => state.view.viewSize);
   const profile = useSelector((state: RootState) => state.profile)
   const { data, isLoading } = useGetProfileDataQuery(undefined, 
     { skip: !!profile.name });
+  
+  useEffect(()=>{
+    dispatch(setPage('account'));
+  },[dispatch]);
+
 
   useEffect(()=> {
     if (data && profile.name !== data.name) {
@@ -33,12 +36,12 @@ const ProfilePage: React.FC = () => {
       <div className='profile-top'>
         <h1>Reddit Profile</h1>
       </div>
-      <div className='profile-layout'>
+      <div className={`profile-layout ${pageView === 2 ? 'mobile' : ''}`}>
         <div className="profile-container">
           {isLoading ? <p>Loading profile...</p> :
           <User />}
         </div>
-        <div className="profile-buttons">
+        <div className={`profile-buttons ${pageView === 2 ? 'mobile' : ''}`}>
           <LogoutButton />
           <DarkLightButton />
         </div>

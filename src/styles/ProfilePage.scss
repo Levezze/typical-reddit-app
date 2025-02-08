@@ -9,17 +9,15 @@
 .profile-top {
   display: flex;
   justify-content: space-between;
-  width: var(--ui-width);
-  margin-top: var(--top-spacing);
+  width: var(--acc-container-width);
   border-bottom: 2px solid var(--secondary-color);
-  margin-bottom: var(--page-top-margin-bottom);
+  margin: var(--top-spacing) var(--mobile-padding) var(--page-top-margin-bottom);
   height: var(--page-top-height);
-  padding-top: var(--page-top-padding);
 
   h1 {
-    font-size: 72px;
+    font-size: var(--font-size-main-title);
     font-weight: var(--font-bold);
-    margin: 0;
+    margin: var(--h1-mobile-margin);
     color: var(--primary-color);
   }
 }
@@ -32,12 +30,12 @@
   align-items: center;
 
   .profile-container {
-    width: calc(390px * 2 + 20px);
+    width: var(--acc-container-width);
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    // min-height: 400px;
     background-color: var(--secondary-bg-color);
-    padding: 30px;
+    padding: var(--container-padding);
     border-radius: 10px;
     border: 2px solid var(--border-color);
     box-shadow: $container-shadow;
@@ -48,7 +46,7 @@
         border-bottom: 2px solid var(--secondary-color);
         
         h2 {
-          font-size: 24px;
+          font-size: var(--font-size-container-title);
           font-weight: var(--font-bold);
           margin: 0 0 10px;
           color: var(--secondary-color);
@@ -84,7 +82,7 @@
       display: flex;
       width: 250px;
       height: auto;
-      padding-top: 30px;
+      padding-top: var(--acc-img-padding);
       margin: 0 auto;
       
       img {
@@ -101,12 +99,21 @@
     flex-direction: row;
     margin-top: 20px;
     justify-content: space-between;
+    gap: 20px;
+    
+    &.mobile {
+      width: var(--acc-container-width);
+      margin-top: 10px;
+      gap: 10px;
+    }
 
     .auth-button {
+      width: 100%;
       @include button;
     }
     
     .darklight-button {
+      width: 100%;
       @include button;
       background-color: var(--switch-btn-bg);
       color: var(--bg-color);
