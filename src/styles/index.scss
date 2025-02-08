@@ -2,6 +2,17 @@
 @import 'normalize.css';
 
 :root {
+  html,
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .feed-top {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
   isolation: isolate;
   font-family: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--bg-color);
@@ -85,6 +96,7 @@
     //Selected
   --selected-title-margin-bottom: 0px;
   --selected-subs-display: flex;
+  --selected-ul-gap: 20px;
   --sub-selected-width: 100%;
   --sub-selected-btn-width: 100%;
   --sub-selected-btn-height: none;
@@ -195,6 +207,7 @@
     --sub-selected-btn-width: calc(100vw - (var(--mobile-padding) * 2));
     --sub-selected-btn-height: 70px;
     --selected-title-margin-bottom: 20px;
+    --selected-ul-gap: 10px;
 
     // Feed
     --page-top-height: 50px;
@@ -206,10 +219,6 @@
     --options-icon-size: 20px;
     --refresh-icon-size: 23px;
     --feed-icon-gap: 20px;
-
-
-
-
   }
 }
 

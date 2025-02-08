@@ -21,15 +21,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from "../../../../store/store";
 
 const ControlsDropdown: React.FC = () => {
-	// const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-
-
-	// const handleTouch = (item: string) => {
-  //   setActiveItem(item);
-  //   setTimeout(()=> {
-  //     setActiveItem(null);
-  //   }, 500);
-  // };
 	const viewType = useSelector((state: RootState) => state.view.viewSize);
 	const isSingleColumn = useSelector(feedColumns) === 1;
 	const showMedia = useSelector(feedMedia);
