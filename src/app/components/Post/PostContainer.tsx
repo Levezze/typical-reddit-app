@@ -36,9 +36,11 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
     thumbnail;
 
   return (
-    <div className='post-container'>
+    <div className='post container'>
       <div className='title-section'>
-        <a href={`https://www.reddit.com${permalink}`} target='_blank'><h3>{title}</h3></a>
+        <a href={`https://www.reddit.com${permalink}`} target='_blank'>
+          <h2>{title}</h2>
+        </a>
         <p className='sub-name'>{`r/${subreddit}, `}
         <i>{<TimeAgo createdTime={created_utc}/>}h ago</i></p>
         <p className='author'>Author: {author}</p>
@@ -71,7 +73,7 @@ const PostContainer: React.FC<PostContainerProps> = ({ post }) => {
         }
       </div>
       <div className="votes-comments">
-        <Vote ups={formatNumber(ups)} id={id} likes={likes} />
+        <Vote ups={ups.toString()} id={id} likes={likes} />
         <a href={`https://www.reddit.com${permalink}`} target='_blank'>
           <Comments 
             num_comments={num_comments ? formatNumber(num_comments) : num_comments} 

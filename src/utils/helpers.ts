@@ -22,7 +22,7 @@ export const subSubImg = (subIcon:string | undefined):string => {
 export const formatNumber = (value: number | string):string => {
   if (typeof value === 'string') value = parseInt(value, 10);
   if (value > 1000) return `${Math.round(value / 1000)}K`;
-  return value.toString();
+  return `${value.toString()}K`;
 }
 
 export const themeSwitcher = (value: boolean) => {

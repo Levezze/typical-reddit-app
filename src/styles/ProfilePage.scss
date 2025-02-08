@@ -12,9 +12,9 @@
   width: var(--ui-width);
   margin-top: var(--top-spacing);
   border-bottom: 2px solid var(--secondary-color);
-  margin-bottom: $page-top-margin-bottom;
-  height: $page-top-height;
-  padding-top: $page-top-padding;
+  margin-bottom: var(--page-top-margin-bottom);
+  height: var(--page-top-height);
+  padding-top: var(--page-top-padding);
 
   h1 {
     font-size: 72px;

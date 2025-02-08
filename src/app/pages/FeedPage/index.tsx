@@ -5,14 +5,13 @@ import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetPostsFromSubredditsQuery } from '../../store/middleware/feedAPI';
 import { sortValue } from '../../store/slices/feedSlice'
-import Refresh from './feed/Refresh';
+import Refresh from './feed/controls/Refresh';
 import '../../../styles/FeedPage.scss'
 import ControlsDropdown from './feed/controls/ControlsDropdown';
 import { setPage } from '../../store/slices/pageSlice';
 
-
-
 const FeedPage: React.FC = () => {
+  const pageView = useSelector((state: RootState) => state.view.viewSize);
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(setPage('feed'));
@@ -33,7 +32,7 @@ const FeedPage: React.FC = () => {
     <>
       <div className='feed-top'>
         <h1>Typical Feed</h1>
-        <div className='feed-control'>
+        <div className={`feed-control ${pageView === 2 ? 'mobile' : ''}`}>
           <ControlsDropdown />
           <Refresh refetch={refetch} />
         </div>

@@ -44,6 +44,7 @@
   --font-size-main-title: 72px;
   --font-size-secondary-title: 48px;
   --font-size-container-title: 24px;
+  --h1-mobile-margin: 0px;
 
   // Header
   --header-position: relative;
@@ -51,7 +52,7 @@
   --header-height: 80px;
   --header-top-margin: 0px;
   --header-justify-content: space-between;
-  --header-logo-height: none;
+  --header-logo-height: var(--header-height);
 
   // Nav
   --nav-position: relative;
@@ -82,16 +83,61 @@
   --sub-image: 60px;
   --search-subs-display: flex;
     //Selected
+  --selected-title-margin-bottom: 0px;
   --selected-subs-display: flex;
   --sub-selected-width: 100%;
   --sub-selected-btn-width: 100%;
   --sub-selected-btn-height: none;
 
   // Feed
+  --page-top-height: 110px;
+  --page-top-padding: 20px;
+  --page-top-margin-bottom: 20px;
+  --icon-bottom-padding: 4px;
+  --feed-top-width: var(--ui-width);
     // Post Interactions
   --post-interaction-border: 2px solid var(--secondary-color);
       // Icons
-    --icon-height: 22px;
+    --icon-height: 20px;
+    --options-icon-size: 16px;
+    --refresh-icon-size: 19px;
+    --feed-icon-gap: 30px;
+
+  .container {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: var(--container-bg-color);
+    padding: var(--container-padding);
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+    box-shadow: $container-shadow;
+    box-sizing: border-box;
+  }
+
+  .title-section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    h2 {
+      font-size: var(--font-size-container-title);
+      font-weight: var(--font-bold);
+      margin: 0;
+      color: var(--secondary-color);
+      text-overflow: ellipsis;
+      overflow: hidden; 
+      width: 100%;
+    }
+  
+    h3 {
+      font-size: 16px;
+      font-weight: var(--font-regular);
+      margin: 0;
+      margin-top: 10px;
+      color: var(--primary-color);
+    }
+  }
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {
@@ -106,6 +152,7 @@
     --font-size-main-title: 30px;
     --font-size-secondary-title: 30px;
     --font-size-container-title: 20px;
+    --h1-mobile-margin: 5px 0 0;
     --display-mode: 2;
     --ui-width: 100%;
     --mobile-padding: 20px;
@@ -147,6 +194,21 @@
     --sub-selected-width: 100vw;
     --sub-selected-btn-width: calc(100vw - (var(--mobile-padding) * 2));
     --sub-selected-btn-height: 70px;
+    --selected-title-margin-bottom: 20px;
+
+    // Feed
+    --page-top-height: 50px;
+    --page-top-padding: 0px;
+    --page-top-margin-bottom: 20px;
+    --icon-bottom-padding: 0px;
+    --feed-top-width: calc(var(--ui-width) - (2 * var(--mobile-padding)));
+      // Icons
+    --options-icon-size: 20px;
+    --refresh-icon-size: 23px;
+    --feed-icon-gap: 20px;
+
+
+
 
   }
 }

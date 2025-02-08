@@ -26,7 +26,7 @@ const SubredditSearchUnit = ({ subreddit }: Props) => {
 
   return (
     <li>
-      <div className='sub-unit-container'>
+      <div className='subreddit container'>
         <div className='title-section'>
           <img className='sub-img' src={subImg} />
           <div className='title-text'>

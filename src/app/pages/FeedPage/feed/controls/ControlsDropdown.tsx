@@ -54,7 +54,7 @@ const ControlsDropdown: React.FC = () => {
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger asChild>
 				<div className='feed-customize' aria-label="Customise options">
-					<h3>CUSTOMIZE</h3>
+					{viewType === 2 ? <></> : <h3>CUSTOMIZE</h3>}
 					<div className="feed-icon">
 						<OptionsIcon />
 					</div>

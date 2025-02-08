@@ -7,10 +7,10 @@ $transition-effect: all .2s ease-in;
 $container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
 // Measurements
-$page-top-height: 110px;
-$page-top-padding: 20px;
-$page-top-margin-bottom: 20px;
-$icon-bottom-padding: 4px;
+// var(--page-top-height): 110px;
+// var(--page-top-padding): 20px;
+// var(--page-top-margin-bottom): 20px;
+// var(--icon-bottom-padding): 4px;
 
 :export {
   colorPrimary: var(--primary-color);

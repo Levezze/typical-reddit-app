@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VoteButton from './VoteButton';
+import { formatNumber } from '../../../utils/helpers';
 
 interface Props {
   ups: string;
@@ -9,7 +10,7 @@ interface Props {
 
 const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   const [voted, setVoted] = useState(0);
-  const [numberOfVotes, setNumberOfVotes] = useState(ups);
+  const [numberOfVotes, setNumberOfVotes] = useState(formatNumber(ups));
 
   useEffect(()=> {
     if (likes === true) {
@@ -22,7 +23,7 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   },[likes]);
 
   useEffect(()=> {
-    setNumberOfVotes((parseInt(ups, 10) + voted).toString());
+    setNumberOfVotes(formatNumber((parseInt(ups, 10) + voted)));
   },[ups, voted])
   
   const voteUpClass = `vote up ${voted === 1 ?

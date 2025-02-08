@@ -10,17 +10,30 @@ import MobileAccountIcon from '../icons/nav-mobile/MobileAccountIcon';
 import MobileContactIcon from '../icons/nav-mobile/MobileContactIcon';
 
 const Nav:React.FC = () => {
+  const root = document.documentElement;
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
+  const [strokeColor, setStrokeColor] = useState<string>(
+    getComputedStyle(root).getPropertyValue('--container-bg-color')
+  )
   const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   const pageName = useSelector((state: RootState) => state.page.pageName);
-
+  const darkLight = useSelector((state: RootState) => state.darkLight.isDark);
+  
   const handleTouch = (item: string) => {
     setActiveItem(item);
     setTimeout(()=> {
       setActiveItem(null);
     }, 300);
   };
+
+  useEffect(()=> {
+    if (pageName === 'subreddits') {
+      setStrokeColor(getComputedStyle(root).getPropertyValue('--secondary-color'));
+      return;
+    }
+    setStrokeColor(getComputedStyle(root).getPropertyValue('--container-bg-color'));
+  },[root, darkLight, setStrokeColor, pageName]);
 
   useEffect(()=>{
     const handleResize = () => setWindowSize(window.innerWidth);
@@ -30,12 +43,11 @@ const Nav:React.FC = () => {
 
   useEffect(() => {
     const index = indexFromPage(pageName);
-    const root = document.documentElement;
     const mobilePadding = parseInt(getComputedStyle(root).getPropertyValue('--mobile-padding'));
     const navLiWidth = parseInt(getComputedStyle(root).getPropertyValue('--nav-li-width'));
     const navGap = (windowSize - (navLiWidth * 4) - (mobilePadding * 2)) / 3;
     moveBackground(mobilePadding, navGap, navLiWidth, index);
-  },[pageName, windowSize]);
+  },[root, pageName, windowSize]);
 
   return (
     <>
@@ -49,10 +61,11 @@ const Nav:React.FC = () => {
               }>
             <ul>
               <li>
-                <Link className={
-                  `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
-                  ${activeItem === 'feed' ? 'touch-hover' : ''}
-                  ${pageName === 'feed' ? 'current-page' : ''}`.trim()
+                <Link 
+                  className={
+                    `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
+                    ${activeItem === 'feed' ? 'touch-hover' : ''}
+                    ${pageName === 'feed' ? 'current-page' : ''}`.trim()
                   } 
                   to="/feed"
                   onTouchStart={()=> handleTouch('feed')}
@@ -62,23 +75,28 @@ const Nav:React.FC = () => {
               </li>
               
               <li>
-                <Link className={
-                  `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
-                  ${activeItem === 'subreddits' ? 'touch-hover' : ''}
-                  ${pageName === 'subreddits' ? 'current-page' : ''}`.trim()
+                <Link 
+                  className={
+                    `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
+                    ${activeItem === 'subreddits' ? 'touch-hover' : ''}
+                    ${pageName === 'subreddits' ? 'current-page' : ''}`.trim()
                   } 
                   to="/subreddits"
                   onTouchStart={()=> handleTouch('subreddits')}
                 >
-                  {pageViewMode === 2 ? <MobileSubsIcon /> : 'Subreddits'}
+                  {pageViewMode === 2 ? 
+                    <MobileSubsIcon strokeColor={strokeColor} /> :
+                    'Subreddits'
+                  }
                 </Link>
               </li>
               
               <li>
-                <Link className={
-                  `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
-                  ${activeItem === 'account' ? 'touch-hover' : ''}
-                  ${pageName === 'account' ? 'current-page' : ''}`.trim()
+                <Link 
+                  className={
+                    `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
+                    ${activeItem === 'account' ? 'touch-hover' : ''}
+                    ${pageName === 'account' ? 'current-page' : ''}`.trim()
                   } 
                   to="/account"
                   onTouchStart={()=> handleTouch('account')}
@@ -88,11 +106,12 @@ const Nav:React.FC = () => {
               </li>
               {pageViewMode === 2 ? 
               <li>
-                <Link className={
-                  `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
-                  ${activeItem === 'contact' ? 'touch-hover' : ''}
-                  ${pageName === 'contact' ? 'current-page' : ''}`.trim()
-                  } 
+                <Link 
+                  className={
+                    `${pageViewMode !== 2 ? 'full-nav-li' : 'mobile-nav-li'} 
+                    ${activeItem === 'contact' ? 'touch-hover' : ''}
+                    ${pageName === 'contact' ? 'current-page' : ''}`.trim()
+                  }
                   to="/contact"
                   onTouchStart={()=> handleTouch('contact')}
                 >

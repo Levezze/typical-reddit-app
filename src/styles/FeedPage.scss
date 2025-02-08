@@ -12,17 +12,17 @@ a {
 .feed-top {
   display: flex;
   justify-content: space-between;
-  width: var(--ui-width);
+  width: --feed-top-width;
   border-bottom: 2px solid var(--secondary-color);
-  margin-top: var(--top-spacing);
-  margin-bottom: $page-top-margin-bottom;
-  height: $page-top-height;
-  padding-top: $page-top-padding;
+  margin: var(--top-spacing) var(--mobile-padding) var(--page-top-margin-bottom);
+  height: var(--page-top-height);
+  // padding: var(--page-top-padding) var(--mobile-padding) 0;
+
 
   h1 {
     font-size: var(--font-size-main-title);
     font-weight: var(--font-bold);
-    margin: 0;
+    margin: var(--h1-mobile-margin);
     color: var(--primary-color);
   }
 
@@ -38,21 +38,23 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 30px;
+    gap: var(--feed-icon-gap);
+
+    &.mobile {
+      align-items: center;
+    }
 
     .feed-refresh,
     .feed-customize {
       display: flex;
       gap: 5px;
-      height: 40px;
+      // height: 40px;
       align-items: center;
       cursor: pointer; 
 
       .refresh-icon {
         color: var(--secondary-color);
         transition: transform .5s;
-        width: 16px;
-        height: 16px;
       }
       
       h3 {
@@ -63,11 +65,11 @@ a {
       }
 
       .feed-icon {
-        width: 19px;
-        height: 19px;
+        width: var(--refresh-icon-size);
+        height: var(--refresh-icon-size);
         display: inline-flex;
         align-items: center;
-        padding-bottom: $icon-bottom-padding;
+        padding-bottom: var(--icon-bottom-padding);
 
         svg {
           width: 100%;
@@ -76,8 +78,8 @@ a {
         }
 
         .options-icon {
-          width: 16px;
-          height: 16px;
+          width: var(--options-icon-size);
+          height: var(--options-icon-size);
           transition: .5s;
         }
       }
@@ -156,41 +158,23 @@ a {
 
   .feed-items {
     column-count: var(--feed-column-number); /* Define the number of columns */
-    padding: 0;
+    padding: 0 var(--mobile-padding);
     column-gap: 20px; /* Set the gap between columns */
     list-style: none;
     margin: 0;
   }
 
-  .post-container {
-    display: inline-block; /* Necessary for column layout */
-    width: 100%; /* Ensures items take full column width */
-    margin-bottom: 20px; /* Spacing between items */
-    background-color: var(--container-bg-color);
-    padding: 30px;
-    border-radius: 10px;
-    border: 2px solid var(--border-color);
-    position: relative;
-    box-shadow: $container-shadow;
+  .container {
 
     .title-section {
-      display: flex;
       flex-direction: column;
       
       a {
         text-decoration: none;
       }
 
-      h3 {
-        font-size: 24px;
-        font-weight: var(--font-bold);
-        margin: 0 0 10px;
-        color: var(--secondary-color);
-        text-decoration: none;
-      }
-
       .sub-name {
-        margin: 0 0 10px;
+        margin: 10px 0;
         color: var(--primary-color);
 
         i {
@@ -223,8 +207,7 @@ a {
     .votes-comments {
       display: flex;
       margin-top: 10px;
-      justify-content: center;
-      // gap: 40px;
+      justify-content: space-evenly;
 
       .vote-container,
       .comments-container {
@@ -238,7 +221,6 @@ a {
         line-height: 1;
         min-width: 30px;
         text-align: center;
-        // font-size: 18px;
         font-weight: 500;
       }
 
@@ -246,7 +228,6 @@ a {
         display: flex;
         gap: 10px;
         align-items: center;
-        min-width: 150px;
         justify-content: center;
 
         .vote {
@@ -278,7 +259,7 @@ a {
         display: flex;
         gap: 10px;
         align-items: center;
-        min-width: 150px;
+        // min-width: 150px;
         justify-content: center;
 
 

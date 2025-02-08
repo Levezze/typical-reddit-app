@@ -17,9 +17,7 @@ interface FeedProps {
 const Feed: React.FC<FeedProps> = ({ data, error, isLoading }) => {
 
   const parsedData: Post[] = data ? parseFeedData(data as PostsResponseData): [];
-  // console.log('Unparsed Feed Data:', data)
   console.log('Feed Data:', parsedData)
-  // console.log('Feed Error:', error)
 
   return (
     <div className='feed-container'>

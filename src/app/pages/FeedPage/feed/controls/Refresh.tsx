@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import RefreshDoubleIcon from '../../../components/icons/RefreshDoubleIcon';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../store/store';
+import RefreshDoubleIcon from '../../../../components/icons/RefreshDoubleIcon';
 
 interface RefreshProps {
   refetch: () => void;
@@ -7,6 +9,7 @@ interface RefreshProps {
 
 const Refresh:React.FC<RefreshProps> = ({ refetch }) => {
   const [activeRefresh, setActiveRefresh] = useState<string | null>(null);
+	const viewType = useSelector((state: RootState) => state.view.viewSize);
 
   const handleTouch = (item: string) => {
     setActiveRefresh(item);
@@ -23,7 +26,7 @@ const Refresh:React.FC<RefreshProps> = ({ refetch }) => {
       onClick={()=> refetch()}
       onTouchStart={()=> handleTouch('refresh-icon')}
     >
-      <h3>REFRESH</h3>
+      {viewType === 2 ? <></> : <h3>REFRESH</h3>}
       <div 
         className='feed-icon' 
       >
