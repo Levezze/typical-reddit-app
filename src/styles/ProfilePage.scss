@@ -33,7 +33,6 @@
     width: var(--acc-container-width);
     display: flex;
     flex-direction: column;
-    // min-height: 400px;
     background-color: var(--secondary-bg-color);
     padding: var(--container-padding);
     border-radius: 10px;
@@ -105,6 +104,12 @@
       width: var(--acc-container-width);
       margin-top: 10px;
       gap: 10px;
+    }
+
+    &.tablet {
+      width: var(--acc-container-width);
+      margin-top: 20px;
+      gap: 20px;
     }
 
     .auth-button {

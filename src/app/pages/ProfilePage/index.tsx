@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import LogoutButton from '../../components/auth/AuthButton';
 import { useGetProfileDataQuery } from '../../store/middleware/profileAPI';
 import { setProfile } from '../../store/slices/profileSlice';
@@ -11,16 +11,22 @@ import { setPage } from '../../store/slices/pageSlice';
 
 
 const ProfilePage: React.FC = () => {
+  const [viewClass, setViewClass] = useState('');
   const dispatch = useDispatch();
   const pageView = useSelector((state: RootState) => state.view.viewSize);
   const profile = useSelector((state: RootState) => state.profile)
   const { data, isLoading } = useGetProfileDataQuery(undefined, 
     { skip: !!profile.name });
   
-  useEffect(()=>{
+  useEffect(()=> {
     dispatch(setPage('account'));
   },[dispatch]);
 
+  useEffect(()=> {
+    if (pageView === 0) setViewClass('');
+    if (pageView === 1) setViewClass('tablet');
+    if (pageView === 2) setViewClass('mobile');
+  },[pageView]);
 
   useEffect(()=> {
     if (data && profile.name !== data.name) {
@@ -36,12 +42,12 @@ const ProfilePage: React.FC = () => {
       <div className='profile-top'>
         <h1>Reddit Profile</h1>
       </div>
-      <div className={`profile-layout ${pageView === 2 ? 'mobile' : ''}`}>
+      <div className={`profile-layout ${viewClass}`}>
         <div className="profile-container">
           {isLoading ? <p>Loading profile...</p> :
           <User />}
         </div>
-        <div className={`profile-buttons ${pageView === 2 ? 'mobile' : ''}`}>
+        <div className={`profile-buttons ${viewClass}`}>
           <LogoutButton />
           <DarkLightButton />
         </div>

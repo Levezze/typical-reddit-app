@@ -73,9 +73,10 @@
   --nav-background-color: none;
   --nav-width: none;
   --nav-li-width: none;
+  --nav-max-width-tab: none;
     // Mobile
   --nav-translate-distance: var(--container-padding);
-
+  
   // Subreddits
     // Switch (Mobile Only)
   --switch-mobile-width: none;
@@ -107,6 +108,7 @@
   --page-top-margin-bottom: 20px;
   --icon-bottom-padding: 4px;
   --feed-top-width: var(--ui-width);
+  --feed-control-margin-bottom: 14px;
     // Post Interactions
   --post-interaction-border: 2px solid var(--secondary-color);
       // Icons
@@ -159,18 +161,78 @@
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {
   :root {
-    --font-size-main-title: 40px;
     --display-mode: 1;
+    --font-size-main-title: 40px;
+    --font-size-secondary-title: 32px;
+    --font-size-container-title: 24px;
+    --h1-margin: 0px 0 0;
+    --ui-width: calc(100vw - (20px * 2));
+    // --mobile-padding: 20px;
+    --top-spacing: 20px;
+    --container-padding: 20px;
+
+    // Header
+    --header-position: relative;
+    --header-flex-direction: row;
+    --header-height: 80px;
+    --header-logo-height: 80px;
+
+    // Nav
+    // --nav-position: absolute;
+    --nav-bottom: 0px;
+    --ul-gap: 0px;
+    --nav-li-width: 50px;
+    // --nav-background-color: var(--secondary-bg-color);
+    --nav-width: calc(100vw - 200px - 120px - 40px - 120px);
+    --nav-max-width-tab: 450px;
+
+    // Subreddits
+      // Switch (Mobile Only)
+    --switch-gap: 0px;
+    --switch-mobile-width: 100%;
+    --switch-display: flex;
+      // Search
+    --search-margin-top: 20px;
+    --search-container-height: 70px;
+    --search-h4-height: 20px;
+    --search-input-height: 50px;
+      // Subs
+    --subs-container: grid;
+    --grid-template-columns: none;
+    --grid-template-rows: 40px 1fr;
+    --selected-subs-display: grid;
+    --sub-image: 50px;
+    --sub-selected-width: 100vw;
+    --sub-selected-btn-width: calc(100vw - (var(--mobile-padding) * 2));
+    --sub-selected-btn-height: 70px;
+    --selected-title-margin-bottom: 20px;
+    --selected-ul-gap: 10px;
+
+    // Feed
+    --page-top-height: 50px;
+    --page-top-padding: 0px;
+    --page-top-margin-bottom: 20px;
+    --icon-bottom-padding: 4px;
+    --feed-top-width: calc(var(--ui-width) - (2 * var(--mobile-padding)));
+    --feed-control-margin-bottom: 10px;
+      // Icons
+    // --options-icon-size: 20px;
+    // --refresh-icon-size: 23px;
+    --feed-icon-gap: 20px;
+
+    // Account
+    --acc-container-width: var(--ui-width);
+    --acc-img-padding: 15px;
   }
 }
 
 @media (max-width: $mobile-width) {
   :root {
+    --display-mode: 2;
     --font-size-main-title: 30px;
     --font-size-secondary-title: 30px;
     --font-size-container-title: 20px;
     --h1-margin: 5px 0 0;
-    --display-mode: 2;
     --ui-width: 100%;
     --mobile-padding: 20px;
     --top-spacing: 0px;
@@ -191,6 +253,7 @@
     --nav-li-width: 50px;
     --nav-background-color: var(--secondary-bg-color);
     --nav-width: 100%;
+    --nav-max-width-tab: none;
 
     // Subreddits
       // Switch (Mobile Only)

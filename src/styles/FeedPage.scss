@@ -38,6 +38,7 @@ a {
     justify-content: space-between;
     align-items: flex-end;
     gap: var(--feed-icon-gap);
+    margin-bottom: var(--feed-control-margin-bottom);
 
     &.mobile {
       align-items: center;
