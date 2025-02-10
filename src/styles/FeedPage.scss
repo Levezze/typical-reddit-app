@@ -16,7 +16,6 @@ a {
   border-bottom: 2px solid var(--secondary-color);
   margin: var(--top-spacing) var(--mobile-padding) var(--page-top-margin-bottom);
   height: var(--page-top-height);
-  // padding: var(--page-top-padding) var(--mobile-padding) 0;
 
   h1 {
     font-size: var(--font-size-main-title);
@@ -48,7 +47,6 @@ a {
     .feed-customize {
       display: flex;
       gap: 5px;
-      // height: 40px;
       align-items: center;
       cursor: pointer; 
 
@@ -126,7 +124,7 @@ a {
   overflow: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  height: calc(100vh - 80px - var(--top-spacing) - 20px - 90px - 20px);
+  height: var(--feed-height-calc);
   padding-bottom: 50px;
 
   .bottom-gradient {
@@ -159,16 +157,13 @@ a {
   .feed-items {
     column-count: var(--feed-column-number); /* Define the number of columns */
     padding: 0 var(--mobile-padding);
-    column-gap: 20px; /* Set the gap between columns */
     list-style: none;
     margin: 0;
   }
 
   .container {
-
     .title-section {
       flex-direction: column;
-      
       a {
         text-decoration: none;
       }
@@ -176,7 +171,6 @@ a {
       .sub-name {
         margin: 10px 0;
         color: var(--primary-color);
-
         i {
           font-size: 14px;
         }
@@ -193,7 +187,6 @@ a {
       width: 100%;
       padding: 10px 0;
       border-top: 2px solid var(--secondary-color);
-      // border-bottom: 2px solid var(--secondary-color);
       margin: 0 auto;
       justify-content: center;
       

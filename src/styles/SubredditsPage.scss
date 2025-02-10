@@ -57,6 +57,7 @@
         color: var(--text-color);
         margin: 0;
         transition: color .2s ease-in-out;
+        font-weight: 500;
       }
     }
 
@@ -66,7 +67,6 @@
       }
     }
   }
-  --select-height-calc: calc(100vh - var(--header-height) - var(--search-margin-top) - var(--top-spacing) -  var(--nav-li-width));
 
   .subreddits-select-container {
     width: 100%;
@@ -80,7 +80,7 @@
     }
 
     .search-container {
-      margin-bottom: 20px;
+      margin-bottom: var(--page-top-margin-bottom);
       margin-top: var(--search-margin-top);
       padding: 0 var(--mobile-padding);
       height: var(--search-container-height);
@@ -113,6 +113,7 @@
     }
 
     .subreddit-selector {
+      height: var(--select-height-subs-calc);
       padding-bottom: 50px;
       overflow: auto;
       -ms-overflow-style: none;  /* IE and Edge */
@@ -120,7 +121,6 @@
       justify-content: center;
       align-items: center;
       padding: 0 var(--mobile-padding);
-      height: calc(100vh - 260px - 50px);
 
       .bottom-gradient {
         @include bottom-gradient;
@@ -141,9 +141,7 @@
 
     li {
       .container {
-
         .title-section {
-          
           .sub-img {
             width: 60px;
             height: 60px;
@@ -161,9 +159,20 @@
 
   // Selected Column
 
-  --selected-height-calc: calc(100vh - var(--header-height) - var(--search-margin-top) - var(--top-spacing) -  var(--nav-li-width) - var(--button-height));
+  --selected-height-calc: calc(
+    100vh - 
+    var(--header-height) - 
+    var(--search-margin-top) - 
+    var(--top-spacing) - 
+    var(--nav-li-width) - 
+    var(--button-height)
+  );
 
-  --selected-subs-height-calc: calc(var(--selected-height-calc) - var(--search-margin-top) - var(--button-height));
+  --selected-subs-height-calc: calc(
+    var(--selected-height-calc) - 
+    var(--search-margin-top) - 
+    var(--button-height)
+  );
 
   .subreddits-selected-container {
     position: relative;
@@ -187,7 +196,7 @@
     &.hide {
       display: none;
     }
-    
+
     .selected-title {
       height: var(--search-container-height);
       margin-bottom: var(--selected-title-margin-bottom);
