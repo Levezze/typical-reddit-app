@@ -209,7 +209,7 @@
 
     // Subreddits
       // Switch (Mobile Only)
-    --switch-gap: 0px;
+    --switch-gap: 20px;
     --switch-mobile-width: 100%;
     --switch-display: flex;
       // Search
@@ -219,15 +219,15 @@
     --search-input-height: 50px;
       // Subs
     --subs-container: grid;
-    --grid-template-columns: none;
+    --grid-template-columns: 3fr 2fr;
     --grid-template-rows: 40px 1fr;
     --selected-subs-display: grid;
     --sub-image: 50px;
-    --sub-selected-width: 100vw;
-    --sub-selected-btn-width: calc(100vw - (var(--mobile-padding) * 2));
+    --sub-selected-width: none;
+    --sub-selected-btn-width: 100%;
     --sub-selected-btn-height: 70px;
-    --selected-title-margin-bottom: 20px;
-    --selected-ul-gap: 10px;
+    // --selected-title-margin-bottom: 20px;
+    --selected-ul-gap: 20px;
 
     // Feed
     --page-top-height: 50px;

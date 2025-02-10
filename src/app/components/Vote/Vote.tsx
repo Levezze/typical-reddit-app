@@ -10,6 +10,7 @@ interface Props {
 
 const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   const [voted, setVoted] = useState(0);
+  const [hover, setHover] = useState('');
   const [numberOfVotes, setNumberOfVotes] = useState(ups);
 
   useEffect(()=> {
@@ -28,8 +29,8 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   
   const voteUpClass = `vote up ${voted === 1 ?
     'active' : ''}`;
-    const voteDownClass = `vote down ${voted === -1 ?
-      'active' : ''}`;
+  const voteDownClass = `vote down ${voted === -1 ?
+    'active' : ''}`;
       
   const handleVote = (direction: number) => {
     console.log('vote',voted === direction ? 0 : direction);
@@ -40,15 +41,21 @@ const Vote:React.FC<Props> = ({ ups, id, likes }) => {
   return (
     <div className='vote-container'>
       <div 
-        className={voteUpClass}
+        className={`${voteUpClass} ${hover.includes('up') ? hover : ''}`}
         onClick={()=>handleVote(1)}
+        onMouseOver={()=>setHover('hover up')}
+        onMouseOut={()=>setHover('')}
+        onTouchEnd={()=>setHover('')}
         >
         <VoteButton DIR={voted === 1 ? 0 : 1} ID={id} />
       </div>
       <p>{formatNumber(numberOfVotes)}</p>
       <div 
-        className={voteDownClass}
+        className={`${voteDownClass} ${hover.includes('down') ? hover : ''}`}
         onClick={()=>handleVote(-1)}
+        onMouseOver={()=>setHover('hover down')}
+        onMouseOut={()=>setHover('')}
+        onTouchEnd={()=>setHover('')}
         >
         <VoteButton DIR={voted === -1 ? 0 : -1} ID={id} />
       </div>
