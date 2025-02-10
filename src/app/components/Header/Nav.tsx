@@ -52,7 +52,8 @@ const Nav:React.FC = () => {
   return (
     <>
       <nav>
-        <div className={`nav-slide-container ${pageViewMode === 2 ? 'mobile-bg' : ''}`}>
+        <div className={`nav-slide-container ${pageViewMode === 2 ? 'mobile-bg' : ''}
+        ${pageName === 'landing' ? 'hide-nav' : ''}`}>
           <div 
             className={
               `nav-slide-background 

@@ -9,7 +9,12 @@
   width: var(--ui-width);
   box-sizing: border-box;
   
+  &.mobile-header.hide-logo {
+    display: none;
+  }
   .Header-container {
+
+
     .Header-logo {
       position: var(--header-position);
       margin-top: var(--header-top-margin);
@@ -48,6 +53,10 @@
       box-sizing: border-box;
       overflow: hidden;
       z-index: -1;
+
+      &.hide-nav {
+        display: none;
+      }
     
       .nav-slide-background.mobile-bg {
         position: absolute;

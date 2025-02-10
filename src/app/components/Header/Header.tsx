@@ -13,6 +13,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
   const columns = useSelector((state: RootState) => state.feed.feedColumns);
   const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
+  const pageName = useSelector((state: RootState) => state.page.pageName);
   
   useEffect(()=>{
     if (typeof window !== "undefined") {
@@ -51,10 +52,17 @@ const Header: React.FC = () => {
   },[dispatch]);
   
   return (
-    <div className='Header'>
+    <div className={`Header 
+      ${pageViewMode === 2 ? 
+      'mobile-header' : null} 
+      ${pageName === 'landing' ?
+       'hide-logo' : ''}`}
+       >
       <div 
-        className={`Header-container ${pageViewMode === 2 ? 
-          'mobile-header' : null}`}>
+        className={`Header-container 
+          ${pageViewMode === 2 ? 
+          'mobile-header' : null}`}
+           >
         <div className='Header-logo' onClick={()=>navigate('/')}>
           <img 
             src={landingImg} 

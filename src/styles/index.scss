@@ -77,6 +77,16 @@ body {
     // Mobile
   --nav-translate-distance: var(--container-padding);
   
+  // Landing Page
+  --landing-h1-size: 113px;
+  --landing-h2-size: 72px;
+  --landing-h3-size: 72px;
+  --landing-p-width: 600px;
+  --landing-p-height: 1.8;
+  --landing-p-margin: 16px;
+  --landing-img-width: 350px;
+  --button-width: 390px;
+
   // Subreddits
     // Switch (Mobile Only)
   --switch-mobile-width: 0px;
@@ -239,6 +249,15 @@ body {
     --nav-width: calc(100vw - 200px - 120px - 40px - 120px);
     --nav-max-width-tab: 450px;
 
+    // Landing Page
+    --landing-h1-size: 80px;
+    --landing-h2-size: 54px;
+    --landing-h3-size: 54px;
+    --landing-p-width: 40vw;
+    --landing-p-height: 1.4;
+    --landing-p-margin: 10px;
+    --landing-img-width: 30vw;
+
     // Subreddits
       // Switch (Mobile Only)
     --switch-height: 0px;
@@ -317,6 +336,17 @@ body {
     --nav-background-color: var(--secondary-bg-color);
     --nav-width: 100%;
     --nav-max-width-tab: none;
+
+    // Landing Page
+    --landing-h1-size: 80px;
+    --landing-h2-size: 54px;
+    --landing-h3-size: 54px;
+    --landing-p-width: calc(100vw - 40px);
+    --landing-p-height: 1.4;
+    --landing-p-margin: 10px;
+    --landing-img-width: none;
+    --landing-img-height: 40vh;
+    --button-width: calc(100vw - 40px);
 
     // Subreddits
       // Switch (Mobile Only)
