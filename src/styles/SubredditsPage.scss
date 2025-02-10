@@ -159,38 +159,28 @@
 
   // Selected Column
 
-  --selected-height-calc: calc(
-    100vh - 
-    var(--header-height) - 
-    var(--search-margin-top) - 
-    var(--top-spacing) - 
-    var(--nav-li-width) - 
-    var(--button-height)
-  );
-
-  --selected-subs-height-calc: calc(
-    var(--selected-height-calc) - 
-    var(--search-margin-top) - 
-    var(--button-height)
-  );
-
   .subreddits-selected-container {
     position: relative;
     margin-top: var(--search-margin-top);
     width: var(--sub-selected-width);
-    height: var(--selected-height-calc);
-
+    
     &.flex-layout {
+      height: var(--selected-height-calc);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: var(--selected-ul-gap);
     }
-
+    
     &.grid-layout {
+      height: var(--selected-height-calc);
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: var(--search-container-height) 1fr var(--button-height);
-      gap: 10px;
+      gap: var(--selected-ul-gap);
+      
+      &.tab-full {
+        max-height: var(--selected-max-height-calc);
+      }
     }
 
     &.hide {
@@ -204,7 +194,6 @@
       padding: 0 var(--mobile-padding);
       
       h1 {
-        // height: var(--search-input-height);
         font-size: var(--font-size-secondary-title);
         font-weight: var(--font-bold);
         margin: var(--h1-margin);
@@ -228,7 +217,6 @@
       flex-direction: column;
       gap: 20px;
       padding: 0 var(--mobile-padding);
-      max-height: var(--selected-subs-height-calc);
       overflow: auto;
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
@@ -244,7 +232,6 @@
           flex-direction: column;
           gap: var(--selected-ul-gap);
           margin: 0;
-          // max-height: calc(100vh - 260px - 50px);
           overflow: auto;
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
@@ -262,7 +249,7 @@
             .subreddit-container {
               background-color: var(--secondary-bg-color);
               border-left: 10px solid var(--secondary-color);
-              height: 60px;
+              height: var(--sub-container-height);
               display: flex;
               align-items: center;
               padding-left: 10px;

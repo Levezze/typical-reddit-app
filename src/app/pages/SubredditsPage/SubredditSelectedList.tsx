@@ -7,7 +7,6 @@ import { Subreddit } from '../../../types/api';
 
 const SubredditSelectedList = () => {
   const subredditsArray = useSelector((state: RootState) => state.subreddits.selected);
-  const pageViewMode = useSelector((state: RootState) => state.view.viewSize);
   const navigate = useNavigate();
 
   const subredditsDisplay = [
@@ -35,19 +34,13 @@ const SubredditSelectedList = () => {
             {subredditsDisplay}
           </ul>
         </div>
-        {pageViewMode === 2 ? null : <Button 
+      </div>
+      <Button 
           className='continue-btn'
           buttonName='CONTINUE TO FEED' 
           handleClick={handleNavigateToFeed}
           disabled={subredditsArray.length <= 0}
-          />}
-      </div>
-      {pageViewMode === 2 ? <Button 
-        className='continue-btn'
-        buttonName='CONTINUE TO FEED' 
-        handleClick={handleNavigateToFeed}
-        disabled={subredditsArray.length <= 0}
-      /> : null}
+        />
     </>
   );
 };

@@ -1,13 +1,13 @@
 @use 'base.module' as *;
 @import 'normalize.css';
 
-:root {
-  html,
-  body {
-    height: 100vh;
-    overflow: hidden;
-  }
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+}
 
+:root {
   // .feed-top {
   //   overflow-y: auto;
   //   max-height: 100vh;
@@ -102,6 +102,7 @@
   --sub-selected-width: 100%;
   --sub-selected-btn-width: 100%;
   --sub-selected-btn-height: none;
+  --sub-container-height: 60px;
 
   // Feed
   --page-top-height: 110px;
@@ -159,25 +160,56 @@
   }
 
   // Calculations:
-  --select-height-calc: calc(100vh - 
-    var(--top-spacing) - 
-    var(--header-height) - 
-    var(--switch-height) -
-    var(--nav-li-width)
-  );
+  --select-height-calc-vars:
+  100vh - 
+  var(--top-spacing) - 
+  var(--header-height) - 
+  var(--switch-height) -
+  var(--nav-li-width);
 
-  --select-height-subs-calc: calc(
-    var(--select-height-calc) -
-    var(--search-container-height) -
-    var(--search-margin-top) -
-    var(--search-margin-bottom)
-  );
+  --select-height-subs-calc-vars:
+  var(--select-height-calc) -
+  var(--search-container-height) -
+  var(--search-margin-top) -
+  var(--search-margin-bottom);
 
-  --feed-height-calc: calc(100vh - 
-    var(--top-spacing) - 
-    var(--header-height) - 
-    var(--nav-li-width)
-  );
+  --selected-max-height-calc-vars:
+  var(--header-height) +
+  var(--switch-height) +
+  var(--search-margin-top) +
+  var(--search-container-height) + 
+  calc(var(--selected-ul-gap) * 3) +
+  calc(var(--sub-container-height) * 5) +
+  var(--button-height);
+
+  --selected-height-calc-vars:
+  100vh - 
+  var(--top-spacing) - 
+  var(--header-height) - 
+  var(--switch-height) -
+  var(--search-margin-top) -
+  var(--nav-li-width) -
+  var(--selected-ul-gap);
+
+  --selected-subs-height-calc-vars:
+  var(--select-height-calc) - 
+  var(--search-margin-top) - 
+  var(--search-container-height) -
+  calc(var(--search-margin-bottom) * 3) -
+  var(--button-height);
+
+  --feed-height-calc-vars:
+  100vh - 
+  var(--top-spacing) - 
+  var(--header-height) - 
+  var(--nav-li-width);
+
+  --select-height-calc: calc(var(--select-height-calc-vars));
+  --select-height-subs-calc: calc(var(--select-height-subs-calc-vars));
+  --selected-max-height-calc: calc(var(--selected-max-height-calc-vars));
+  --selected-height-calc: calc(var(--selected-height-calc-vars));
+  --selected-subs-height-calc: calc(var(--selected-subs-height-calc-vars));
+  --feed-height-calc: calc(var(--feed-height-calc-vars));
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {
@@ -209,11 +241,12 @@
 
     // Subreddits
       // Switch (Mobile Only)
+    --switch-height: 0px;
     --switch-gap: 20px;
     --switch-mobile-width: 100%;
     --switch-display: flex;
       // Search
-    --search-margin-top: 20px;
+    --search-margin-top: 0px;
     --search-container-height: 70px;
     --search-h4-height: 20px;
     --search-input-height: 50px;
@@ -244,6 +277,14 @@
     // Account
     --acc-container-width: var(--ui-width);
     --acc-img-padding: 15px;
+
+    // Calcs
+    --select-height-calc: calc(var(--select-height-calc-vars));
+    --select-height-subs-calc: calc(var(--select-height-subs-calc-vars));
+    --selected-max-height-calc: calc(var(--selected-max-height-calc-vars));
+    --selected-height-calc: calc(var(--selected-height-calc-vars));
+    --selected-subs-height-calc: calc(var(--selected-subs-height-calc-vars));
+    --feed-height-calc: calc(var(--feed-height-calc-vars));
   }
 }
 
@@ -316,6 +357,14 @@
     // Account
     --acc-container-width: calc(100vw - (var(--mobile-padding) * 2));
     --acc-img-padding: 15px;
+
+    // Calcs
+    --select-height-calc: calc(var(--select-height-calc-vars));
+    --select-height-subs-calc: calc(var(--select-height-subs-calc-vars));
+    --selected-max-height-calc: calc(var(--selected-max-height-calc-vars));
+    --selected-height-calc: calc(var(--selected-height-calc-vars));
+    --selected-subs-height-calc: calc(var(--selected-subs-height-calc-vars));
+    --feed-height-calc: calc(var(--feed-height-calc-vars));
   }
 }
 
