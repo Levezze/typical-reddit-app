@@ -10,7 +10,7 @@
     "server": "node src/server/server.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --mode preview"
   },
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",

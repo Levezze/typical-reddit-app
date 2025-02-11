@@ -3,6 +3,9 @@ function generateRandomString(length = 16) {
   return Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('');
 }
 
+console.log("DEBUG - Redirect URI:", import.meta.env.VITE_REDIRECT_URI);
+console.log("DEBUG - Mode:", import.meta.env.MODE);
+
 export const generateLoginURL = () => {
   const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
   const TYPE = "code";
@@ -12,7 +15,7 @@ export const generateLoginURL = () => {
   const URI = import.meta.env.VITE_REDIRECT_URI;
   
   localStorage.setItem('oauth_state', RANDOM_STRING);
-  
+
   const URL = `https://www.reddit.com/api/v1/authorize.compact?client_id=${CLIENT_ID}&response_type=${TYPE}&state=${RANDOM_STRING}&redirect_uri=${URI}&duration=${DURATION}&scope=${SCOPE_STRING}`
   return URL;
 };
