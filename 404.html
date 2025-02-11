@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Preserve the full path and query parameters
+      const currentPath = window.location.pathname;
+      const currentQuery = window.location.search;
+      const currentHash = window.location.hash;
+
+      // Redirect to the React app while preserving the path and query params
+      const newUrl = `/typical-reddit-app${currentPath}${currentQuery}${currentHash}`;
+
+      // Redirect
+      window.location.replace(newUrl);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
