@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import axios from 'axios';
 
 import apiRouter from "./router/api.js"
 
@@ -20,7 +19,4 @@ app.get('/healthcheck', async (req, res) => {
 
 app.use("/api", apiRouter);
 
-const PORT = 4000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+export default app;
