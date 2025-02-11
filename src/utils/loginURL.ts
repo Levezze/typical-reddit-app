@@ -4,14 +4,15 @@ function generateRandomString(length = 16) {
 }
 
 export const generateLoginURL = () => {
-  const CLIENT_ID = "yMSHBIADe0dj6H0d7stK5g";
+  const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
   const TYPE = "code";
   const RANDOM_STRING = generateRandomString();
-  localStorage.setItem('oauth_state', RANDOM_STRING);
   const DURATION = "temporary";
   const SCOPE_STRING = "identity history read vote";
-  const URI = "http://localhost:5173/callback";
-
+  const URI = import.meta.env.VITE_REDIRECT_URI;
+  
+  localStorage.setItem('oauth_state', RANDOM_STRING);
+  
   const URL = `https://www.reddit.com/api/v1/authorize.compact?client_id=${CLIENT_ID}&response_type=${TYPE}&state=${RANDOM_STRING}&redirect_uri=${URI}&duration=${DURATION}&scope=${SCOPE_STRING}`
   return URL;
 };

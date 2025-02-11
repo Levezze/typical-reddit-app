@@ -3,10 +3,9 @@ import axios from 'axios';
 import subredditRouter from "./subreddits/index.js"
 
 const router = express.Router()
-const CLIENT_ID = 'yMSHBIADe0dj6H0d7stK5g';
 const CLIENT_SECRET = 'buhFs8Y2ZJQvGY6SKrt1zs_v3wbB_g';
-const REDIRECT_URI = 'http://localhost:5173/callback';
-
+const CLIENT_ID = process.env.VITE_CLIENT_ID;
+const REDIRECT_URI = process.env.VITE_REDIRECT_URI;
 
 // GET TOKEN
 
