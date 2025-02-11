@@ -3,14 +3,14 @@
 
 html,
 body {
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 :root {
   // .feed-top {
   //   overflow-y: auto;
-  //   max-height: 100vh;
+  //   max-height: 100dvh;
   // }
 
   isolation: isolate;
@@ -171,7 +171,7 @@ body {
 
   // Calculations:
   --select-height-calc-vars:
-  100vh - 
+  100dvh - 
   var(--top-spacing) - 
   var(--header-height) - 
   var(--switch-height) -
@@ -193,7 +193,7 @@ body {
   var(--button-height);
 
   --selected-height-calc-vars:
-  100vh - 
+  100dvh - 
   var(--top-spacing) - 
   var(--header-height) - 
   var(--switch-height) -
@@ -209,7 +209,7 @@ body {
   var(--button-height);
 
   --feed-height-calc-vars:
-  100vh - 
+  100dvh - 
   var(--top-spacing) - 
   var(--header-height) - 
   var(--nav-li-width);
