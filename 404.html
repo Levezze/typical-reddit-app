@@ -4,16 +4,19 @@
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Preserve the full path and query parameters
+      // Get the current path, query, and hash
       const currentPath = window.location.pathname;
       const currentQuery = window.location.search;
       const currentHash = window.location.hash;
 
-      // Redirect to the React app while preserving the path and query params
-      const newUrl = `/typical-reddit-app${currentPath}${currentQuery}${currentHash}`;
-
-      // Redirect
-      window.location.replace(newUrl);
+      // Only redirect if we're NOT already in /typical-reddit-app
+      if (!currentPath.startsWith("/typical-reddit-app")) {
+        const newUrl = `/typical-reddit-app${currentPath}${currentQuery}${currentHash}`;
+        window.location.replace(newUrl);
+      } else {
+        // If we're already inside /typical-reddit-app, stop redirecting
+        document.body.innerHTML = "<h1>404 - Page Not Found</h1>";
+      }
     </script>
   </head>
   <body>
