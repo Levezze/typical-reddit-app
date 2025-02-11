@@ -3,9 +3,6 @@ function generateRandomString(length = 16) {
   return Array.from({ length }, () => charset[Math.floor(Math.random() * charset.length)]).join('');
 }
 
-console.log("DEBUG - Redirect URI:", import.meta.env.VITE_REDIRECT_URI);
-console.log("DEBUG - Mode:", import.meta.env.MODE);
-
 export const generateLoginURL = () => {
   const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
   const TYPE = "code";
