@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { debounce } from 'lodash';
 import { setView } from '../../store/slices/viewSlice';
 import Nav from './Nav';
-import '../../../styles/Header.scss';
+import '../../../styles/header.scss';
 import landingImg from '../../../img/logo/editedLogo.png'
 
 const Header: React.FC = () => {

@@ -217,7 +217,7 @@ Below are prototype designs used during the development process to visualize the
  ┣ 📂styles
  ┃ ┣ 📜App.scss
  ┃ ┣ 📜FeedPage.scss
- ┃ ┣ 📜Header.scss
+ ┃ ┣ 📜header.scss
  ┃ ┣ 📜index.scss
  ┃ ┣ 📜LandingPage.scss
  ┃ ┣ 📜OptionsMenu.scss
