@@ -214,12 +214,22 @@ body {
   var(--header-height) - 
   var(--nav-li-width);
 
+  --account-height-calc-vars:
+  100dvh - 
+  var(--top-spacing) - 
+  var(--header-height) - 
+  var(--page-top-height) - 
+  var(--page-top-padding) -
+  var(--page-top-margin-bottom) -
+  var(--nav-li-width);
+
   --select-height-calc: calc(var(--select-height-calc-vars));
   --select-height-subs-calc: calc(var(--select-height-subs-calc-vars));
   --selected-max-height-calc: calc(var(--selected-max-height-calc-vars));
   --selected-height-calc: calc(var(--selected-height-calc-vars));
   --selected-subs-height-calc: calc(var(--selected-subs-height-calc-vars));
   --feed-height-calc: calc(var(--feed-height-calc-vars));
+  --account-height-calc: calc(var(--account-height-calc-vars));
 }
 
 @media ((min-width: $mobile-width) and (max-width: $tab-width)) {

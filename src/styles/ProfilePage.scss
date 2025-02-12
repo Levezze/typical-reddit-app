@@ -27,6 +27,7 @@
   flex-direction: column;
   align-items: center;
   overflow: auto;
+  height: var(--account-height-calc-vars);
 
   .profile-container {
     width: var(--acc-container-width);
