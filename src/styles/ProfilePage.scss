@@ -87,7 +87,7 @@
       }
     
       .profile-buttons {
-        width: 390px;
+        width: var(--button-width);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -102,6 +102,7 @@
     
         &.tablet {
           width: var(--acc-container-width);
+          max-width: var(--button-width);
           gap: 20px;
         }
     
