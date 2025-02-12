@@ -45,11 +45,16 @@ const ProfilePage: React.FC = () => {
       <div className={`profile-layout ${viewClass}`}>
         <div className="profile-container">
           {isLoading ? <p>Loading profile...</p> :
-          <User />}
-        </div>
-        <div className={`profile-buttons ${viewClass}`}>
-          <LogoutButton />
-          <DarkLightButton />
+          (
+            <div className={`profile-flex ${viewClass}`}>
+              <User />
+              <div className={`profile-buttons ${viewClass}`}>
+                <LogoutButton />
+                <DarkLightButton />
+              </div>
+            </div>
+            )
+          }
         </div>
       </div>
     </>
