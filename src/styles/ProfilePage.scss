@@ -29,6 +29,10 @@
   flex-direction: column;
   align-items: center;
 
+  &.tablet {
+    overflow: auto;
+  }
+
   .profile-container {
     width: var(--acc-container-width);
     display: flex;
@@ -80,6 +84,7 @@
     .round-corners {
       display: flex;
       width: 250px;
+      max-width: 30dvh;
       height: auto;
       padding-top: var(--acc-img-padding);
       margin: 0 auto;
