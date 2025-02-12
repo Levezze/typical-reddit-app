@@ -5,7 +5,6 @@
 }
 
 // Top Section
-
 .profile-top {
   display: flex;
   justify-content: space-between;
@@ -23,7 +22,6 @@
 }
 
 // Profile
-
 .profile-layout {
   display: flex;
   flex-direction: column;
@@ -40,6 +38,44 @@
     border: 2px solid var(--border-color);
     box-shadow: $container-shadow;
 
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 2px solid var(--secondary-color);
+      
+      h2 {
+        font-size: var(--font-size-container-title);
+        font-weight: var(--font-bold);
+        margin: 0 0 10px;
+        color: var(--secondary-color);
+        text-decoration: none;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: var(--font-regular);
+        margin: 0 0 10px;
+        color: var(--primary-color);
+        text-decoration: none;
+        text-align: center;
+      }
+    }
+  
+    .round-corners {
+      display: flex;
+      width: 250px;
+      max-width: 30dvh;
+      height: auto;
+      padding-top: var(--acc-img-padding);
+      margin: 0 auto;
+      
+      img {
+        width: 100%;
+        border-radius: 50%/50%;
+      }    
+    }
+
     .profile-flex {
       display: flex;
       flex-direction: row;
@@ -47,58 +83,7 @@
 
       &.mobile {
         flex-direction: column;
-      }
-
-      .title-section {
-        display: flex;
-        flex-direction: column;
-        border-bottom: 2px solid var(--secondary-color);
-        
-        h2 {
-          font-size: var(--font-size-container-title);
-          font-weight: var(--font-bold);
-          margin: 0 0 10px;
-          color: var(--secondary-color);
-          text-decoration: none;
-          text-align: center;
-        }
-  
-        h3 {
-          font-size: 16px;
-          font-weight: var(--font-regular);
-          margin: 0 0 10px;
-          color: var(--primary-color);
-          text-decoration: none;
-          text-align: center;
-        }
-  
-        .sub-name {
-          margin: 0 0 10px;
-          color: var(--primary-color);
-  
-          i {
-            font-size: 14px;
-          }
-        }
-  
-        .author {
-          margin: 0 0 10px;
-          color: var(--text-color);
-        }
-      }
-    
-      .round-corners {
-        display: flex;
-        width: 250px;
-        max-width: 30dvh;
-        height: auto;
-        padding-top: var(--acc-img-padding);
-        margin: 0 auto;
-        
-        img {
-          width: 100%;
-          border-radius: 50%/50%;
-        }    
+        gap: 10px;
       }
     
       .profile-buttons {
@@ -110,7 +95,7 @@
         gap: 20px;
         
         &.mobile {
-          width: var(--acc-container-width);
+          width: calc(var(--acc-container-width) - (var(--container-padding) * 2));
           margin-top: 10px;
           gap: 10px;
         }
