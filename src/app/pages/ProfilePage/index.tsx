@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import LogoutButton from '../../components/auth/AuthButton';
 import { useGetProfileDataQuery } from '../../store/middleware/profileAPI';
 import { setProfile } from '../../store/slices/profileSlice';
 import '../../../styles/ProfilePage.scss'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import User from './User/User';
-import DarkLightButton from './DarkLightButton';
 import { setPage } from '../../store/slices/pageSlice';
 
 
@@ -45,16 +43,7 @@ const ProfilePage: React.FC = () => {
       <div className={`profile-layout ${viewClass}`}>
         <div className="profile-container">
           {isLoading ? <p>Loading profile...</p> :
-          (
-            <div className={`profile-flex ${viewClass}`}>
-              <User />
-              <div className={`profile-buttons ${viewClass}`}>
-                <LogoutButton />
-                <DarkLightButton />
-              </div>
-            </div>
-            )
-          }
+            <User viewClass={viewClass} />}
         </div>
       </div>
     </>
