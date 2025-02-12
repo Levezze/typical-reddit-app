@@ -25,13 +25,13 @@
 .profile-layout {
   display: flex;
   flex-direction: column;
-  max-height: var(--account-height-calc-vars);
+  max-height: var(--account-height-calc);
   align-items: center;
   overflow: auto;
   box-sizing: border-box;
   
   .profile-container {
-    max-height: var(--account-height-calc-vars);
+    max-height: var(--account-height-calc);
     overflow: auto;
     width: var(--acc-container-width);
     display: flex;
