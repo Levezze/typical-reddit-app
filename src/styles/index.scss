@@ -5,14 +5,12 @@ html,
 body {
   height: 100dvh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :root {
-  // .feed-top {
-  //   overflow-y: auto;
-  //   max-height: 100dvh;
-  // }
-
   isolation: isolate;
   font-family: 'Epilogue', system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--bg-color);
