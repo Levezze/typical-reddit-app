@@ -1,6 +1,8 @@
 ![Git Social Preview](public/mock-img/github-logo-typical-reddit.png) 
 # Typical Reddit App
 
+Deployed app: [typical-reddit-app.vercel.app](https://typical-reddit-app.vercel.app/)
+
 **Typical Reddit App** is a front-end application built with **React**, **Redux Toolkit**, **React Router**, **Vite**, and **TypeScript**. This app allows users to log in with their Reddit account, search for subreddits, curate a personalized feed with up to 5 subreddits, and interact with posts by upvoting, downvoting, and commenting. 
 
 Additionally, users can toggle between light and dark modes and manage their account through a profile section. This project is designed to enhance the Reddit experience by providing a clean and customizable UI.
