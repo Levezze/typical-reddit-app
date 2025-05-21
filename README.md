@@ -64,6 +64,160 @@ To review the SCSS structure, check out the `src/styles` folder:
 
 ---
 
+## Backend Setup
+
+This project uses a lightweight **Express.js** server to handle Reddit API requests locally, ensuring smooth communication and bypassing CORS restrictions. **Axios** is used to make GET requests to Reddit's API.
+
+### Express Server Configuration
+
+1. **Server Location**: The server code is located in the `src/server` folder.
+
+2. **Code Sample**:
+   ```javascript
+   import express from 'express';
+   import cors from 'cors';
+   import axios from 'axios';
+
+   import apiRouter from "./router/api.js"
+
+   const app = express();
+
+   app.use(cors({ origin: '*' }));
+   app.get('/api/healthcheck', async (req, res) => {
+   return res.json({status: "best"})
+   });
+   app.get('/healthcheck', async (req, res) => {
+   return res.json({status: "best"})
+   });
+
+   app.use("/api", apiRouter)
+
+   const PORT = 4000;
+   app.listen(PORT, () => {
+   console.log(`Server running on http://localhost:${PORT}`);
+   });
+   ```
+
+   ```javascript
+   import express from 'express';
+   import axios from 'axios';
+   const router = express.Router()
+
+   // Enable CORS
+   app.use(cors());
+   
+   // Route to fetch subreddit data
+   router.get('/popular', async (_req, res) => {
+   console.log('Received request to /subreddits/popular');  // Check if the endpoint is being hit
+
+   try {
+      const response = await axios.get("https://www.reddit.com/subreddits/popular.json?&raw_json=1$limit=10");
+      
+      if (response.status < 200 || response.status >= 300) {
+         throw new Error(`Reddit API error: ${response.statusText}`)
+      }
+
+      res.json(response.data);
+   } catch (error) {
+      console.error('Failed to fetch popular subreddits:', error.message);
+      res.status(500).json({ error: 'Failed to fetch popular subreddits' });
+   }
+   });
+   
+
+   // Start the server
+   app.listen(PORT, () => {
+       console.log(`Server is running on http://localhost:${PORT}`);
+   });
+   ```
+
+3. **Run the Server**:
+   From the project root, navigate to the `src/services` folder and run:
+   ```bash
+   npm run dev
+   ```
+   The server will start on `http://localhost:5000`.
+
+---
+
+## Installation and Usage
+
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn package manager
+
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/levezze/reddit-app.git
+   cd typical-reddit-app
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory and include the following:
+   ```env
+   VITE_REDDIT_CLIENT_ID=your-client-id
+   VITE_REDDIT_REDIRECT_URI=your-redirect-uri
+   VITE_REDDIT_API_URL=https://www.reddit.com/api/v1
+   ```
+
+4. Install backend dependencies:
+   ```bash
+   npm install express cors axios
+   ```
+
+5. Start the backend server:
+   ```bash
+   node src/services/server.js
+   ```
+
+6. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+7. Open your browser and navigate to `http://localhost:5173/`.
+
+---
+
+## Contributing
+
+Contributions are welcome! Feel free to submit a pull request or open an issue to report bugs or suggest features.
+
+---
+
+## Contact
+
+If you have any questions, feel free to contact the developer:
+
+**Lev Zhitnik**  
+[GitHub Profile](https://github.com/Levezze)  
+[Email](mailto:lev.zhi@gmail.com)
+
+---
+
+## Future Improvements
+
+- **Infinite Scrolling**: Enhance feed to allow infinite scrolling.
+- **Subreddit Insights**: Display detailed insights for each subreddit (e.g., activity stats).
+- **PWA**: Convert the app into a Progressive Web App for offline support.
+- **Backend**: Create a user-based experience to serve as a reddit portal for regular use + notifications.
+- **App**: Convert into a mobile app.
+- **Share**: Add share button for posts.
+- **Skeleton**: Loading animation for subreddits / Feed / Profile.
+- **Token Refresh**: Add auto token refresh option / logout when token expires.
+
+---
+
 ## Prototype Design
 
 Below are prototype designs used during the development process to visualize the app's layout and flow:
@@ -242,159 +396,3 @@ Below are prototype designs used during the development process to visualize the
  ┣ 📜main.tsx
  ┗ 📜vite-env.d.ts
 ```
-
----
-
-## Backend Setup
-
-This project uses a lightweight **Express.js** server to handle Reddit API requests locally, ensuring smooth communication and bypassing CORS restrictions. **Axios** is used to make GET requests to Reddit's API.
-
-### Express Server Configuration
-
-1. **Server Location**: The server code is located in the `src/server` folder.
-
-2. **Code Sample**:
-   ```javascript
-   import express from 'express';
-   import cors from 'cors';
-   import axios from 'axios';
-
-   import apiRouter from "./router/api.js"
-
-   const app = express();
-
-   app.use(cors({ origin: '*' }));
-   app.get('/api/healthcheck', async (req, res) => {
-   return res.json({status: "best"})
-   });
-   app.get('/healthcheck', async (req, res) => {
-   return res.json({status: "best"})
-   });
-
-   app.use("/api", apiRouter)
-
-   const PORT = 4000;
-   app.listen(PORT, () => {
-   console.log(`Server running on http://localhost:${PORT}`);
-   });
-   ```
-
-   ```javascript
-   import express from 'express';
-   import axios from 'axios';
-   const router = express.Router()
-
-   // Enable CORS
-   app.use(cors());
-   
-   // Route to fetch subreddit data
-   router.get('/popular', async (_req, res) => {
-   console.log('Received request to /subreddits/popular');  // Check if the endpoint is being hit
-
-   try {
-      const response = await axios.get("https://www.reddit.com/subreddits/popular.json?&raw_json=1$limit=10");
-      
-      if (response.status < 200 || response.status >= 300) {
-         throw new Error(`Reddit API error: ${response.statusText}`)
-      }
-
-      res.json(response.data);
-   } catch (error) {
-      console.error('Failed to fetch popular subreddits:', error.message);
-      res.status(500).json({ error: 'Failed to fetch popular subreddits' });
-   }
-   });
-   
-
-   // Start the server
-   app.listen(PORT, () => {
-       console.log(`Server is running on http://localhost:${PORT}`);
-   });
-   ```
-
-3. **Run the Server**:
-   From the project root, navigate to the `src/services` folder and run:
-   ```bash
-   npm run dev
-   ```
-   The server will start on `http://localhost:5000`.
-
----
-
-## Installation and Usage
-
-### Prerequisites
-- Node.js (v16+)
-- npm or yarn package manager
-
-### Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/levezze/reddit-app.git
-   cd typical-reddit-app
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file in the root directory and include the following:
-   ```env
-   VITE_REDDIT_CLIENT_ID=your-client-id
-   VITE_REDDIT_REDIRECT_URI=your-redirect-uri
-   VITE_REDDIT_API_URL=https://www.reddit.com/api/v1
-   ```
-
-4. Install backend dependencies:
-   ```bash
-   npm install express cors axios
-   ```
-
-5. Start the backend server:
-   ```bash
-   node src/services/server.js
-   ```
-
-6. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-7. Open your browser and navigate to `http://localhost:5173/`.
-
----
-
-## Contributing
-
-Contributions are welcome! Feel free to submit a pull request or open an issue to report bugs or suggest features.
-
----
-
-## Contact
-
-If you have any questions, feel free to contact the developer:
-
-**Lev Zhitnik**  
-[GitHub Profile](https://github.com/Levezze)  
-[Email](mailto:lev.zhi@gmail.com)
-
----
-
-## Future Improvements
-
-- **Infinite Scrolling**: Enhance feed to allow infinite scrolling.
-- **Subreddit Insights**: Display detailed insights for each subreddit (e.g., activity stats).
-- **PWA**: Convert the app into a Progressive Web App for offline support.
-- **Backend**: Create a user-based experience to serve as a reddit portal for regular use + notifications.
-- **App**: Convert into a mobile app.
-- **Share**: Add share button for posts.
-- **Skeleton**: Loading animation for subreddits / Feed / Profile.
-- **Token Refresh**: Add auto token refresh option / logout when token expires.
-
----
